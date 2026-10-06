@@ -135,9 +135,11 @@ class PythonRuntimeTest(unittest.TestCase):
                  patch.object(voice.sys, 'platform', 'darwin'), patch.object(voice.platform, 'machine', return_value='arm64'), \
                  patch.object(voice, 'run', return_value='{"mlx":"test","mlx-audio":"test"}'):
                 config = voice.voice_configuration('kiana-base')
-            self.assertEqual(Path(config['python']), root / 'env/bin/python')
-            self.assertEqual(Path(config['model']), root / 'models/custom')
-            self.assertEqual(Path(config['reference']), root / 'voice/ref.wav')
+            # macOS temporary roots and Windows short user paths can alias the
+            # canonical project directory. Runtime paths deliberately resolve them.
+            self.assertEqual(Path(config['python']), (root / 'env/bin/python').resolve())
+            self.assertEqual(Path(config['model']), (root / 'models/custom').resolve())
+            self.assertEqual(Path(config['reference']), (root / 'voice/ref.wav').resolve())
             self.assertEqual(config['referenceText'], '中文参考。')
 
     def test_new_mlx_inference_explains_supported_platform(self):
@@ -160,7 +162,7 @@ class PythonRuntimeTest(unittest.TestCase):
                 os.chdir(cwd)
                 with patch.dict(os.environ, {}, clear=True), patch.object(voice.sys, 'platform', 'win32'):
                     loaded = voice.load_seed(seed, 'kiana-base')
-                self.assertEqual(loaded['audio'], fixture / 'base-narration.wav')
+                self.assertEqual(loaded['audio'], (fixture / 'base-narration.wav').resolve())
                 self.assertGreater(len(loaded['scenes']), 0)
             finally:
                 os.chdir(previous)
