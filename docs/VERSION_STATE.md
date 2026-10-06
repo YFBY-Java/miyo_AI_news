@@ -15,7 +15,7 @@
 | 任务生命周期 | Windows 隐藏窗口、UTF-8、按身份核对的进程树取消与恢复；macOS 任务进程组信号 |
 | 声线边界 | 各平台可复用匹配的归档琪亚娜音轨；晓晓需要 edge-tts 与网络；新琪亚娜推理仅 Apple Silicon Mac |
 | 回归入口 | `npm run typecheck`、`npm test`、`npm run test:python`、`npm run check:runtime`、`npm run build` |
-| CI | macOS / Windows 两个矩阵，真实安装 Chromium、FFmpeg/FFprobe 后执行完整检查；本轮最终结果待验收表汇总 |
+| CI | macOS / Windows 两个矩阵均通过，各 64 项 Node、19 项 Python、真实配音/导出/取消与生产构建；[完整运行记录](https://github.com/YFBY-Java/miyo_AI_news/actions/runs/37426725668) |
 
 `check:runtime` 使用隔离工程与归档配音验证实际 prepare、短片导出、取消与复用，不调用新 MLX 或在线 TTS。原 Mac 的 47 项通过记录与历史成片不能代替本轮两个系统的验证结果。
 
@@ -87,7 +87,7 @@
 - 一卡一图，暂不支持视频配图、动态图、自由拖拽图层或永久删除素材。
 - 固定横版1080p/24fps；单机单用户，最多40分镜、每场1–6卡、最长30分钟。
 - 小尺寸与长正文可能冲突；导出会检查正文溢出，必要时需拆卡、缩短正文或扩大卡片。
-- 原 Mac 的正常取消与重试已有历史验收；本轮 Windows/macOS 回归结果待汇总。断电、完整主观听评仍未验收。
+- 本轮 Windows/macOS CI 已验证正常取消、任务进程清理、配音复用及重试导出。断电、完整主观听评仍未验收。
 - 新琪亚娜 MLX 推理仅 Apple Silicon Mac；Windows 和 Intel Mac 的新口播应手动选择晓晓。
 - 没有自动发布、多人协作、每次编辑自动保存或数据自动备份。
 

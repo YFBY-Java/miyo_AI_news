@@ -6,18 +6,20 @@
 
 | 检查 | 方法 | 本轮结果与证据 |
 | --- | --- | --- |
-| 类型 | `npm run typecheck` | Windows 通过 |
-| 完整 Node 回归 | `npm test`，已安装真实 Chromium | Windows：63 项，60 通过、0 失败、3 项文件 symlink 权限场景明确跳过 |
-| Python 回归 | `npm run test:python` | Windows：19 项全部通过；使用归档音频，不运行新 TTS |
-| 完整任务链 | `npm run check:runtime` | Windows 通过，报告 `data/verification/platform-runtime-1791268944079/report.json`；详情见下文 |
-| 生产构建 | `npm run build` | Windows 独立 `.next-build` 目录构建通过，含类型检查、静态页生成和依赖追踪 |
-| macOS / Windows CI | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | 待填写本轮推送对应的两个矩阵任务结果 |
+| 类型 | `npm run typecheck` | 本机 Windows 与两个 CI 平台均通过 |
+| 完整 Node 回归 | `npm test`，已安装真实 Chromium | macOS、Windows CI 各 64 项全部通过，无失败或跳过；本机 Windows 64 项中 61 通过、3 项文件 symlink 权限场景明确跳过 |
+| Python 回归 | `npm run test:python` | 本机 Windows 与两个 CI 平台均为 19 项全部通过；使用归档音频，不运行新 TTS |
+| 完整任务链 | `npm run check:runtime` | 本机 Windows 与 macOS arm64、Windows x64 CI 均通过；本机报告 `data/verification/platform-runtime-1791268944079/report.json`，详情见下文 |
+| 生产构建 | `npm run build` | 两个 CI 平台均通过；本机 Windows 独立 `.next-build` 构建通过，含类型检查、静态页生成和依赖追踪 |
+| macOS / Windows CI | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | [运行 37426725668](https://github.com/YFBY-Java/miyo_AI_news/actions/runs/37426725668) 全部成功，对应代码/测试提交 `d7dfa2ed22f1d12f60f0ab6b7f908a639aacae19` |
 
-CI 在 `macos-latest` 与 `windows-latest` 使用 Node 20、Python 3.11，安装 FFmpeg/FFprobe 和项目对应的 Playwright Chromium 后执行全部检查。浏览器渲染失败不会跳过；本表中的“待填写”不表示通过。纯文档变更不重复执行矩阵检查。
+CI 在 `macos-latest` 与 `windows-latest` 使用 Node 20、Python 3.11，安装 FFmpeg/FFprobe 和项目对应的 Playwright Chromium 后执行全部检查。两个 CI 主机具备文件 symlink 权限，64 项测试全部执行；浏览器渲染失败不会跳过。纯文档变更不重复执行矩阵检查。
 
 本机完整任务链使用含中文与空格的隔离目录，从归档音轨生成单分镜配音。prepare `6a8faf09-6ca1-4f4d-9b4b-2974391e4942` 成功，实际开始编码的 render `c4c98776-6e13-4982-89b5-e0df3f29555e` 取消后确认没有残留任务进程；重试 `8dfab7b2-5e97-4ff4-a770-5afe86209517` 导出 9.696667 秒、1920×1080、24 fps、233 帧 H.264/AAC MP4，完整解码通过，无页面错误或正文溢出。`audio-provenance.json` 指向取消任务已准备好的音轨，与最初 prepare 的 WAV SHA-256 一致；网页与 worker 的缓存识别一致。成功后隔离目录与其 worker 自动清理，报告保留。
 
-构建中发现并修复了 Next 文件追踪把目标机主目录当依赖扫描的问题；保留完整依赖追踪与真实工具文件检查。Mac 任务进程查询分别固定英文日期和 UTF-8 命令行，真实进程测试与完整任务链均使用中文及空格目录。最后针对运行时和真实进程的 13 项回归再次通过。
+构建中发现并修复了 Next 文件追踪把目标机主目录当依赖扫描的问题；保留完整依赖追踪与真实工具文件检查。Mac 任务进程查询分别固定英文日期和 UTF-8 命令行，真实进程测试与完整任务链均使用中文及空格目录。取消断言记录创建时间并检查唯一任务标记，能区分 PID 复用与真正残留；本机进程专项 4 项、与 Chromium 并行的专项 14 项均通过，之后重新运行完整 64 项回归得到上表结果。
+
+最终 CI 的两个平台都完成了同一条真实任务链：网页和 worker 识别同一配音缓存，运行中取消后任务子进程清理，再复用音轨导出 9.696667 秒的 1080p/24fps MP4，并检查字幕、音画时长、WAV 校验值及完整视频解码。Mac 生产编译约 15 秒、Windows 约 18.3 秒，均生成 4 个静态页并完成依赖追踪。这些记录验证跨平台控制器与归档复用，不代表本轮运行了新 MLX 推理或在线晓晓合成。
 
 符号链接专项已在当前 Windows 复现并验证：原 19 项中 9 项因 `EPERM` 失败，其中一个 before 钩子令 7 项无关测试无法执行。修复后 `node --import tsx --test tests/assets.test.ts tests/server-audit.test.ts` 为 22 项，19 通过、0 失败、3 项文件 symlink 权限场景明确报告 `SKIP`。目录逃逸改用 junction 并实际检查 403、写入拒绝；路径和 SHA 检查照常运行。此专项结果不代替最终全套回归。
 
