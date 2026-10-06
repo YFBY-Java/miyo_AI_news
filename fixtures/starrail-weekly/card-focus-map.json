@@ -1,0 +1,113 @@
+{
+  "description": "按基准声线 episode.json 的 65 个全局字幕 cue 手工标注讲解主题。cueIndex 为 0-based，切换时间取对应 cue.start；每场首次聚焦可提前到 scene.start。只有话题转向其他卡片才切换，同主题连续句、日期补充和来源说明保持上一张卡。复合句受现有字幕边界限制，按主要讲解点选卡，未虚构逐词对齐时间。",
+  "scenes": [
+    {
+      "id": "departure",
+      "segments": [
+        { "cueIndex": 0, "cardIndex": 0, "reason": "开场问候接本周版本导览，先聚焦真珠与新篇章，延续到四点六版本说明。" },
+        { "cueIndex": 2, "cardIndex": 1, "reason": "明确转到国庆线下活动，聚焦两地开场。" },
+        { "cueIndex": 3, "cardIndex": 2, "reason": "本句是活动、线下与社区的总览，前两项已展示，聚焦本句最后引出的社区话题；不在同句中机械轮播。" },
+        { "cueIndex": 4, "cardIndex": 0, "reason": "主线不剧透说明回到版本与新篇章主题。" }
+      ]
+    },
+    {
+      "id": "version",
+      "segments": [
+        { "cueIndex": 5, "cardIndex": 0, "reason": "介绍版本名称与上线日期，聚焦开拓任务。" },
+        { "cueIndex": 7, "cardIndex": 1, "reason": "复合句从故事推进引出生研院开放，本句新增的核心信息为地图。" },
+        { "cueIndex": 8, "cardIndex": 2, "reason": "明确提醒查收更新与修复补偿。" },
+        { "cueIndex": 9, "cardIndex": 0, "reason": "回坑建议先跟主线走，回到开拓任务卡。" },
+        { "cueIndex": 10, "cardIndex": 1, "reason": "再处理新地图探索，切回生研院与探索节奏。" }
+      ]
+    },
+    {
+      "id": "pearl",
+      "segments": [
+        { "cueIndex": 11, "cardIndex": 0, "reason": "角色身份介绍没有独立卡片，用角色核心防御定位承接开场。" },
+        { "cueIndex": 12, "cardIndex": 1, "reason": "本句同时覆盖保护、回复、解控及行动提前；保护卡已出现，聚焦新增的行动提前能力。只有整句起点可用，不能声称在说到行动提前一词时精确切换。" },
+        { "cueIndex": 13, "cardIndex": 2, "reason": "转到绯英复刻；后续队伍缺口和先试用建议也对应本卡正文，保持聚焦。" }
+      ]
+    },
+    {
+      "id": "robot",
+      "segments": [
+        { "cueIndex": 16, "cardIndex": 0, "reason": "活动名称、截止日期及斯科特背景作为同一活动介绍，保持故事卡。" },
+        { "cueIndex": 19, "cardIndex": 1, "reason": "明确讲解拼装与订单攻略。" },
+        { "cueIndex": 20, "cardIndex": 2, "reason": "建议先自己体验、卡关再查攻略，对应按进度体验。" }
+      ]
+    },
+    {
+      "id": "pets",
+      "segments": [
+        { "cueIndex": 21, "cardIndex": 0, "reason": "从星际幻宠简介进入跟随探索与小屋布设。" },
+        { "cueIndex": 23, "cardIndex": 1, "reason": "转到共斗玩法、各派两名随宠以及好友和真人匹配。" },
+        { "cueIndex": 25, "cardIndex": 2, "reason": "明确讲解试用随宠与先体验的建议。" }
+      ]
+    },
+    {
+      "id": "rewards",
+      "segments": [
+        { "cueIndex": 26, "cardIndex": 0, "reason": "七日签到领取十张专票。" },
+        { "cueIndex": 27, "cardIndex": 1, "reason": "游园伴手礼六张登录礼券。" },
+        { "cueIndex": 28, "cardIndex": 2, "reason": "镇伏贪饕十八张活动礼券与星琼；随后说明二十四张为多途径合计、需要满足任务条件，保持活动进度卡以强调并非全部登录到账。" }
+      ]
+    },
+    {
+      "id": "redland",
+      "segments": [
+        { "cueIndex": 31, "cardIndex": 0, "reason": "介绍上海复兴岛与十月二日至六日的活动时间。" },
+        { "cueIndex": 33, "cardIndex": 1, "reason": "官宣提到砂金与真珠；下一句补充官宣时间，仍保持角色官宣卡。" },
+        { "cueIndex": 35, "cardIndex": 2, "reason": "准备出发前确认资格与当天安排。" }
+      ]
+    },
+    {
+      "id": "hoyoland",
+      "segments": [
+        { "cueIndex": 36, "cardIndex": 1, "reason": "活动名称作为引子，随后直接介绍十月二日至五日，先聚焦日期。" },
+        { "cueIndex": 38, "cardIndex": 0, "reason": "讲解第二展馆七号、八号馆与后方广场；同句的信息入口补充不额外切换。" },
+        { "cueIndex": 40, "cardIndex": 2, "reason": "提醒各日闭馆时间不同，查看官方日程。" }
+      ]
+    },
+    {
+      "id": "pet-debate",
+      "segments": [
+        { "cueIndex": 41, "cardIndex": 0, "reason": "社区观察开场接第一类观点：喜欢收集、交换和陪伴。" },
+        { "cueIndex": 43, "cardIndex": 1, "reason": "切到外观偏好与盲盒获取顾虑；媒体讨论来源说明保持当前话题。" },
+        { "cueIndex": 45, "cardIndex": 0, "reason": "攻略作者建议利用免费机会与好友互换，回到收集和交换卡。" },
+        { "cueIndex": 46, "cardIndex": 2, "reason": "明确区分现有玩法、审美和未来猜测。" }
+      ]
+    },
+    {
+      "id": "story-debate",
+      "segments": [
+        { "cueIndex": 47, "cardIndex": 0, "reason": "主线评价导语接正向反馈，聚焦真珠塑造和伏笔回收。" },
+        { "cueIndex": 49, "cardIndex": 1, "reason": "英文社区对冲突紧张感的批评。" },
+        { "cueIndex": 50, "cardIndex": 2, "reason": "讨论样本不等于整体口碑，后续先体验再评价的建议保持同卡。" }
+      ]
+    },
+    {
+      "id": "endgame",
+      "segments": [
+        { "cueIndex": 52, "cardIndex": 0, "reason": "真珠队伍适配及是否替换生存位。" },
+        { "cueIndex": 54, "cardIndex": 1, "reason": "异相仲裁中生存压力与通关体验的差异。" },
+        { "cueIndex": 55, "cardIndex": 2, "reason": "结合队伍、练度和机制看攻略，直到本段结论。" }
+      ]
+    },
+    {
+      "id": "creators",
+      "segments": [
+        { "cueIndex": 57, "cardIndex": 2, "reason": "征集开始与投稿截止日期属于活动规则，先展示投稿卡。" },
+        { "cueIndex": 59, "cardIndex": 0, "reason": "本句同时列出角色配队和活动探索，按先出现的角色配队主题聚焦，不在一句内估算分词时间。" },
+        { "cueIndex": 60, "cardIndex": 1, "reason": "从投稿方向转到写清操作步骤，聚焦活动探索卡的步骤和解题路径；账号条件也是本句并列建议。" }
+      ]
+    },
+    {
+      "id": "arrival",
+      "segments": [
+        { "cueIndex": 61, "cardIndex": 0, "reason": "结尾第一件事：签到和奖励不要漏。" },
+        { "cueIndex": 62, "cardIndex": 1, "reason": "复合句先提醒线下核对安排，再提自己体验；按起始重点聚焦线下，避免捏造句内切换点。后续资料截止与官方安排提醒保持此卡。" },
+        { "cueIndex": 64, "cardIndex": 2, "reason": "旅途乐趣与下一站见属于宽泛结束语，以自己体验卡收尾，呼应上一句中按自己节奏体验的建议；此处是语义收束，并非逐字对应卡片正文。" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3227 @@
+{
+  "package": "miyo_AI_news",
+  "version": "0.1.0",
+  "commit": "6c323692ca3825fadf89852b90e2a953ab2f81b5",
+  "checkpoint": "miyo-ai-news-v0.1.0-checkpoint-20261006",
+  "packagedAt": "2026-10-06T13:40:27.937488+08:00",
+  "counts": {
+    "source": 62,
+    "data": 469,
+    "voiceReference": 3
+  },
+  "originalBytes": 536830423,
+  "excluded": [
+    "node_modules",
+    "Next build output",
+    "duplicate backups",
+    "Python bytecode cache",
+    "parent Git repository",
+    "external TTS model and virtual environment"
+  ],
+  "files": [
+    {
+      "path": "miyo_AI_news/.env.example",
+      "category": "source",
+      "bytes": 509,
+      "sha256": "49e31410d98c24e89bc7066bdc54786f65bba31b8c2875dd7d6f6ddd8208a7b9"
+    },
+    {
+      "path": "miyo_AI_news/.gitignore",
+      "category": "source",
+      "bytes": 122,
+      "sha256": "7ae58223f46c7b06b3a68629a96f5be14525628a650a78549ebec154d3753109"
+    },
+    {
+      "path": "miyo_AI_news/LICENSE",
+      "category": "source",
+      "bytes": 1084,
+      "sha256": "dad9df78450113710df03bffd18979124cde82dce06e57620440e7bafcf8ca58"
+    },
+    {
+      "path": "miyo_AI_news/README.md",
+      "category": "source",
+      "bytes": 9710,
+      "sha256": "02c63bd50c64ee96d4c1a86ea4c2b59c78178264aebfd249a987a33863af3338"
+    },
+    {
+      "path": "miyo_AI_news/app/api/[...path]/route.ts",
+      "category": "source",
+      "bytes": 208,
+      "sha256": "ffdb1fc05a7265ae4e8682856a6b3bc925f0e2bcaa4518acb6f79404c15d5cf7"
+    },
+    {
+      "path": "miyo_AI_news/app/layout.tsx",
+      "category": "source",
+      "bytes": 393,
+      "sha256": "3f6dad64447e7190e08ee9e5b433c2ae33149a384e4671be0c0a992317ea1b59"
+    },
+    {
+      "path": "miyo_AI_news/app/page.tsx",
+      "category": "source",
+      "bytes": 93,
+      "sha256": "5d1dfceedd5be6ac64cc0daca63137d4bbd955a9b823d2ed7e70d4a6b2db9714"
+    },
+    {
+      "path": "miyo_AI_news/docs/ARCHITECTURE.md",
+      "category": "source",
+      "bytes": 6920,
+      "sha256": "dd69ccf6f684546fc5ea12f9a17265f28698024c24b4830c27aae6f9e4769e3b"
+    },
+    {
+      "path": "miyo_AI_news/docs/IMPLEMENTATION_CONTRACT.md",
+      "category": "source",
+      "bytes": 5955,
+      "sha256": "bf7b1092683aafc53c7e2699b50784e1b458c34ea7567c50bcf19ad1180684ce"
+    },
+    {
+      "path": "miyo_AI_news/docs/OPERATIONS.md",
+      "category": "source",
+      "bytes": 21770,
+      "sha256": "7c3608d455573179118f1fe35723d9507f02d1d5b1305a9fdaf42911fc2dffcd"
+    },
+    {
+      "path": "miyo_AI_news/docs/USER_GUIDE.md",
+      "category": "source",
+      "bytes": 37770,
+      "sha256": "e317776ec0337cac549ce7378838b98f5e9f69f6edb7d5b71c04a537a31ded44"
+    },
+    {
+      "path": "miyo_AI_news/docs/VERIFICATION.md",
+      "category": "source",
+      "bytes": 10473,
+      "sha256": "e11ef1d16ce643a8c70e3cb25335b46c0474f45311d75911ba932e75dea3d740"
+    },
+    {
+      "path": "miyo_AI_news/docs/VERSION_STATE.md",
+      "category": "source",
+      "bytes": 7802,
+      "sha256": "307c3b8dda08988f4da43c951c25488d8ca976fb39298aea3b298baecb7ccc74"
+    },
+    {
+      "path": "miyo_AI_news/docs/VOICE.md",
+      "category": "source",
+      "bytes": 7324,
+      "sha256": "eeb9fe66fa28daacef7fcb2128bc3dedb1a7a916486bf375c378f91bb93d0ea2"
+    },
+    {
+      "path": "miyo_AI_news/docs/checkpoints/2026-10-06-state.json",
+      "category": "source",
+      "bytes": 3998,
+      "sha256": "e0a90a5c98691c2face0f9cac4bf8dff0763cc7591869fa987448a25da082496"
+    },
+    {
+      "path": "miyo_AI_news/docs/images/card-size-video-frame.png",
+      "category": "source",
+      "bytes": 1022526,
+      "sha256": "034b166931fddb5b7b04dbed0cdc0621f2b2207736dfc5367ea2d4e920b4bdb4"
+    },
+    {
+      "path": "miyo_AI_news/docs/images/studio-card-size.png",
+      "category": "source",
+      "bytes": 412980,
+      "sha256": "7f22abebf7281bdf3a6a55460e154724a79154374bccefd55f3f5f8edc001bb5"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/base-episode.json",
+      "category": "source",
+      "bytes": 22775,
+      "sha256": "9648bfce568e06034a59834427c314cc499a169b097ac93ce52df8c98edb2f75"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/base-narration.wav",
+      "category": "source",
+      "bytes": 27125766,
+      "sha256": "79cb6d35153970180104162b2630e17e87ab7d9365c16db265a7a47af28cc539"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/base-voice-metadata.json",
+      "category": "source",
+      "bytes": 57054,
+      "sha256": "64cdcb66d72cab2dce98dfc43ce237eb51f7a8d8d0fd78765d93341d48347cec"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/card-copy-detailed.json",
+      "category": "source",
+      "bytes": 12070,
+      "sha256": "6bb7dc91b39cd2c957bb46cc4c546ee9168826888ccf2a21b384065cf8cef0c4"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/card-focus-map.json",
+      "category": "source",
+      "bytes": 7203,
+      "sha256": "c4e1d248de8ce1d5a45b2b1f4b5180142cb3b61a3aa1a973eb599aab1aab0416"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/display-copy-zh.json",
+      "category": "source",
+      "bytes": 2098,
+      "sha256": "827d761498328f31b81b4ee425541521687881281655667c82e17457452db0f2"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/editorial.json",
+      "category": "source",
+      "bytes": 21344,
+      "sha256": "75dfa14a0c302ae9d808074c3ef25328874a2f1d97bcb4cdc72771631d6eaf36"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/final-episode.json",
+      "category": "source",
+      "bytes": 35226,
+      "sha256": "f0a4c6071c31656aedd372687cedba8f10e546b4047f175d6d9ab49e8292e2ce"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/final-narration.wav",
+      "category": "source",
+      "bytes": 24659772,
+      "sha256": "f220045960123b7542dbafc3f06442dae8d465da225b81644a9580cf7633016e"
+    },
+    {
+      "path": "miyo_AI_news/fixtures/starrail-weekly/kiana-base-prosody.json",
+      "category": "source",
+      "bytes": 21351,
+      "sha256": "d309383d13ccc36b1143c87c64adda6cbafc1f1c27a924e609f6f9698a92a3c2"
+    },
+    {
+      "path": "miyo_AI_news/next-env.d.ts",
+      "category": "source",
+      "bytes": 268,
+      "sha256": "05df7bd7f4b4e4ed4950eedde816aebe9a78b485492e2ca49414ac110681fff9"
+    },
+    {
+      "path": "miyo_AI_news/next.config.ts",
+      "category": "source",
+      "bytes": 208,
+      "sha256": "e190703d74fed32e4cd49f482c745b860c929fc81752698f6dc6e62a9bf2d77a"
+    },
+    {
+      "path": "miyo_AI_news/package-lock.json",
+      "category": "source",
+      "bytes": 104909,
+      "sha256": "705e110d8d0c5ee65e75179c9664630602ef981ffe2a977ec354c87e539b5cce"
+    },
+    {
+      "path": "miyo_AI_news/package.json",
+      "category": "source",
+      "bytes": 1082,
+      "sha256": "9bda768c9e47766c19ce9261e8399b0e9470fa61d16b9f8a0f387e7b3a411ab9"
+    },
+    {
+      "path": "miyo_AI_news/public/assets/htmlFont.ttf",
+      "category": "source",
+      "bytes": 879796,
+      "sha256": "8381c33b9a44f066f2b99dba3d416a2342891e28c956a35dfd8d16ee2987e6d4"
+    },
+    {
+      "path": "miyo_AI_news/scripts/build_voice.py",
+      "category": "source",
+      "bytes": 31632,
+      "sha256": "face19c2042eff0096139d6224ef4079eaea506a175bca9375520324efd9953b"
+    },
+    {
+      "path": "miyo_AI_news/scripts/cli.ts",
+      "category": "source",
+      "bytes": 958,
+      "sha256": "937637477059ac809239d1f6a147e7d9a492d43438e9788ebc14665488a9d2e8"
+    },
+    {
+      "path": "miyo_AI_news/scripts/render-video.ts",
+      "category": "source",
+      "bytes": 7095,
+      "sha256": "4e497a476be14410dc7a1062543548460181ddae583c83246d557f2d5f4c2624"
+    },
+    {
+      "path": "miyo_AI_news/scripts/worker.ts",
+      "category": "source",
+      "bytes": 9219,
+      "sha256": "15218e3aeb5d8428ddc034d8ecefa0c78364c07a6ddc2a8ee16efcad50e6088f"
+    },
+    {
+      "path": "miyo_AI_news/src/core/card-layout.ts",
+      "category": "source",
+      "bytes": 1067,
+      "sha256": "007aa91179b576e7b3cf8c2c041c3669bd9b1b3408df7e8470868f1b5cadf7bd"
+    },
+    {
+      "path": "miyo_AI_news/src/core/project.ts",
+      "category": "source",
+      "bytes": 10066,
+      "sha256": "751b6912c4822ea40943da93ae4aa6c04305b6a44aa2206d33697c0a0a51ed2d"
+    },
+    {
+      "path": "miyo_AI_news/src/core/types.ts",
+      "category": "source",
+      "bytes": 3494,
+      "sha256": "0a19d53647a96a4bc5bb8b7ebb2285fee4fc01549b05fcf1c47dc2c16944c87f"
+    },
+    {
+      "path": "miyo_AI_news/src/engine/legacy/starrail-transitions.ts",
+      "category": "source",
+      "bytes": 5296,
+      "sha256": "d4b9bc28d636efbf5fcc49a96ca294271596d475c0ea412c69ffae482217a493"
+    },
+    {
+      "path": "miyo_AI_news/src/engine/legacy/weekly-episode.ts",
+      "category": "source",
+      "bytes": 47109,
+      "sha256": "3df2a706d7c8cfd68d2008caeb5a7ced8c3c98309729f635fcfcd697d50a258c"
+    },
+    {
+      "path": "miyo_AI_news/src/engine/renderer.ts",
+      "category": "source",
+      "bytes": 16644,
+      "sha256": "754b6d695243d02e3c43d56fe898754db1d75b2c727bdf91a30922f963295bbc"
+    },
+    {
+      "path": "miyo_AI_news/src/server/http.ts",
+      "category": "source",
+      "bytes": 10543,
+      "sha256": "308a54b0494572fbde382600968492a9b7ed5e6f3313508d88db6fb1cb468fde"
+    },
+    {
+      "path": "miyo_AI_news/src/server/images.ts",
+      "category": "source",
+      "bytes": 7887,
+      "sha256": "74a2bca492e0f5a6813a6fa1bde726b7d2618472cc2d4b85c3e6819ccb8110f0"
+    },
+    {
+      "path": "miyo_AI_news/src/server/preview.ts",
+      "category": "source",
+      "bytes": 1475,
+      "sha256": "e9759984455c4fb81d88a20ffc646d6a8c4c99681aeaa1562da8c8700a24fe61"
+    },
+    {
+      "path": "miyo_AI_news/src/server/sources.ts",
+      "category": "source",
+      "bytes": 3594,
+      "sha256": "dfd16712f3e2c90b0ea07696f832a05b73765dc967da2c95eda3c913866ec26f"
+    },
+    {
+      "path": "miyo_AI_news/src/server/storage.ts",
+      "category": "source",
+      "bytes": 9318,
+      "sha256": "46580b91038268f0076aa468bd0e200d10967f1e01dbaa166ffe2d474a422d17"
+    },
+    {
+      "path": "miyo_AI_news/src/server/tasks.ts",
+      "category": "source",
+      "bytes": 2479,
+      "sha256": "a602702de48cba45510e634bd760928b8b6c229284f39c0375bb6741e6ab625c"
+    },
+    {
+      "path": "miyo_AI_news/src/ui/CardImageEditor.tsx",
+      "category": "source",
+      "bytes": 11989,
+      "sha256": "599f5264f88bd683527ef67eafa608751bbb8e29eccd8a3ab5c19b77435d5d07"
+    },
+    {
+      "path": "miyo_AI_news/src/ui/CardSizeEditor.tsx",
+      "category": "source",
+      "bytes": 3316,
+      "sha256": "cd80660b40355abe1a09639e943f8dfa062e4e00bdc47cf8d5f54d556cf2f8ef"
+    },
+    {
+      "path": "miyo_AI_news/src/ui/Studio.tsx",
+      "category": "source",
+      "bytes": 55195,
+      "sha256": "c28889fdcde3b5e517c783ee64c36552f17b745385a0251192de716d516d118f"
+    },
+    {
+      "path": "miyo_AI_news/src/ui/studio.css",
+      "category": "source",
+      "bytes": 36751,
+      "sha256": "62eb5331eb86e917533538239c7f31f093dbc7de56785a31b9ea9c6d76e61d42"
+    },
+    {
+      "path": "miyo_AI_news/tests/assets.test.ts",
+      "category": "source",
+      "bytes": 14091,
+      "sha256": "e04308bf377408d02a74c4416d9b22e9cd461e80fe85c6e966e4ccc533d72673"
+    },
+    {
+      "path": "miyo_AI_news/tests/card-layout.test.ts",
+      "category": "source",
+      "bytes": 5873,
+      "sha256": "4c8cc6a2fe72f7e8b96ba105338f5fc761b2c036c2b3cb27ff50682afcedf611"
+    },
+    {
+      "path": "miyo_AI_news/tests/project.test.ts",
+      "category": "source",
+      "bytes": 2848,
+      "sha256": "80cd54eb28c4c5dc6860c013d388476bbec9d578819af61e1d629cc63816531b"
+    },
+    {
+      "path": "miyo_AI_news/tests/renderer-images.test.ts",
+      "category": "source",
+      "bytes": 12216,
+      "sha256": "9d4b5126dce0ad0aedc9b7050e98c5bd4bc8978456bb666d37883da2db53c1af"
+    },
+    {
+      "path": "miyo_AI_news/tests/renderer-layout.test.ts",
+      "category": "source",
+      "bytes": 9362,
+      "sha256": "424627b28fdb5cea1cc40c8f8ded01a4074eaf5a6af94cac3aee2726d8a20fae"
+    },
+    {
+      "path": "miyo_AI_news/tests/renderer.test.ts",
+      "category": "source",
+      "bytes": 8424,
+      "sha256": "168028f632b152c78b086a1f085e6817639c1b314bcd193ba642ba65eef93923"
+    },
+    {
+      "path": "miyo_AI_news/tests/server-audit.test.ts",
+      "category": "source",
+      "bytes": 4404,
+      "sha256": "af941d201580b15dc9478f0f84cb17094220fd61cb6e84577349a737c5ed30cf"
+    },
+    {
+      "path": "miyo_AI_news/tests/storage.test.ts",
+      "category": "source",
+      "bytes": 7670,
+      "sha256": "d323971f2f933c9d3c8c15825483f08f9cca5cad896e80ffb700c576f989ee79"
+    },
+    {
+      "path": "miyo_AI_news/tests/voice_pipeline_test.py",
+      "category": "source",
+      "bytes": 7782,
+      "sha256": "74f7f13546c60b4f77e8be2d0ab06cecac9d184d69bb1c7ac3551139d4e658ba"
+    },
+    {
+      "path": "miyo_AI_news/tsconfig.json",
+      "category": "source",
+      "bytes": 990,
+      "sha256": "fdb601eff7f82fd52f254af8cba60a5d473421e2bec7d976c492787c0c25205c"
+    },
+    {
+      "path": "miyo_AI_news/data/assets/0e7caa50-60de-479e-aa1e-689175b87dea/image.png",
+      "category": "data",
+      "bytes": 70278,
+      "sha256": "54236d8a34d7f8eacc49801adadc51f331c14834b8ee825fe6acbbb994467303"
+    },
+    {
+      "path": "miyo_AI_news/data/assets/0e7caa50-60de-479e-aa1e-689175b87dea/metadata.json",
+      "category": "data",
+      "bytes": 364,
+      "sha256": "dba34582f4bfd2b86c6c3d065846b332b6c593812e9dacec2858ff35015224a2"
+    },
+    {
+      "path": "miyo_AI_news/data/assets/11f07dbe-8bef-41c4-980c-533b0bbcc8da/image.jpg",
+      "category": "data",
+      "bytes": 338214,
+      "sha256": "ed0faf25392452a38f2ce51b1bdf6d2e6d6cb60bd76c8e77a0066ddeed6a6078"
+    },
+    {
+      "path": "miyo_AI_news/data/assets/11f07dbe-8bef-41c4-980c-533b0bbcc8da/metadata.json",
+      "category": "data",
+      "bytes": 362,
+      "sha256": "e25a997ab0fc5c563aa84da6d1d40644a30fc760e67de111c3f3e702ba58c6d3"
+    },
+    {
+      "path": "miyo_AI_news/data/assets/1a47d8c7-a944-4f4b-b794-7aa35d1daf22/image.png",
+      "category": "data",
+      "bytes": 136919,
+      "sha256": "448183dd9148e1742b5f0419576c619a92f3d88f99992109b29859726409360c"
+    },
+    {
+      "path": "miyo_AI_news/data/assets/1a47d8c7-a944-4f4b-b794-7aa35d1daf22/metadata.json",
+      "category": "data",
+      "bytes": 365,
+      "sha256": "833654ba53e3ac64933e347d5ba957abe03685ad21468b72654ca02d67f429d7"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/blocks/7bce3d20ffec95f9d0b20d4a6f8cc969751b25714189d9ba6dc4d5ee05bd6f84/audio.wav",
+      "category": "data",
+      "bytes": 476122,
+      "sha256": "1878e32a19425b10d7c1fd8ce31db8d53e5eaea2c06b4011c638707b864b1ad0"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/blocks/7bce3d20ffec95f9d0b20d4a6f8cc969751b25714189d9ba6dc4d5ee05bd6f84/manifest.json",
+      "category": "data",
+      "bytes": 2680,
+      "sha256": "e9f9db543069c004e795d3461eae6de664c167b702ba5a58b7addea9521cae7a"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/blocks/7f4dbeb5559c2d6648e51388a45601793cc46ee29d102d03be60f3253fbb4348/audio.wav",
+      "category": "data",
+      "bytes": 415438,
+      "sha256": "e3af18324d40322ac9021f0e2efcca08e5f9cb26244ca303c6184de53c4de61f"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/blocks/7f4dbeb5559c2d6648e51388a45601793cc46ee29d102d03be60f3253fbb4348/manifest.json",
+      "category": "data",
+      "bytes": 1137,
+      "sha256": "7cd8f7a6a238e9fc680c1057702f7e59b8ed10a0dea921e69393fcc873774b55"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6/audio.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6/manifest.json",
+      "category": "data",
+      "bytes": 3422,
+      "sha256": "fc26ff5735d2f3a8d43cff4a4a619fd5dc5b4e7f73cae9df0663782eceaa4660"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/1df753c1c6a0b032db8106d16bf88ba78903a627b4275f264958b3a1f75224ca/audio.wav",
+      "category": "data",
+      "bytes": 1916018,
+      "sha256": "46f5801e566fd76535fb66fd9245959fe648c0526d8bfc1a4f20127014f8c541"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/1df753c1c6a0b032db8106d16bf88ba78903a627b4275f264958b3a1f75224ca/manifest.json",
+      "category": "data",
+      "bytes": 3501,
+      "sha256": "56c45fdf02b6b71b6b3cd4ae8f54dde9c60d5a4f443837a1bb764a2239ef2dc1"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/23c1e83fe85e7c59a61a62708c6dda2c6aacb47fdb6ace9d26ce20b7a485d4b2/audio.wav",
+      "category": "data",
+      "bytes": 2211046,
+      "sha256": "88e8ee690ecf415ba89e8a265c91ee3d178b990243b523edb7f82c4adca16cf5"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/23c1e83fe85e7c59a61a62708c6dda2c6aacb47fdb6ace9d26ce20b7a485d4b2/manifest.json",
+      "category": "data",
+      "bytes": 4136,
+      "sha256": "6a5949c7a62e9a1fcf13adf2789489e5414817806b35542a89bdee282a9960d5"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/4abff9540a95659fb46b6e536819ceaa5b5ca329e84de7b0561be4a486e8307f/audio.wav",
+      "category": "data",
+      "bytes": 2085488,
+      "sha256": "628dd37fd0133d24995f492d08bb3e057df3907a9ef04d5f6377b1ffdce6d309"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/4abff9540a95659fb46b6e536819ceaa5b5ca329e84de7b0561be4a486e8307f/manifest.json",
+      "category": "data",
+      "bytes": 3722,
+      "sha256": "dff683683dc2019e2e1fa272d0095577fc9efc946a0140942c9ef0da2db48751"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/68fdd63a3688d8e15bf6bff4160ea7e68cda858832f135b1a372acc2a9fcff1e/audio.wav",
+      "category": "data",
+      "bytes": 2154632,
+      "sha256": "14e81fdfeef417607aed0c33e2404aebf0ca34d2c6d6145a5b4dd94dc8f7de91"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/68fdd63a3688d8e15bf6bff4160ea7e68cda858832f135b1a372acc2a9fcff1e/manifest.json",
+      "category": "data",
+      "bytes": 3837,
+      "sha256": "13d096a49f8f0db81c99e49949a27dd68590b1789a05c78e9c3c3ac947456b3d"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/7139e10889cc4327b8e469b41f788ec92a05e182dc2f6f72f5b31ff5ae93d1d2/audio.wav",
+      "category": "data",
+      "bytes": 572088,
+      "sha256": "194dc28b40780bfe807390c15bcdc4a7e01c4afa27b934a3c125b417606b93f4"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/7139e10889cc4327b8e469b41f788ec92a05e182dc2f6f72f5b31ff5ae93d1d2/manifest.json",
+      "category": "data",
+      "bytes": 2432,
+      "sha256": "dc5c9e452a244dac7ecc793c2405cd1bde7115cc3f0ab4e815a81ef9b7c822e7"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645/audio.wav",
+      "category": "data",
+      "bytes": 2051044,
+      "sha256": "a1eff951b4bc1ccc98666076060ac89c9b6d419b6e70804e5be466246fa0a38f"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645/manifest.json",
+      "category": "data",
+      "bytes": 3884,
+      "sha256": "c1b278a199a9a081ffee2957b4164d14e145a3d3b25aa4b726139aa0a73d4da3"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/a00019be486e4aee9ceb178be9cacabe71d41a155cd69819b26a22c4f7611118/audio.wav",
+      "category": "data",
+      "bytes": 2013134,
+      "sha256": "6c7c57163647821dbdfaab0550d9f982982ca59984df4ec7212934e85e22ad03"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/a00019be486e4aee9ceb178be9cacabe71d41a155cd69819b26a22c4f7611118/manifest.json",
+      "category": "data",
+      "bytes": 3690,
+      "sha256": "ba6ef7f06bb3527c745e4bf7547dec07a4f518f63b377502f09b326ae80cc530"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/a6941fd8682c84aaa76c825c95bb6f0b75bdf929cf915de2d2b1ad39d1d11c97/audio.wav",
+      "category": "data",
+      "bytes": 2311534,
+      "sha256": "14930ceabb69948178a6b4b1fbf7600983275a6e0ed1077a77c0acb1a5e64d47"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/a6941fd8682c84aaa76c825c95bb6f0b75bdf929cf915de2d2b1ad39d1d11c97/manifest.json",
+      "category": "data",
+      "bytes": 3841,
+      "sha256": "d958e6f60d6c7e2b8d784aae83c010ad259d5645380a90c5e382638a14ef974e"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/ab9292020a047ac9d8726d6a27aa02c321dde5ac05f6342f10a7ac6471aefa12/audio.wav",
+      "category": "data",
+      "bytes": 511404,
+      "sha256": "6bbd090d546a597b8c4c1d87c5b25d60239f29ac5b297669b37dff9bfab34d35"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/ab9292020a047ac9d8726d6a27aa02c321dde5ac05f6342f10a7ac6471aefa12/manifest.json",
+      "category": "data",
+      "bytes": 887,
+      "sha256": "87fdf70946b2793fcfed640d4685a1102b43c8d9fea3c8dc5a9863f85a00db1e"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/ae46a1591029e30cf5a27a502766008459f1b70ff07fb78d71b175d17b58632d/audio.wav",
+      "category": "data",
+      "bytes": 2010368,
+      "sha256": "270c37f7120c993f2ef5ec70de3fb7ff1d1a5cbb816c59be3aafb3ce92f69221"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/ae46a1591029e30cf5a27a502766008459f1b70ff07fb78d71b175d17b58632d/manifest.json",
+      "category": "data",
+      "bytes": 3743,
+      "sha256": "300bf7668a948a0802e26cf6fb4e7e9d000e48e908e7bddf16ea709c566ed9a2"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/b999734c0dad58fd1f78ed1bc4a706e2edf868b06f4e9a3050ca681113e3e371/audio.wav",
+      "category": "data",
+      "bytes": 1988522,
+      "sha256": "97f4dca6b18454d6568469a45469997b6512d42c692ebc5ac512221eecde58da"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/b999734c0dad58fd1f78ed1bc4a706e2edf868b06f4e9a3050ca681113e3e371/manifest.json",
+      "category": "data",
+      "bytes": 3738,
+      "sha256": "116d6b6df6fafca571b774a3a36ffaee89ae60416524ed72448f20299d1f2153"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/d2dfae38a3edc5607eb8c38dbcd642008884c847448d109a1b9c91c97f2990e7/audio.wav",
+      "category": "data",
+      "bytes": 2218540,
+      "sha256": "9ce1ec23d3fb4f9286864f388fa67c1b6f86077f3831aff2232eb3fdf5dd1a1a"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/d2dfae38a3edc5607eb8c38dbcd642008884c847448d109a1b9c91c97f2990e7/manifest.json",
+      "category": "data",
+      "bytes": 3791,
+      "sha256": "2a0b40ddf7c7fd920f79e4ffac77cc4d960afa37e01064dc37ec83a0d0810000"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/f0e25ad3b53e04b901e1087dcf8e3fb4e54724dcbaf564eaa6196c93ff7e7d58/audio.wav",
+      "category": "data",
+      "bytes": 2090392,
+      "sha256": "daab2c4fdde09b468143e57113224f14b46969da205ae3cc2bc2398a3293d26b"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/f0e25ad3b53e04b901e1087dcf8e3fb4e54724dcbaf564eaa6196c93ff7e7d58/manifest.json",
+      "category": "data",
+      "bytes": 3524,
+      "sha256": "a20255b375058a00e6740d5d90224c5f37b7aae6bc4d07e956b291d5d305a6cd"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/feb07b75b77bf8a4f9c3507b96279ffad8d67928626413721a7936cadad70cc9/audio.wav",
+      "category": "data",
+      "bytes": 2213736,
+      "sha256": "b4f99131fbe265e86957c24ec07978c98f07632db39e3e01b7f01c6307f0f1df"
+    },
+    {
+      "path": "miyo_AI_news/data/cache/voice/scenes/feb07b75b77bf8a4f9c3507b96279ffad8d67928626413721a7936cadad70cc9/manifest.json",
+      "category": "data",
+      "bytes": 3808,
+      "sha256": "39b700d644323e7f19b07de595f26689d1ef35944f3ad052756ebe16031eb037"
+    },
+    {
+      "path": "miyo_AI_news/data/initialized.json",
+      "category": "data",
+      "bytes": 46,
+      "sha256": "23782f4672ccf003e51cf259c661b439866b3026c9b6359648840bcfd30e1823"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/0a60c5c2-2162-4174-bdfd-73307d750e0e.json",
+      "category": "data",
+      "bytes": 962,
+      "sha256": "7cd4eb112f810b5881e6a4e66a621d3f3008424bb9d430fd3fbcce11fc1590f7"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/1da8a594-f4c0-4c90-beba-e01890eb70f5.json",
+      "category": "data",
+      "bytes": 627,
+      "sha256": "886d9830dd0c5e1efbc14a8658211473db896bd61b7941bb4acdd50d0a56adf3"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/945ea9c3-b633-4a34-928e-52c1cded077a.json",
+      "category": "data",
+      "bytes": 939,
+      "sha256": "0da6145e6091cfaf6a8cafb95210924725f44959b229fd6c11b72668485e1a9e"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8.json",
+      "category": "data",
+      "bytes": 1144,
+      "sha256": "b1b2608e2377abf1843b72a6e379b5a7c27335ab42ee1bf01cb83a3f315113d1"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff.json",
+      "category": "data",
+      "bytes": 1144,
+      "sha256": "7d45578756491725dd10fa10b1115a100f3bdbcdefe6ac4043b0e75af2801445"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/ef990ec8-822e-43ab-b966-c9741ffee3b2.json",
+      "category": "data",
+      "bytes": 1144,
+      "sha256": "60b39434949640c148ec52d24acfe0530da5a604ca20ea9f1c7b240462574d7f"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/f32fb07f-1b73-47e3-9066-0116e4ef6a96.json",
+      "category": "data",
+      "bytes": 1121,
+      "sha256": "48e7ee4ffb905580bad659353adb5f6efb448d4408fa3ac8e8aa41a6315427d5"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/f86811c5-2742-42c5-908c-b91079d2d606.json",
+      "category": "data",
+      "bytes": 1015,
+      "sha256": "d2325d5228f6f883b556f54c6aa89d35a5ddeb5f19e76c0e851da75ad5801c5f"
+    },
+    {
+      "path": "miyo_AI_news/data/jobs/imported-baseline.json",
+      "category": "data",
+      "bytes": 504,
+      "sha256": "f48cd9055089962e09761a9afd93aa84ae1b8bb53f6feb877aa4f6ae096821b5"
+    },
+    {
+      "path": "miyo_AI_news/data/logs/worker.log",
+      "category": "data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "miyo_AI_news/data/projects/129973cd-6617-48b9-a88a-1d29eee8fbfe.json",
+      "category": "data",
+      "bytes": 7663,
+      "sha256": "45805dc1f56066c22f2876cd578f53f36310b814ebb394c1625a25efc5a8a60b"
+    },
+    {
+      "path": "miyo_AI_news/data/projects/1e31cd71-9275-4fbf-a4cf-97350b789cbb.json",
+      "category": "data",
+      "bytes": 8043,
+      "sha256": "b70dfdda7c432e6f9620929d9cb80b3c6178d0334cd8a241c0f9b3f0a49af09a"
+    },
+    {
+      "path": "miyo_AI_news/data/projects/b90d372e-4752-406a-ab8e-6fab1c80a2a8.json",
+      "category": "data",
+      "bytes": 8295,
+      "sha256": "92d031c80d841d1eba0262fd4e39a14105cc6f50287adf4fac5ce9ace70263d1"
+    },
+    {
+      "path": "miyo_AI_news/data/projects/d40591ca-a660-4e9a-b1ba-f19397f0ef36.json",
+      "category": "data",
+      "bytes": 35825,
+      "sha256": "863a52a199fb2108c746332dc621db7f3815d77a0e8778a3b4a240d7fb060993"
+    },
+    {
+      "path": "miyo_AI_news/data/projects/starrail-demo.json",
+      "category": "data",
+      "bytes": 34529,
+      "sha256": "ed1e6fa8c387cf3f6858ed55c01689c0e9f7082c1156e4d491a4ab9450604ee7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "9b9013ff07c3ddf6887b3007c8e255bee012dd166263fc1870609598ea3f9417"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/episode.html",
+      "category": "data",
+      "bytes": 1494714,
+      "sha256": "a3bbe13835739ccd6b34066c766a3233fc271cbc12520b2b8463ecdc1261c87f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/episode.json",
+      "category": "data",
+      "bytes": 3393,
+      "sha256": "4b826b3a70063751ce402c286c3adbf4bdb8068d68bcd93bddb5a3e32788f1e8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7254,
+      "sha256": "65eb2fb21d2d84d98f4a20b37192e4e4f39189d208270ddb3380b0bbeae94b9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/project.json",
+      "category": "data",
+      "bytes": 8077,
+      "sha256": "534d826fa64a0676a053e5fb99b08f3fdda89c99e38648a4f03454e13380e0e5"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/subtitles.srt",
+      "category": "data",
+      "bytes": 448,
+      "sha256": "75c17369bf66ceb104aad62dbc79025877545caacf87c2f2f314f68b6feefcab"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/voice-input.json",
+      "category": "data",
+      "bytes": 769,
+      "sha256": "c4630b586903901369acdae9eeb70f7981759e0cd2a828205fd1c43ecd314ecc"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/voice-metadata.json",
+      "category": "data",
+      "bytes": 3162,
+      "sha256": "2c4ddee2ec88afb3672adfc23383e34268f121c0d2646cd995e9d8ac36749ac7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/voice.log",
+      "category": "data",
+      "bytes": 324,
+      "sha256": "fd2692c9d53e86c97cea49de6fddd90727882d8848379685af76a6c5ff37bf55"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/work/7d21dc10f08a4cfda6c028db0bacae6d/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/0a60c5c2-2162-4174-bdfd-73307d750e0e/work/7d21dc10f08a4cfda6c028db0bacae6d/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/1da8a594-f4c0-4c90-beba-e01890eb70f5/cancel.json",
+      "category": "data",
+      "bytes": 39,
+      "sha256": "e59305e33681c3ceca0b6128e79afffd0fd12d7be587da62d4360904d712dbf4"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/1da8a594-f4c0-4c90-beba-e01890eb70f5/project.json",
+      "category": "data",
+      "bytes": 35825,
+      "sha256": "863a52a199fb2108c746332dc621db7f3815d77a0e8778a3b4a240d7fb060993"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "7faefe998586b1a927a4b4d8908f2b8e0cda9bc2558f39a4b70c4662b096abf6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/episode.html",
+      "category": "data",
+      "bytes": 1264230,
+      "sha256": "7b3104433b1100eafdad3586a473a4c9e5d53d5bd8dbef05c501b752353325cd"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/episode.json",
+      "category": "data",
+      "bytes": 35282,
+      "sha256": "37b5f75f9e5c249a8cd946c03ed5156d30017cc9443ffce6e5ac8731bf04568d"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/execution-records.jsonl",
+      "category": "data",
+      "bytes": 70261,
+      "sha256": "b9a8f0c1804f885bd2cc342eee659b23027971b452e98cd2303563e8e8267598"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/narration.m4a",
+      "category": "data",
+      "bytes": 4934429,
+      "sha256": "c0ea362d3cb7aa07b66b65fc9e0f3d8ab630129115717e1f2248da3a93e9b045"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/narration.wav",
+      "category": "data",
+      "bytes": 24659794,
+      "sha256": "c73e7b7e4631079030c938aca2d59ca6357142558d98f671d7f6e5b7a4c066e7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/project.json",
+      "category": "data",
+      "bytes": 34311,
+      "sha256": "a580d69c2a47223f3717ca5f0c1577a7e5ed93d1094411f52d65e39dc8492bd0"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/subtitles.srt",
+      "category": "data",
+      "bytes": 6435,
+      "sha256": "e8df7fde629602c167150644cc053d0957d3554fc37922a1130fdffe5ad79cd0"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/voice-input.json",
+      "category": "data",
+      "bytes": 5359,
+      "sha256": "c7c9a5f5a8b1993493a603d34eed739d7847febfe02b8be01ffb5d5e074b24be"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/voice-metadata.json",
+      "category": "data",
+      "bytes": 11985,
+      "sha256": "cd294c2738174fd7c9b04b0b94aac0edad154a0f41012bf0fb41aefdf272007b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/voice-plan.json",
+      "category": "data",
+      "bytes": 13082,
+      "sha256": "ed30600be8b4a4e1be048adec08dece17366fe1fe1bf2c65707ca26f3c62d03f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/voice.log",
+      "category": "data",
+      "bytes": 1453,
+      "sha256": "9b2e1e6b2ed20bb3d942c36706d07f6d3fe7b28d72ab234fbadeaf9c3fcade4a"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/assembled.wav",
+      "category": "data",
+      "bytes": 24659760,
+      "sha256": "baa9232969d36cc8caf554ac0bdc11b200663410d990e0d3d0c003a158f4c167"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-001-speed.wav",
+      "category": "data",
+      "bytes": 1864624,
+      "sha256": "f0a377ac0eb5122f678fac751605fa3481f7430e5b53b3cfda99a9d43a11270f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-002-speed.wav",
+      "category": "data",
+      "bytes": 2012526,
+      "sha256": "91917b4a1f082a016e469a073351da720085b754c2b5b8e39ec2c49cd7092ddd"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-003-speed.wav",
+      "category": "data",
+      "bytes": 1807786,
+      "sha256": "49ba2a39d4f236af79d415598978acdfbfc11e9bae0774f19af9b69b75f3d24f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-004-speed.wav",
+      "category": "data",
+      "bytes": 1895936,
+      "sha256": "33f71530ca77c92e0523b4a59c0484739da1ed0f16151cce9f3aa37d4e67a619"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-005-speed.wav",
+      "category": "data",
+      "bytes": 2016892,
+      "sha256": "6cea1ea42429e46503cd22aa082345a3521de7849f351adff426cd255c831128"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-006-speed.wav",
+      "category": "data",
+      "bytes": 1827646,
+      "sha256": "c53847ff15a3e43d2abbb7a654432244938c90a39f4616cdd61c6b9b5230a58b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-007-speed.wav",
+      "category": "data",
+      "bytes": 1830160,
+      "sha256": "edaa699a12b85de2db32ee36402aa5562ca1a1c35adc44da35f1fc3dc831aba6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-008-speed.wav",
+      "category": "data",
+      "bytes": 2010080,
+      "sha256": "658992f16dd3575e78425477b36f1ea7f555645985e46d30cf67c6b5ca342fa2"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-009-speed.wav",
+      "category": "data",
+      "bytes": 1958794,
+      "sha256": "67addc53d980abd3609c851f7e06ec6344eebb828ab4e6b52694104934ec1da7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-010-speed.wav",
+      "category": "data",
+      "bytes": 2101432,
+      "sha256": "ad729ff8a35bb4c6ec0b115872d48d6370264da2ad7fc9b7d75e9c65ea44f0c7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-011-speed.wav",
+      "category": "data",
+      "bytes": 1900394,
+      "sha256": "cca314615cd2735f77be5a91d0486093a4ea744c487158b83005cdc6ab98997f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/945ea9c3-b633-4a34-928e-52c1cded077a/work/8a4c651a08af42a2b017b22ef457ec50/scene-012-speed.wav",
+      "category": "data",
+      "bytes": 1741872,
+      "sha256": "b63d807aa7ebca36c7cc5be424fb7487296feb14068868675ee47184d1d8baa9"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/audio-provenance.json",
+      "category": "data",
+      "bytes": 141,
+      "sha256": "61bde4d05364f2482c4d377723ecf6c87b2f77d9614d41a3c4af37bc8f7383d7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "1456d138560b67c2ca6c926bba48ca8be0c38cf411c9d5f24d9b653b61e83940"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/episode.html",
+      "category": "data",
+      "bytes": 1495214,
+      "sha256": "5cecb5bd26d6b693ead1ca5bfa6fd1d52595e58d6818cb84b75dd0a447d5fc2b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/episode.json",
+      "category": "data",
+      "bytes": 3611,
+      "sha256": "cbf0d99f84eb122b83ae8d684dd65c457d63de6c3f9ede6825b523058b9c0560"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/frames/01.png",
+      "category": "data",
+      "bytes": 735037,
+      "sha256": "69a7a03ba1bbd15d7b5521ab7fad43a130daa3beb81bcdf5e7d00d3d6287e74f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/image-check.json",
+      "category": "data",
+      "bytes": 871,
+      "sha256": "adfda74f61ce663b6d9478f5191a6d54fbf6dc06d41b144877482cb9ce911d95"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/poster.png",
+      "category": "data",
+      "bytes": 735037,
+      "sha256": "69a7a03ba1bbd15d7b5521ab7fad43a130daa3beb81bcdf5e7d00d3d6287e74f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/project.json",
+      "category": "data",
+      "bytes": 8295,
+      "sha256": "92d031c80d841d1eba0262fd4e39a14105cc6f50287adf4fac5ce9ace70263d1"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/render-report.json",
+      "category": "data",
+      "bytes": 1437,
+      "sha256": "6ff29b755f7dc99e3e9f03d0a6e6d51cef8dbca3dcc931003929f9127a6b751d"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/render.log",
+      "category": "data",
+      "bytes": 452,
+      "sha256": "cbf2b4a03e8881d269afde438ed38538ad4f115dea007f9c2b04fe3a51119460"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/subtitles.srt",
+      "category": "data",
+      "bytes": 448,
+      "sha256": "75c17369bf66ceb104aad62dbc79025877545caacf87c2f2f314f68b6feefcab"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/video.mp4",
+      "category": "data",
+      "bytes": 2494386,
+      "sha256": "09f9d971380bfed726e487a5c15334ea9aae499a393d7c9ada267529af6ed4b7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/aebdd2bc-35f8-4b2e-8699-002e6b8a32d8/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/audio-provenance.json",
+      "category": "data",
+      "bytes": 141,
+      "sha256": "2ea81d07a19c3626b3b28b17bf54b6b23a6ebf24ac76162e83ddb9988259e0e6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "6416e8124f0b5a4faa65024f058e09d0bca3461036c8a86780530b7c41a28936"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/episode.html",
+      "category": "data",
+      "bytes": 1212324,
+      "sha256": "d611132703442cadfbb22c2fe213bd1f4fd8c426cec0d7054c70976e9adfb105"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/episode.json",
+      "category": "data",
+      "bytes": 2979,
+      "sha256": "595d2db8a4a0d5a7da19e37eb515fc274e0fac9631803c7e1dee171860eeb1f9"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/frames/01.png",
+      "category": "data",
+      "bytes": 736313,
+      "sha256": "e54f741a0807e2b1c51f486347ada85fb930ffb8b4b81e83f8c16f7d4b6be4d8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/poster.png",
+      "category": "data",
+      "bytes": 736313,
+      "sha256": "e54f741a0807e2b1c51f486347ada85fb930ffb8b4b81e83f8c16f7d4b6be4d8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/project.json",
+      "category": "data",
+      "bytes": 7663,
+      "sha256": "45805dc1f56066c22f2876cd578f53f36310b814ebb394c1625a25efc5a8a60b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/render-report.json",
+      "category": "data",
+      "bytes": 465,
+      "sha256": "f52676376a037b0c2f898b94f7405ba8df700136a60642e2cbb96b836dc933ec"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/render.log",
+      "category": "data",
+      "bytes": 452,
+      "sha256": "cbf2b4a03e8881d269afde438ed38538ad4f115dea007f9c2b04fe3a51119460"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/subtitles.srt",
+      "category": "data",
+      "bytes": 448,
+      "sha256": "75c17369bf66ceb104aad62dbc79025877545caacf87c2f2f314f68b6feefcab"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/video.mp4",
+      "category": "data",
+      "bytes": 2310456,
+      "sha256": "6440b5b5664a4a6aa84cc0c707a190441a8c18e63fa9f136382db4839ca5326d"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/e221d651-674a-41f0-ae2b-7f0dbab6f8ff/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "33d31755f653b54f8ada48d813c8958c93d9bcfb4c73a213459251a63f2f12b3"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/episode.html",
+      "category": "data",
+      "bytes": 1670508,
+      "sha256": "abfe07d31cec50def81740d2f6acca64c0daea5402bb6f0d769e840561d55f35"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/episode.json",
+      "category": "data",
+      "bytes": 3467,
+      "sha256": "f48825be843ff0e0ec09a6582988c213bf73203ad63556d3559ff102a614e132"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7253,
+      "sha256": "3f38b9653ea618ea5b31ca1d5cd4516301530f00c7118c4583e1fe21bfd9b08f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/frames/01.png",
+      "category": "data",
+      "bytes": 1476243,
+      "sha256": "c6ef38c33134052cc2f0959a0fe3aaa652d2d1c1e9a090b20832ed632ff90c66"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/image-check.json",
+      "category": "data",
+      "bytes": 359,
+      "sha256": "d226c29638e2cdc2465eb475811d50d551e1152683901da4f49038623264fd77"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/poster.png",
+      "category": "data",
+      "bytes": 1476243,
+      "sha256": "c6ef38c33134052cc2f0959a0fe3aaa652d2d1c1e9a090b20832ed632ff90c66"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/project.json",
+      "category": "data",
+      "bytes": 8043,
+      "sha256": "b70dfdda7c432e6f9620929d9cb80b3c6178d0334cd8a241c0f9b3f0a49af09a"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/render-report.json",
+      "category": "data",
+      "bytes": 881,
+      "sha256": "fe966020304ff0663cb3ed25f2dda5d832aea2bbce5e34d18a6dd5d2b267fc9d"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/render.log",
+      "category": "data",
+      "bytes": 452,
+      "sha256": "cbf2b4a03e8881d269afde438ed38538ad4f115dea007f9c2b04fe3a51119460"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/subtitles.srt",
+      "category": "data",
+      "bytes": 448,
+      "sha256": "75c17369bf66ceb104aad62dbc79025877545caacf87c2f2f314f68b6feefcab"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/video.mp4",
+      "category": "data",
+      "bytes": 2785382,
+      "sha256": "583c0a347a7c1eee1ef28441197a8617bc1ebf4ee8209da5f23db50dd7c03db3"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/voice-input.json",
+      "category": "data",
+      "bytes": 769,
+      "sha256": "c4630b586903901369acdae9eeb70f7981759e0cd2a828205fd1c43ecd314ecc"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/voice-metadata.json",
+      "category": "data",
+      "bytes": 3162,
+      "sha256": "086f08784e32d2b7d2ef5517cf5cd7d8576766c6bc41d9264c54b117bc85d6e8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/voice.log",
+      "category": "data",
+      "bytes": 324,
+      "sha256": "fd2692c9d53e86c97cea49de6fddd90727882d8848379685af76a6c5ff37bf55"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/work/fd96c012db8b4b19a2caacb5aa8ca84a/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/work/fd96c012db8b4b19a2caacb5aa8ca84a/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "3858ce3ca2e494dc3499b71a893496b1c2068f00a567160c84d070243723788a"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/episode.html",
+      "category": "data",
+      "bytes": 1264230,
+      "sha256": "7b3104433b1100eafdad3586a473a4c9e5d53d5bd8dbef05c501b752353325cd"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/episode.json",
+      "category": "data",
+      "bytes": 35282,
+      "sha256": "37b5f75f9e5c249a8cd946c03ed5156d30017cc9443ffce6e5ac8731bf04568d"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/execution-records.jsonl",
+      "category": "data",
+      "bytes": 70285,
+      "sha256": "68948f8a84bd8d8abe651e5d5594b7aa5c64a9a6c69f03fb2c25e8240d10ad3e"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/01.png",
+      "category": "data",
+      "bytes": 745564,
+      "sha256": "fa52bdce2412c7c487c61a10528c55c9731ac6cdff9c87b4804594837303f42e"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/02.png",
+      "category": "data",
+      "bytes": 727930,
+      "sha256": "cd2e85a329e4aaafecc0d2dde26494cb28c79991db8129a54987a00d076bec0e"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/03.png",
+      "category": "data",
+      "bytes": 730154,
+      "sha256": "954fd9c2772e7251d78105d8d08d633d80481afe7306187e04ad5f5659b735eb"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/04.png",
+      "category": "data",
+      "bytes": 756209,
+      "sha256": "d2ee924c397d888f47549d90c5a93b1a46782a032ba28be2fe5beb0717e19369"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/05.png",
+      "category": "data",
+      "bytes": 737711,
+      "sha256": "8777feed2a9ed89b7d3d8264c1fa194bd354f6690b7ba5205506ee090784aa9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/06.png",
+      "category": "data",
+      "bytes": 763961,
+      "sha256": "f21e1d1b93546a147cf30bae2cacd9c409606933bc4223ac08b92359ba50063d"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/07.png",
+      "category": "data",
+      "bytes": 750249,
+      "sha256": "a71206b3768b4dd50131a626a5b1c626bbb12e474a2bf24379fd1140992c668f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/08.png",
+      "category": "data",
+      "bytes": 652551,
+      "sha256": "b962b8b79a67f4ea6d1ef7e417ce31368419412cb1c0d57bb38e14fc6adc7cc8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/09.png",
+      "category": "data",
+      "bytes": 727809,
+      "sha256": "d4f8435b1708813dd3a2f83ce6a8bceff91ceeb36fa35f5a14fc80e8f0606291"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/10.png",
+      "category": "data",
+      "bytes": 712742,
+      "sha256": "407f4049d81a7b41ccb24c64149cff4e08de28fc1fc18f04fe473c608555469b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/11.png",
+      "category": "data",
+      "bytes": 750539,
+      "sha256": "6781bf89e0676b2dd82228a8cfbdfef6e3699d122d5ac1ff5a52ca485eef05cb"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/12.png",
+      "category": "data",
+      "bytes": 691747,
+      "sha256": "737ccdd42259cf847b306b0e34e4fec56c863aaf73455e0fea307d6230603f3c"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/frames/13.png",
+      "category": "data",
+      "bytes": 765210,
+      "sha256": "c5acacbef06f531b9d5797e9580d2a0fd6301ba57998d1c3a0108b18d936149c"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/narration.m4a",
+      "category": "data",
+      "bytes": 4934429,
+      "sha256": "c0ea362d3cb7aa07b66b65fc9e0f3d8ab630129115717e1f2248da3a93e9b045"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/narration.wav",
+      "category": "data",
+      "bytes": 24659794,
+      "sha256": "c73e7b7e4631079030c938aca2d59ca6357142558d98f671d7f6e5b7a4c066e7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/poster.png",
+      "category": "data",
+      "bytes": 745564,
+      "sha256": "fa52bdce2412c7c487c61a10528c55c9731ac6cdff9c87b4804594837303f42e"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/project.json",
+      "category": "data",
+      "bytes": 34311,
+      "sha256": "a580d69c2a47223f3717ca5f0c1577a7e5ed93d1094411f52d65e39dc8492bd0"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/render-report.json",
+      "category": "data",
+      "bytes": 474,
+      "sha256": "bd6cb65d32fe3d64501ff90cc00e96c4be57596dfbbaeb58e37fad82bba8a66f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/render.log",
+      "category": "data",
+      "bytes": 4396,
+      "sha256": "8ca5490343fb3fe8bd9144e0d2636483c55cbf46812951bd4c8db21e38b7b024"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/subtitles.srt",
+      "category": "data",
+      "bytes": 6435,
+      "sha256": "e8df7fde629602c167150644cc053d0957d3554fc37922a1130fdffe5ad79cd0"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/video.mp4",
+      "category": "data",
+      "bytes": 32552394,
+      "sha256": "6f90bcdb9be8994f12d8a800b2125a865ac87d110d81440357690ed71933b27c"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/voice-input.json",
+      "category": "data",
+      "bytes": 5359,
+      "sha256": "8e93632dc525e87c3bce72743ec94c2df341857b2c187d55e62552eca310f59c"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/voice-metadata.json",
+      "category": "data",
+      "bytes": 11997,
+      "sha256": "4bf7e38e0d82c59c4f367305bd268af877a5544179fa35fb74c91a872f9e2b43"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/voice-plan.json",
+      "category": "data",
+      "bytes": 13082,
+      "sha256": "ed30600be8b4a4e1be048adec08dece17366fe1fe1bf2c65707ca26f3c62d03f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/voice.log",
+      "category": "data",
+      "bytes": 1453,
+      "sha256": "9b2e1e6b2ed20bb3d942c36706d07f6d3fe7b28d72ab234fbadeaf9c3fcade4a"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/1df753c1c6a0b032db8106d16bf88ba78903a627b4275f264958b3a1f75224ca.wav",
+      "category": "data",
+      "bytes": 1916018,
+      "sha256": "46f5801e566fd76535fb66fd9245959fe648c0526d8bfc1a4f20127014f8c541"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/23c1e83fe85e7c59a61a62708c6dda2c6aacb47fdb6ace9d26ce20b7a485d4b2.wav",
+      "category": "data",
+      "bytes": 2211046,
+      "sha256": "88e8ee690ecf415ba89e8a265c91ee3d178b990243b523edb7f82c4adca16cf5"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/4abff9540a95659fb46b6e536819ceaa5b5ca329e84de7b0561be4a486e8307f.wav",
+      "category": "data",
+      "bytes": 2085488,
+      "sha256": "628dd37fd0133d24995f492d08bb3e057df3907a9ef04d5f6377b1ffdce6d309"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/68fdd63a3688d8e15bf6bff4160ea7e68cda858832f135b1a372acc2a9fcff1e.wav",
+      "category": "data",
+      "bytes": 2154632,
+      "sha256": "14e81fdfeef417607aed0c33e2404aebf0ca34d2c6d6145a5b4dd94dc8f7de91"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645.wav",
+      "category": "data",
+      "bytes": 2051044,
+      "sha256": "a1eff951b4bc1ccc98666076060ac89c9b6d419b6e70804e5be466246fa0a38f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/a00019be486e4aee9ceb178be9cacabe71d41a155cd69819b26a22c4f7611118.wav",
+      "category": "data",
+      "bytes": 2013134,
+      "sha256": "6c7c57163647821dbdfaab0550d9f982982ca59984df4ec7212934e85e22ad03"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/a6941fd8682c84aaa76c825c95bb6f0b75bdf929cf915de2d2b1ad39d1d11c97.wav",
+      "category": "data",
+      "bytes": 2311534,
+      "sha256": "14930ceabb69948178a6b4b1fbf7600983275a6e0ed1077a77c0acb1a5e64d47"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/ae46a1591029e30cf5a27a502766008459f1b70ff07fb78d71b175d17b58632d.wav",
+      "category": "data",
+      "bytes": 2010368,
+      "sha256": "270c37f7120c993f2ef5ec70de3fb7ff1d1a5cbb816c59be3aafb3ce92f69221"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/assembled.wav",
+      "category": "data",
+      "bytes": 24659760,
+      "sha256": "baa9232969d36cc8caf554ac0bdc11b200663410d990e0d3d0c003a158f4c167"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/b999734c0dad58fd1f78ed1bc4a706e2edf868b06f4e9a3050ca681113e3e371.wav",
+      "category": "data",
+      "bytes": 1988522,
+      "sha256": "97f4dca6b18454d6568469a45469997b6512d42c692ebc5ac512221eecde58da"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/d2dfae38a3edc5607eb8c38dbcd642008884c847448d109a1b9c91c97f2990e7.wav",
+      "category": "data",
+      "bytes": 2218540,
+      "sha256": "9ce1ec23d3fb4f9286864f388fa67c1b6f86077f3831aff2232eb3fdf5dd1a1a"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/f0e25ad3b53e04b901e1087dcf8e3fb4e54724dcbaf564eaa6196c93ff7e7d58.wav",
+      "category": "data",
+      "bytes": 2090392,
+      "sha256": "daab2c4fdde09b468143e57113224f14b46969da205ae3cc2bc2398a3293d26b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/feb07b75b77bf8a4f9c3507b96279ffad8d67928626413721a7936cadad70cc9.wav",
+      "category": "data",
+      "bytes": 2213736,
+      "sha256": "b4f99131fbe265e86957c24ec07978c98f07632db39e3e01b7f01c6307f0f1df"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-001-speed.wav",
+      "category": "data",
+      "bytes": 1864624,
+      "sha256": "f0a377ac0eb5122f678fac751605fa3481f7430e5b53b3cfda99a9d43a11270f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-002-speed.wav",
+      "category": "data",
+      "bytes": 2012526,
+      "sha256": "91917b4a1f082a016e469a073351da720085b754c2b5b8e39ec2c49cd7092ddd"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-003-speed.wav",
+      "category": "data",
+      "bytes": 1807786,
+      "sha256": "49ba2a39d4f236af79d415598978acdfbfc11e9bae0774f19af9b69b75f3d24f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-004-speed.wav",
+      "category": "data",
+      "bytes": 1895936,
+      "sha256": "33f71530ca77c92e0523b4a59c0484739da1ed0f16151cce9f3aa37d4e67a619"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-005-speed.wav",
+      "category": "data",
+      "bytes": 2016892,
+      "sha256": "6cea1ea42429e46503cd22aa082345a3521de7849f351adff426cd255c831128"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-006-speed.wav",
+      "category": "data",
+      "bytes": 1827646,
+      "sha256": "c53847ff15a3e43d2abbb7a654432244938c90a39f4616cdd61c6b9b5230a58b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-007-speed.wav",
+      "category": "data",
+      "bytes": 1830160,
+      "sha256": "edaa699a12b85de2db32ee36402aa5562ca1a1c35adc44da35f1fc3dc831aba6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-008-speed.wav",
+      "category": "data",
+      "bytes": 2010080,
+      "sha256": "658992f16dd3575e78425477b36f1ea7f555645985e46d30cf67c6b5ca342fa2"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-009-speed.wav",
+      "category": "data",
+      "bytes": 1958794,
+      "sha256": "67addc53d980abd3609c851f7e06ec6344eebb828ab4e6b52694104934ec1da7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-010-speed.wav",
+      "category": "data",
+      "bytes": 2101432,
+      "sha256": "ad729ff8a35bb4c6ec0b115872d48d6370264da2ad7fc9b7d75e9c65ea44f0c7"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-011-speed.wav",
+      "category": "data",
+      "bytes": 1900394,
+      "sha256": "cca314615cd2735f77be5a91d0486093a4ea744c487158b83005cdc6ab98997f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f32fb07f-1b73-47e3-9066-0116e4ef6a96/work/84b85b74f86f448caf136eab97865a67/scene-012-speed.wav",
+      "category": "data",
+      "bytes": 1741872,
+      "sha256": "b63d807aa7ebca36c7cc5be424fb7487296feb14068868675ee47184d1d8baa9"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/audio-ready.json",
+      "category": "data",
+      "bytes": 297,
+      "sha256": "60fb16fcf1cb391cac35803f066b8c6dc8b95dc182e78d46db416055fedf347c"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/cancel.json",
+      "category": "data",
+      "bytes": 39,
+      "sha256": "3b125aa15d0ff090e3f4a00249c447bf5347abd7dcf4227ee270475224831dce"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/episode.html",
+      "category": "data",
+      "bytes": 1212324,
+      "sha256": "d611132703442cadfbb22c2fe213bd1f4fd8c426cec0d7054c70976e9adfb105"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/episode.json",
+      "category": "data",
+      "bytes": 2979,
+      "sha256": "595d2db8a4a0d5a7da19e37eb515fc274e0fac9631803c7e1dee171860eeb1f9"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7254,
+      "sha256": "6e9c12294d6ce005dbc1e2fff173eda54300502be7f993d58825fdf008be5fb1"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/frames/01.png",
+      "category": "data",
+      "bytes": 736313,
+      "sha256": "e54f741a0807e2b1c51f486347ada85fb930ffb8b4b81e83f8c16f7d4b6be4d8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/poster.png",
+      "category": "data",
+      "bytes": 736313,
+      "sha256": "e54f741a0807e2b1c51f486347ada85fb930ffb8b4b81e83f8c16f7d4b6be4d8"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/project.json",
+      "category": "data",
+      "bytes": 7663,
+      "sha256": "45805dc1f56066c22f2876cd578f53f36310b814ebb394c1625a25efc5a8a60b"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/render.log",
+      "category": "data",
+      "bytes": 225,
+      "sha256": "8df46f14caec99639af9a8e00cfcde0ddd6bc9ba72610fca102466658427ccf0"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/subtitles.srt",
+      "category": "data",
+      "bytes": 448,
+      "sha256": "75c17369bf66ceb104aad62dbc79025877545caacf87c2f2f314f68b6feefcab"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/voice-input.json",
+      "category": "data",
+      "bytes": 769,
+      "sha256": "6d722e939ca50d21b81e5fb51bc23535d65509747f9f06e8f96c7c348c58edf6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/voice-metadata.json",
+      "category": "data",
+      "bytes": 3162,
+      "sha256": "3208225cc051d90091c2ff43bd7da1844f2c5e00b0615ace67dcd64d5e493926"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/voice.log",
+      "category": "data",
+      "bytes": 324,
+      "sha256": "fd2692c9d53e86c97cea49de6fddd90727882d8848379685af76a6c5ff37bf55"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/work/cf940fbc40434bad960ed90cbbf893a4/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/f86811c5-2742-42c5-908c-b91079d2d606/work/cf940fbc40434bad960ed90cbbf893a4/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/imported-baseline/narration.wav",
+      "category": "data",
+      "bytes": 24659772,
+      "sha256": "f220045960123b7542dbafc3f06442dae8d465da225b81644a9580cf7633016e"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/imported-baseline/project.json",
+      "category": "data",
+      "bytes": 34311,
+      "sha256": "a580d69c2a47223f3717ca5f0c1577a7e5ed93d1094411f52d65e39dc8492bd0"
+    },
+    {
+      "path": "miyo_AI_news/data/runs/imported-baseline/voice-plan.json",
+      "category": "data",
+      "bytes": 12967,
+      "sha256": "d5c78233eb1689d72d67242f6d2dce0aba7ba8ab437e1e847508c46330aaf6fa"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/export-job-id.txt",
+      "category": "data",
+      "bytes": 36,
+      "sha256": "9721a38b87718bcb76b85487232eb3ee95b9ce1307fb09ff88c0deaea2f2378a"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/export-records.jsonl",
+      "category": "data",
+      "bytes": 4943,
+      "sha256": "ea20883c0748bd0a6bf0b53a207ccbac917dd97cc29ab1382bbe4589d6b6b684"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/export-result.json",
+      "category": "data",
+      "bytes": 4264,
+      "sha256": "f89e935c9a4339a0877009aa5c1e31dd0ec98caebe815ef140d8c20f68cfd6f1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/project-after-first-upload.json",
+      "category": "data",
+      "bytes": 8645,
+      "sha256": "26dd8877d408211ceba187d3d4f0153b6259108482e2bc60476d44626ee9f061"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/project-before-replacement.json",
+      "category": "data",
+      "bytes": 10259,
+      "sha256": "bd6637a06a7621035e70359a9d87fa113203ae787ef9125a3fd5eff3b7d72b68"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/project-final.json",
+      "category": "data",
+      "bytes": 10259,
+      "sha256": "5b1556a00f2d5e1ecd92895ba91b7e3ac536877059136a94ef09427a0b71020b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/records.json",
+      "category": "data",
+      "bytes": 38164,
+      "sha256": "89387fb2e86b38e8947caaac0e7092c9b06939e418189a67c77d5e5a4676e74e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/studio-image-background.png",
+      "category": "data",
+      "bytes": 319132,
+      "sha256": "06f28878b1de202c3d2bae5c644f30dcd6968b753a7b90df3bd0d278820e22b1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/studio-image-left.png",
+      "category": "data",
+      "bytes": 294217,
+      "sha256": "b58aa9a8f8c8e6ca467128f133fa4a87af75b3db931b5f4903521ac8fd3b8fa7"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/studio-image-right.png",
+      "category": "data",
+      "bytes": 264062,
+      "sha256": "9de1bbd590ada4322c88205c62fb6101d6866c005861e2942d9d087a9afb0db2"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/test-project-initial.json",
+      "category": "data",
+      "bytes": 8419,
+      "sha256": "92e8f83ca2a782252390695e768b49b3c1e3f0d8374514b65c05a3e89fe7b160"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/ui-check.json",
+      "category": "data",
+      "bytes": 802,
+      "sha256": "25815818d0da65ad0fe8c655781d5f45306ac74055ac2b7c24653b4fbc858097"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/video-frame-right.png",
+      "category": "data",
+      "bytes": 513848,
+      "sha256": "793b402e003df8506c16479400cda07a3a6f3fcc7dcdbcd6560e5dcce6f9367d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/配图验证-A-横版.png",
+      "category": "data",
+      "bytes": 136919,
+      "sha256": "448183dd9148e1742b5f0419576c619a92f3d88f99992109b29859726409360c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-images/配图验证-B-竖版.png",
+      "category": "data",
+      "bytes": 70278,
+      "sha256": "54236d8a34d7f8eacc49801adadc51f331c14834b8ee825fe6acbbb994467303"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/execution-records.json",
+      "category": "data",
+      "bytes": 18124,
+      "sha256": "8d8dfff10f75abd46c8991f43f355ddd56eaf05ca1d30ffce4cd782e4f1ab257"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-genshin.html",
+      "category": "data",
+      "bytes": 1505671,
+      "sha256": "b540074d26f9094aa25a142f9cb464e135f4adc1ef429a30677606392904d6a1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-genshin.png",
+      "category": "data",
+      "bytes": 840587,
+      "sha256": "e5eec69333f147da5a9d2d97d7a4a540fcf80362cc85dff7b1b85c8829eabcc6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-hi3.html",
+      "category": "data",
+      "bytes": 1505774,
+      "sha256": "df6beaf18a07eeb05fc8f2c05af8f07414ddd91995a33afbbe44c4e862ecb3ad"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-hi3.png",
+      "category": "data",
+      "bytes": 927697,
+      "sha256": "2fffdf5909d09e6b99c35d6815f93e51a3a055d8ea52c8b7870ccc7637a30e58"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-project-input.json",
+      "category": "data",
+      "bytes": 8294,
+      "sha256": "cb97a27f54923e14c0a2eb26f578738824cee0723951dccd1b097c31a686ca63"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-starrail.html",
+      "category": "data",
+      "bytes": 1496114,
+      "sha256": "eb470fd28cf0734931d377a15a2575c8eef922be7fccbbc92b06d9cb60378f59"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-starrail.png",
+      "category": "data",
+      "bytes": 782330,
+      "sha256": "93ff3fb91e62c0e73a4037b793f693e3af6acad3b4c7d2df112b0582715a419e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-zzz.html",
+      "category": "data",
+      "bytes": 1505996,
+      "sha256": "d89eedf6731a4cd7dc9b85607b7ae4abbebc52bc646c53a46677eba0f966965e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/image-zzz.png",
+      "category": "data",
+      "bytes": 769941,
+      "sha256": "40b777b607589a56639ab6a5ac49da3e41d4e3cf1164a4c3e0fe9e9728c00855"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-genshin.html",
+      "category": "data",
+      "bytes": 1728197,
+      "sha256": "a553aa4d65eb6b76218a7098c17c4827fe2f965a05d778b3b4a13fc3cd03777b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-genshin.png",
+      "category": "data",
+      "bytes": 832512,
+      "sha256": "812a6d2ab0be6493a4e5f74b0648a5666f3bbc8058032cd88327483b6e501ad3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-hi3.html",
+      "category": "data",
+      "bytes": 1728300,
+      "sha256": "ce22ddc7792b68759c050c698579eb31baa82d095bb4e94ae523c52cc4d76fd6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-hi3.png",
+      "category": "data",
+      "bytes": 967663,
+      "sha256": "7bb59efb7305efdf6d3312ce7705b435888ab75d51437dd5d7c0a310453ea0ab"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-project-input.json",
+      "category": "data",
+      "bytes": 34528,
+      "sha256": "e4663cb2415ae5975b21024e00f06f1076d89f15f3cf32ca0075dcb6f4b86bc5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-starrail.html",
+      "category": "data",
+      "bytes": 1717499,
+      "sha256": "5e8a1c65e8a42d45e8ead9a0578f582eb76828ad5d4777984a0a0ed87961a04f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-starrail.png",
+      "category": "data",
+      "bytes": 794669,
+      "sha256": "82cb8b83f016cb917cd9f5f677943d019a8b08d3a2a7f287c4b9e9aac93005ad"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-zzz.html",
+      "category": "data",
+      "bytes": 1728450,
+      "sha256": "9fa4f23e48f77b77f70a07e54f69c9d51c71ccc7fe75e99faf44f38f211ee06b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-layout-20261006/original-zzz.png",
+      "category": "data",
+      "bytes": 698922,
+      "sha256": "3e50d3a7a545a55e3d710b73aac26437da4c7c9724acd71b43f60e33bf91a099"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/clamp-ui.json",
+      "category": "data",
+      "bytes": 69,
+      "sha256": "e0036ec908db53820b1d1b7228427852b0b8fbb3b9da0c48981320ef98913567"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/duplicate-before.json",
+      "category": "data",
+      "bytes": 38024,
+      "sha256": "c85d41e5fdd4f265b99575af9d843547809202d66e08a69598a8754f5009a86e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/export-frame.png",
+      "category": "data",
+      "bytes": 1022526,
+      "sha256": "034b166931fddb5b7b04dbed0cdc0621f2b2207736dfc5367ea2d4e920b4bdb4"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/export-job.json",
+      "category": "data",
+      "bytes": 612,
+      "sha256": "b6b25d39c26105d4135ca81ca33ed6a4f0070a186767034979b65facd281c3cf"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/export-records.jsonl",
+      "category": "data",
+      "bytes": 2430,
+      "sha256": "9df0a08b61ad10cae686c82847b390ef9c65662f2e477e4cbb9c0b2df97e567c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/export-result.json",
+      "category": "data",
+      "bytes": 10227,
+      "sha256": "504b9c65c302d28436129c484db401afb7e6f49270bdc41afbbf6eaa97271ba9"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/final-snapshot.txt",
+      "category": "data",
+      "bytes": 4759,
+      "sha256": "e6e4e691fde0ccae976295011ed5e28acda14d7cc1b310676bca95c16e3768bd"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/fixture-request.json",
+      "category": "data",
+      "bytes": 8352,
+      "sha256": "c35e3b14dfe5f6edb1f7afd1112ad3badee71cdaefc2366baaf7b35cd1b7690f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/fixture-response.json",
+      "category": "data",
+      "bytes": 8654,
+      "sha256": "c70c5e290e13d604132ceb8d833ab47773cf95e54dfb4f63c81ba340a25b2155"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/live-custom-server.json",
+      "category": "data",
+      "bytes": 6388,
+      "sha256": "eba051c32abb1fe3b7c85377699d87d2d0ab1a44ac13a256d8f9e6906c75f1b4"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/live-custom-ui.json",
+      "category": "data",
+      "bytes": 525,
+      "sha256": "5dc4a043f8250888f813f08269482d4fcedbeba33448aea869d1ad9f21bb1a9a"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/maximum-ui.json",
+      "category": "data",
+      "bytes": 481,
+      "sha256": "c4d032e0b95dcbef6e9cf6008d9b1de0f87e742de314b7a6f31cf76285c46c43"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/project-final.json",
+      "category": "data",
+      "bytes": 6458,
+      "sha256": "41452c71aedf308a222203440520c632003f3ab9de981aa4caf6250ceba1bd2a"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/records.json",
+      "category": "data",
+      "bytes": 108517,
+      "sha256": "84d685261a9e6a730075a3eaa5d5ed9d4a91d2a05cb7f77e6bb1a35b28968738"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/reopen-ui.json",
+      "category": "data",
+      "bytes": 124,
+      "sha256": "363d7fcb87ade0591013bfdd59f1b0cffb23a6f29edea03bdd710c3ee35a409c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/reset-saved-server.json",
+      "category": "data",
+      "bytes": 6423,
+      "sha256": "6b9c9d6c6c9059a130c5bd4e925ff4bf495364548c3607dba85e2cb77241acca"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/reset-ui.json",
+      "category": "data",
+      "bytes": 101,
+      "sha256": "7938e7f255ca8745a60e62e32a984ac29d394cc76dfa35d8c0cb440ed6121afc"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/second-default-ui.json",
+      "category": "data",
+      "bytes": 225,
+      "sha256": "5cd9220bb23a3565e8259df8a58c189d307c272cb77a3f8408c696175cba3b44"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/slider-ui.json",
+      "category": "data",
+      "bytes": 100,
+      "sha256": "045869eb6d26ea671c0336244d7b2f2b7591dda5460fbb5bbd9f4bd2e174434c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/source-original-after.json",
+      "category": "data",
+      "bytes": 30091,
+      "sha256": "76a4217470eb3fc869a04633dca93a595d340a1b575918a644b2e8a9bf79d3a1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/source-original-before.json",
+      "category": "data",
+      "bytes": 40866,
+      "sha256": "b77a99152f405dfff1152e668e8d667176dbd20578f7fd2b1e5601495fd56d3a"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/studio-card-size-final.png",
+      "category": "data",
+      "bytes": 412980,
+      "sha256": "7f22abebf7281bdf3a6a55460e154724a79154374bccefd55f3f5f8edc001bb5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/card-size/studio-maximum.png",
+      "category": "data",
+      "bytes": 418017,
+      "sha256": "21d094847300a4cbcd6910ccf2a7af4c623b16921f2e277897d9fcebdfbbdaac"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/full-render-request.json",
+      "category": "data",
+      "bytes": 835,
+      "sha256": "776170a19d0def044b07aa5a40df0383df77a04f8d94deb09b431d64a8bfd848"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/full-render-result.json",
+      "category": "data",
+      "bytes": 2719,
+      "sha256": "c1a9cce613293baede0df665647692b16f183459d029b61f5a806447357dcb71"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/http-integration.json",
+      "category": "data",
+      "bytes": 2334,
+      "sha256": "afeb613cca50f8eb25ad6571902e40e50fef0a68f8824ab08cc05efa56c75d1b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/four-styles-background.png",
+      "category": "data",
+      "bytes": 1514698,
+      "sha256": "38cae5bd86988f713a5c7f6cf90366c0afb087221723a55a44500aa158bc71e3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/four-styles-left.png",
+      "category": "data",
+      "bytes": 1313243,
+      "sha256": "c074037a49b97c4affec0623dac0de672d2b09b1c352b287ce375ba3eaf051a6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/four-styles-right.png",
+      "category": "data",
+      "bytes": 1311465,
+      "sha256": "435dd9be3298d729276a4de67ed8bc382f649688a19179030797861a2337072b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/genshin-background.html",
+      "category": "data",
+      "bytes": 1357080,
+      "sha256": "1ba3f1201cf5fbd90c59a5a0da1fdd7759d0648d6bb3154dc12146edef54093c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/genshin-background.png",
+      "category": "data",
+      "bytes": 1106789,
+      "sha256": "26b1c561a9e97c62580d8e4e5af0bf03e67e75eb68b0983c664eb6e10238a3d0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/genshin-left.html",
+      "category": "data",
+      "bytes": 1357026,
+      "sha256": "87ac3b111c64f9c885f187ceea03f2d8779aa76061d5dde558434d281b94110d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/genshin-left.png",
+      "category": "data",
+      "bytes": 929097,
+      "sha256": "c3adca320f5471d6c7435795e3040f88f5f277dbf04050708e3c8380feec73d3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/genshin-right.html",
+      "category": "data",
+      "bytes": 1357035,
+      "sha256": "43bfbdb4308ef6f55edd8643e9a4950ebb55e13a3140733715524a61d7606527"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/genshin-right.png",
+      "category": "data",
+      "bytes": 925336,
+      "sha256": "77214cbfc704082746e7eea00ce6ac6420c774a75557ae2e8a386aaa3bcba7ed"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/hi3-background.html",
+      "category": "data",
+      "bytes": 1357180,
+      "sha256": "50db4e98b1af27491466eeb4e37c090c6563911b44fe2ff65d158f993d5103f1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/hi3-background.png",
+      "category": "data",
+      "bytes": 1192562,
+      "sha256": "09cc633e6f45a7f85c4d0fef57ef4b11992fc95a85bb998493fdd3f2bba33b72"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/hi3-left.html",
+      "category": "data",
+      "bytes": 1357126,
+      "sha256": "86768d89f60a9f8b6f5c8c3cbc4aeb5d30a3f174ba7de9071bfd97a706fab972"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/hi3-left.png",
+      "category": "data",
+      "bytes": 1010720,
+      "sha256": "443505720c44538dde38944bfb9a3cf5b9759b10d846b6044ee0849163d89de1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/hi3-right.html",
+      "category": "data",
+      "bytes": 1357135,
+      "sha256": "185dab84cd2e108b4a15aad3ab67a033b01db579b1637baaf12ad44e6e62dd3f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/hi3-right.png",
+      "category": "data",
+      "bytes": 1006095,
+      "sha256": "5ae33499a30245fe1b3191708bcee77b3a23e0b852af63fd6fba7a44da201bb3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/landscape-fixture.png",
+      "category": "data",
+      "bytes": 96442,
+      "sha256": "46129c8b5f92dd5627533d033c0434f9f2013d21f196c20722c6c6b2aeb073c6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/render-verification.json",
+      "category": "data",
+      "bytes": 1742,
+      "sha256": "7cd50ea7798a206177b018b577e6914dd16f16c38087f2e15b466745d4d70ae2"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/starrail-background.html",
+      "category": "data",
+      "bytes": 1347666,
+      "sha256": "2a62dda0650955f701861bb89ddbfd3fba30e7325faaf6d35a773969eff0683c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/starrail-background.png",
+      "category": "data",
+      "bytes": 920868,
+      "sha256": "8e061619507e66ab91c06cf8f34ecec9c8a13084e60943ac566a1640aeac6a80"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/starrail-left.html",
+      "category": "data",
+      "bytes": 1347612,
+      "sha256": "d0f166feba65957b04a97bc344b088ae2a991df845a39613328d7f01fd2eeb40"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/starrail-left.png",
+      "category": "data",
+      "bytes": 757601,
+      "sha256": "c84d7a5b025b2eb9e784003d34adc207095192796bcab460d08ba599d15fbf16"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/starrail-right.html",
+      "category": "data",
+      "bytes": 1347621,
+      "sha256": "ef6a35b36e83ae1672c803fbe026e7082c4d06b0a7c6aac496178123bac46669"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/starrail-right.png",
+      "category": "data",
+      "bytes": 758076,
+      "sha256": "35d36beac41f57f79c1fd62c044cbb2008d11c853d18e5294ed17218c8a40fb0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/zzz-background.html",
+      "category": "data",
+      "bytes": 1357331,
+      "sha256": "58d9496de359be8a3b1e420586a9922acb4cba1fcfd24a1f3b72c01a3cd0ef78"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/zzz-background.png",
+      "category": "data",
+      "bytes": 1178885,
+      "sha256": "c676764e249f7126144d084d8d1dc28dc4633647329b795b45271374ab976948"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/zzz-left.html",
+      "category": "data",
+      "bytes": 1357277,
+      "sha256": "ed006a17f6d1ab50d76001edd77fc56e0ef165671b10ffb9715995ba51d3bd86"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/zzz-left.png",
+      "category": "data",
+      "bytes": 961052,
+      "sha256": "f322f934936e3fb5c2764642369f5634620288c2feedd0d1828b3619ae901a09"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/zzz-right.html",
+      "category": "data",
+      "bytes": 1357286,
+      "sha256": "a4687d769e5768fafc7d21c3ef7a9fd098aca797a6e042a3ac49c5305a6869c3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/manual-card-images-20261006/zzz-right.png",
+      "category": "data",
+      "bytes": 958972,
+      "sha256": "0bd79a363ec521a0d2286d125bf3635edfdc497c7a95f55a25d4e79783153816"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/project-rename-prepare-id.txt",
+      "category": "data",
+      "bytes": 36,
+      "sha256": "3ae5821f10f486f3828c8ea568f577ca1dd5676eaf46a54bd785c4cf47319858"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/project-rename-runtime.jsonl",
+      "category": "data",
+      "bytes": 3851,
+      "sha256": "48b2e9795025d5cce4a5af43e47ef9f134327585a37e6fb9902c3b261b1c3535"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/project-rename.json",
+      "category": "data",
+      "bytes": 639,
+      "sha256": "caaf9fe97d967fc36bcc447eea39c238bc86f7e3ed5426185eb2793b3a1348ad"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-after-cancel-processes.json",
+      "category": "data",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-before-cancel-job.json",
+      "category": "data",
+      "bytes": 973,
+      "sha256": "5734869e56bbac03cbecdddea267572ac63ef3d5c3ae6885dc6cf16c3e27938b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-cancelled-job.json",
+      "category": "data",
+      "bytes": 1014,
+      "sha256": "196523d54a56e576aa6932acc4b91741f1fb7edeaed8ffeb5c3f921feaea5aa9"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-confirmed-running-processes.json",
+      "category": "data",
+      "bytes": 2760,
+      "sha256": "75a12fe6c9bf7c2fe22827693770927af0e92590b9027629ac4c5127a4f17792"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-project-snapshot.json",
+      "category": "data",
+      "bytes": 7662,
+      "sha256": "8820b844316b0530b348f5e8054e5b7ed6ec276c00f6a5da3a6777b2bacc8a5e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-requests.jsonl",
+      "category": "data",
+      "bytes": 113166,
+      "sha256": "35b912b990c92771ca24411d283ee9ab8d04e63ccf56ab343894af9e82489036"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-retry-audio-provenance.json",
+      "category": "data",
+      "bytes": 140,
+      "sha256": "e791997a47d4bc4163545410813af03837e68a8b9ddcf6958cf515660cfa7049"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-retry-complete-job.json",
+      "category": "data",
+      "bytes": 1143,
+      "sha256": "a36a34458f019babf33cfd92578b64b0f9f263440ce6e7e0a226760435a6f536"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-retry-render-report.json",
+      "category": "data",
+      "bytes": 465,
+      "sha256": "f52676376a037b0c2f898b94f7405ba8df700136a60642e2cbb96b836dc933ec"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/running-cancel/20261006-105259-summary.json",
+      "category": "data",
+      "bytes": 1302,
+      "sha256": "9b39aa03aa3579093274da8c5c9c4763da3ef319b5f37193176d040a47cb2bb9"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/starrail-final-frame.png",
+      "category": "data",
+      "bytes": 627645,
+      "sha256": "ad0a5ff71b515b9c572af9e459418621b741ce3b8215ee2331ae38f7be3bebdf"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/compose-project-response.json",
+      "category": "data",
+      "bytes": 39496,
+      "sha256": "8145b2b37c7632e93f39a0c0c06855a499158c64329eca6bef5309b59babf14f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/job-cancelled.png",
+      "category": "data",
+      "bytes": 361619,
+      "sha256": "bc5aacf19f220bf8028dd51febd6cfc5127501729c776bab2ae21ceab209ded1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/records.json",
+      "category": "data",
+      "bytes": 5233,
+      "sha256": "aea15c905068fb2266847be60afb541b1f018245faf306e758d515db9c083f9e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/sample-cancelled-job.json",
+      "category": "data",
+      "bytes": 626,
+      "sha256": "f8a11d660486af9454efed75ca9d95610e75271de88ef7b0dd18f8ee364a8114"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/sample-submitted-job.json",
+      "category": "data",
+      "bytes": 623,
+      "sha256": "fa7ecaba59573f2d4d2f25ba111254bd292a95e795294748b84a8edb7691ff7a"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/studio-desktop.png",
+      "category": "data",
+      "bytes": 320970,
+      "sha256": "df3a2e452b070f6eaf4479ddbe98ba4ae141f3e58b19c13a6a7c36c3f11aee07"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/studio-export-final.png",
+      "category": "data",
+      "bytes": 298734,
+      "sha256": "6ea0343f55fb8b93ac4c952d4264eb68147b57bc8c669ea6ecfa0e65de969631"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/studio-final.png",
+      "category": "data",
+      "bytes": 292456,
+      "sha256": "a8f13011028efd52207575ee96ed33b836a15521641423dfd611964a88246097"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/studio-genshin.png",
+      "category": "data",
+      "bytes": 387720,
+      "sha256": "cf88efc7b8a45a732c1aa2af3231b23d39c6a26478b812e85cc3ea14a77cb693"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/studio-mobile.png",
+      "category": "data",
+      "bytes": 97310,
+      "sha256": "8bb17ead9597c4ce3e726f65222865f9892863723d4bb3f247ce1a98fef39233"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/ui-smoke/ui-check.json",
+      "category": "data",
+      "bytes": 1944,
+      "sha256": "eab4afa54ad114c93a8ae7a0de34c77d179b1da69754e68b618060d556fb6603"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/input.json",
+      "category": "data",
+      "bytes": 213,
+      "sha256": "bc2f0dded39e60d593a0b8245fe6a1004a41fcf77c3aae5458a9d7938a7e1e40"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 10906,
+      "sha256": "771b55b416919e0d7fdb4787deb1b41d5892e8b196971cc653fb97fdc68261f7"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/narration.m4a",
+      "category": "data",
+      "bytes": 94795,
+      "sha256": "3dfc9d8bbe5272dda333f17956bdeb30e2ec6f67ec555ad970d93924b44a48af"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/narration.wav",
+      "category": "data",
+      "bytes": 520118,
+      "sha256": "2f44473d44558464a3698ac6770c7d9a3271919a5bdf1f5b16ccf90c8bb01e30"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3394,
+      "sha256": "a82d4b34eddff7cea57c7e89e6d88b18f5d852c51a7c6077c0db7cc09d88bdc5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/voice-plan.json",
+      "category": "data",
+      "bytes": 419,
+      "sha256": "a3643725513168baf59857ffdb93b08d7ef9bae47dc13d773e9cf24d8d3662fe"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/7139e10889cc4327b8e469b41f788ec92a05e182dc2f6f72f5b31ff5ae93d1d2.wav",
+      "category": "data",
+      "bytes": 572088,
+      "sha256": "194dc28b40780bfe807390c15bcdc4a7e01c4afa27b934a3c125b417606b93f4"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/7bce3d20ffec95f9d0b20d4a6f8cc969751b25714189d9ba6dc4d5ee05bd6f84/generation.log",
+      "category": "data",
+      "bytes": 1025,
+      "sha256": "dad549d2b7b86a729b3cecdfb91481e6aab9b2362d0c5036916aff2e0ac3c61e"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/7bce3d20ffec95f9d0b20d4a6f8cc969751b25714189d9ba6dc4d5ee05bd6f84/input.json",
+      "category": "data",
+      "bytes": 1903,
+      "sha256": "855274c1d47f93c7b0fed8565677d436b99bd5900a9c8666410c1563e4c04b86"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/7bce3d20ffec95f9d0b20d4a6f8cc969751b25714189d9ba6dc4d5ee05bd6f84/trimmed.wav",
+      "category": "data",
+      "bytes": 476122,
+      "sha256": "1878e32a19425b10d7c1fd8ce31db8d53e5eaea2c06b4011c638707b864b1ad0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/7bce3d20ffec95f9d0b20d4a6f8cc969751b25714189d9ba6dc4d5ee05bd6f84/voice_000.wav",
+      "category": "data",
+      "bytes": 241278,
+      "sha256": "e08d0f455b87e1c52b37721c938c7470d774763121972b6c7ea437f6853bd291"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/assembled.wav",
+      "category": "data",
+      "bytes": 520084,
+      "sha256": "9e1ab49d07ced455662af115407488b3e6d50d0a7ef5a5dce651cc92ce1e80db"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-kiana-new/output/work/8b7f8f7386dd48ecaf068514c8108bb0/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 520118,
+      "sha256": "cd7627125cb470adf045f520283044127282800515d7ac91a2b89451254c8e7c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/input.json",
+      "category": "data",
+      "bytes": 768,
+      "sha256": "50278336aba8e81c158c6d9806bad8e0bca4843fe2b264b7ca01e0a3cb8a3b81"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7201,
+      "sha256": "f18016017225c2b2054e516fe1354499ebdcfa8a34d223a66ce07ece7004f421"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3110,
+      "sha256": "310f355a4791921bdc1013b65c244d75c17cd677b600280d74e9fd05b22e5b39"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/work/9471c8c7253e4a8e9d9143f2c6726347/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/work/9471c8c7253e4a8e9d9143f2c6726347/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-seed/output/work/9471c8c7253e4a8e9d9143f2c6726347/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/cache/scenes/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6/audio.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/cache/scenes/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6/manifest.json",
+      "category": "data",
+      "bytes": 3422,
+      "sha256": "10f9f2fe1c10a9d57be6aed2c69227786b960739d564143954137c525a09ca21"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/cache/scenes/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645/audio.wav",
+      "category": "data",
+      "bytes": 2051044,
+      "sha256": "a1eff951b4bc1ccc98666076060ac89c9b6d419b6e70804e5be466246fa0a38f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/cache/scenes/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645/manifest.json",
+      "category": "data",
+      "bytes": 3884,
+      "sha256": "105b99a81e68dc9239b70dffdce15d3859c5ae86c7233e21d2ddd30ed25e6cf3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/execution.json",
+      "category": "data",
+      "bytes": 1347,
+      "sha256": "f70c17e8481bad5d9608dc4290bd0a95dffa9f58edd4c0374c264a2582535b21"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/input.json",
+      "category": "data",
+      "bytes": 767,
+      "sha256": "950350600456ad64b2681a20e9b499315a522fc386ddfa9b4d83f22ba1de7191"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7331,
+      "sha256": "57f4828b07fa51f658dffab313a747be87d0ce6179bdd1db67dc1e4ad3d825d8"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3127,
+      "sha256": "6856be315dc3a7edb02ad4adea853f3c96842e95c2920af5de8915e4ce548f43"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/voice-plan.json",
+      "category": "data",
+      "bytes": 1028,
+      "sha256": "9c4dbc1225f7e09d25be42beeace0fe162933abe01a3dd03f50d5a7a122cb94b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/work/b73edf1bf2284f04b323fda3cc910d83/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/copied-id/output/work/b73edf1bf2284f04b323fda3cc910d83/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reject-duplicates/execution.json",
+      "category": "data",
+      "bytes": 1431,
+      "sha256": "9c231e0a1d06e5063554e6cbeb80d90e9d9ae4834ae1d4690cf696ccfdf9935b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reject-duplicates/input.json",
+      "category": "data",
+      "bytes": 1106,
+      "sha256": "fd09d0981dff5645f3d1b5e01369ea7e0e49d363d7fc034b2a443af47928be2c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reject-duplicates/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 3301,
+      "sha256": "02d39e8112415192eb6025439ce318b092474c8520688221b61ff43339080a7f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/execution.json",
+      "category": "data",
+      "bytes": 1832,
+      "sha256": "a46bd12bb7e7eb8a0fd9f7c8050616a304289ec99bb456e38f4000f9f937232f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/input.json",
+      "category": "data",
+      "bytes": 1151,
+      "sha256": "085ef011508de71a353f7d719b7be0fe5d6de9b8a57b07f9ec9e991a0dd685a5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 12784,
+      "sha256": "3d10e2a51b396eeedeeeb435b6c954e204adad999c3ebbc0a3ad88f747f60c09"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/narration.m4a",
+      "category": "data",
+      "bytes": 651565,
+      "sha256": "d24cc6928057107bfc142615c0feea84bd02148af16ffce61afeda7e6b5288d1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/narration.wav",
+      "category": "data",
+      "bytes": 3260712,
+      "sha256": "85b9628723ced0afbbda76a6ce9b4d734391d5614ed9c4ab7a4fd55212d0a986"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3865,
+      "sha256": "7d881b470b425a106888604c14ebbad7322bdad6fb3622be53cde1cea078d5e3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/voice-plan.json",
+      "category": "data",
+      "bytes": 2185,
+      "sha256": "8344edc0dc0076dacf6da11c90f2d5698efdbf94c5f829e768f8c938556207cf"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/work/9604fec2233b48a39d71f3cab1a58478/assembled.wav",
+      "category": "data",
+      "bytes": 3260678,
+      "sha256": "584be989705ff553cc46d31993dbf7ad3c073494ed7f9792030a7c8dbc37d54d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/work/9604fec2233b48a39d71f3cab1a58478/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1709244,
+      "sha256": "0f361c3d6e292f8003a3f39fdaea4074933eb65180225ddadd5a0a1a6e3d2185"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/reorder-120/output/work/9604fec2233b48a39d71f3cab1a58478/scene-001-speed.wav",
+      "category": "data",
+      "bytes": 1551546,
+      "sha256": "57c9bf934d5187e7624ddffe8a50fcc5922f2d946153d78cf186bb3c557260a0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/execution.json",
+      "category": "data",
+      "bytes": 1354,
+      "sha256": "962c65cf378fa1cc9cb65bc7db4de9b6892a72ec7dec32ea81ce25700fcd0a3d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/input.json",
+      "category": "data",
+      "bytes": 769,
+      "sha256": "6d722e939ca50d21b81e5fb51bc23535d65509747f9f06e8f96c7c348c58edf6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7356,
+      "sha256": "bf0f7085573c7706b463893cd7b971601d9eb80f634416f8117d00073ec34bcb"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3135,
+      "sha256": "c0451c6b1a9efaef7e3a4612bae8523c10258bac630ce0f0708367f6ba969662"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/work/c7dd3992ac48419faf1bf02d817bb48b/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/work/c7dd3992ac48419faf1bf02d817bb48b/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/repair-cache/output/work/c7dd3992ac48419faf1bf02d817bb48b/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/execution.json",
+      "category": "data",
+      "bytes": 1829,
+      "sha256": "7c0c14012f5e55bc5786018e67099c4b7c4686a10dbb222ed76c635ab4a52c4d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/input.json",
+      "category": "data",
+      "bytes": 1151,
+      "sha256": "60c3740eb83c3d25f26db7d145d0341e9ee58606b9b060511120d7efaf8a7dd0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 12746,
+      "sha256": "5fd720471b711ef8f36fcd733661307f8d0b82123d7ecce6a7ca6ba199137b40"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/narration.m4a",
+      "category": "data",
+      "bytes": 711044,
+      "sha256": "ff1a9abc9b0bb402c44eaa44423304cc123eceab4f3e9735318d8d7ec284c7da"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/narration.wav",
+      "category": "data",
+      "bytes": 3557134,
+      "sha256": "142551c2aea6f25f677af3977a2d6753bb8b3dac6eab7fce8002c126712a8ee0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3878,
+      "sha256": "b47cdf5be872637006a2369c643988132166fed96601ae42ffdfbe0881227b10"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/voice-plan.json",
+      "category": "data",
+      "bytes": 2161,
+      "sha256": "320fd120a203f1d2929c621289c329c7f606b86594108d3e546c04f605370eff"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/work/ab7c5629e564410c94d30c2778a78b2c/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/work/ab7c5629e564410c94d30c2778a78b2c/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645.wav",
+      "category": "data",
+      "bytes": 2051044,
+      "sha256": "a1eff951b4bc1ccc98666076060ac89c9b6d419b6e70804e5be466246fa0a38f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/work/ab7c5629e564410c94d30c2778a78b2c/assembled.wav",
+      "category": "data",
+      "bytes": 3557100,
+      "sha256": "fb0d40b4be67cb2d9c7dde920493a715121485ac6109fda9faeb1688405087bb"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/work/ab7c5629e564410c94d30c2778a78b2c/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-43774534c9/seed-110/output/work/ab7c5629e564410c94d30c2778a78b2c/scene-001-speed.wav",
+      "category": "data",
+      "bytes": 1864624,
+      "sha256": "f0a377ac0eb5122f678fac751605fa3481f7430e5b53b3cfda99a9d43a11270f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/cache/scenes/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6/audio.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/cache/scenes/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6/manifest.json",
+      "category": "data",
+      "bytes": 3422,
+      "sha256": "1590ac485f3c56b64744588e7879bc08f8cfa367fa18e6d6f0d07d74cf67fcc6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/cache/scenes/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645/audio.wav",
+      "category": "data",
+      "bytes": 2051044,
+      "sha256": "a1eff951b4bc1ccc98666076060ac89c9b6d419b6e70804e5be466246fa0a38f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/cache/scenes/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645/manifest.json",
+      "category": "data",
+      "bytes": 3884,
+      "sha256": "1caad0646b603a25dbded8191b9bacb99a4b63e28123421529d7f2398b8d7d97"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/execution.json",
+      "category": "data",
+      "bytes": 1347,
+      "sha256": "02a41e565a9c3414258312a7e07c7dee8e52ce867029a266712eb308c44fc5ac"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/input.json",
+      "category": "data",
+      "bytes": 767,
+      "sha256": "950350600456ad64b2681a20e9b499315a522fc386ddfa9b4d83f22ba1de7191"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7331,
+      "sha256": "e752e6b57e8764f33d422b354e9f720491506c280c9655283f9a7b49a7c0169d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3169,
+      "sha256": "335c3161db4f00f039a1da3fdaeab0824c6c9efb99809036e2714c8a407df821"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/voice-plan.json",
+      "category": "data",
+      "bytes": 1028,
+      "sha256": "9c4dbc1225f7e09d25be42beeace0fe162933abe01a3dd03f50d5a7a122cb94b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/work/51f5b3c9b8074cfab6e8b52058cdad3a/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/copied-id/output/work/51f5b3c9b8074cfab6e8b52058cdad3a/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/missing-custom-reference/execution.json",
+      "category": "data",
+      "bytes": 1467,
+      "sha256": "44755ffe973a126f06bfd83d25cb839c8a2826cf7106dec7d183debe6bb8dbc5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/missing-custom-reference/input.json",
+      "category": "data",
+      "bytes": 769,
+      "sha256": "6d722e939ca50d21b81e5fb51bc23535d65509747f9f06e8f96c7c348c58edf6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/missing-custom-reference/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 2820,
+      "sha256": "1b68aa463568a4a3c23a4219f68c7681bcb9f6749779d002fbedbf1ca3ebdefd"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reject-duplicates/execution.json",
+      "category": "data",
+      "bytes": 1431,
+      "sha256": "a5e924e8a971e2664da8e171aa4e0ae93c7a9ffe91d4f0a0efe259c1dcd9f316"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reject-duplicates/input.json",
+      "category": "data",
+      "bytes": 1106,
+      "sha256": "fd09d0981dff5645f3d1b5e01369ea7e0e49d363d7fc034b2a443af47928be2c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reject-duplicates/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 3301,
+      "sha256": "a0ed7a0e0517504515b3cd13e9597153bbbcbec8b78dfb3612e6f45ac1658c73"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/execution.json",
+      "category": "data",
+      "bytes": 1832,
+      "sha256": "cdd288e4cba698cb2fab57c19e0400d4d7f6ea16fbf9a23cc9206d83848fabe5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/input.json",
+      "category": "data",
+      "bytes": 1151,
+      "sha256": "085ef011508de71a353f7d719b7be0fe5d6de9b8a57b07f9ec9e991a0dd685a5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 12784,
+      "sha256": "7b9de6668a146dc780c610385048a9e50bb5b3e86c61af56a3e3930aec9c09ea"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/narration.m4a",
+      "category": "data",
+      "bytes": 651565,
+      "sha256": "d24cc6928057107bfc142615c0feea84bd02148af16ffce61afeda7e6b5288d1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/narration.wav",
+      "category": "data",
+      "bytes": 3260712,
+      "sha256": "85b9628723ced0afbbda76a6ce9b4d734391d5614ed9c4ab7a4fd55212d0a986"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3907,
+      "sha256": "ea90956f419e6137b0fe52c794ddec9c4f38292337d4a8d0f45fd4a863dfed79"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/voice-plan.json",
+      "category": "data",
+      "bytes": 2185,
+      "sha256": "8344edc0dc0076dacf6da11c90f2d5698efdbf94c5f829e768f8c938556207cf"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/work/11571a685c5c4d0196e8def305a9367f/assembled.wav",
+      "category": "data",
+      "bytes": 3260678,
+      "sha256": "584be989705ff553cc46d31993dbf7ad3c073494ed7f9792030a7c8dbc37d54d"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/work/11571a685c5c4d0196e8def305a9367f/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1709244,
+      "sha256": "0f361c3d6e292f8003a3f39fdaea4074933eb65180225ddadd5a0a1a6e3d2185"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/reorder-120/output/work/11571a685c5c4d0196e8def305a9367f/scene-001-speed.wav",
+      "category": "data",
+      "bytes": 1551546,
+      "sha256": "57c9bf934d5187e7624ddffe8a50fcc5922f2d946153d78cf186bb3c557260a0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/execution.json",
+      "category": "data",
+      "bytes": 1354,
+      "sha256": "f65296d7f94f1a83f782e60c79d116a667f86461e8a2a4da51266be6a9efabc4"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/input.json",
+      "category": "data",
+      "bytes": 769,
+      "sha256": "6d722e939ca50d21b81e5fb51bc23535d65509747f9f06e8f96c7c348c58edf6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 7356,
+      "sha256": "e5efe96bfba7881289da8ea0555f6339dab4df4524570640819aeff47ffe749c"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/narration.m4a",
+      "category": "data",
+      "bytes": 342379,
+      "sha256": "402b5438510340d8e9a37cb04b28c8a1a3642d016b3fbe0a0c236a1396ec0df5"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/narration.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "a0a008d9dc722d95ad7c1cd8a62b021259ac003c56e558709971b97c5c89cb9f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3177,
+      "sha256": "c4d766e262c210fe4a6853d0d93f6f1cdb4d9dd12202cb1803c287d6b66c9831"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/voice-plan.json",
+      "category": "data",
+      "bytes": 1030,
+      "sha256": "c16ad374649a08162fa8ee8b7a7368d2c5032fd301db5d86b8b202240d4b0031"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/work/fde330a1f4c64ed1a110bfcf616aee39/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/work/fde330a1f4c64ed1a110bfcf616aee39/assembled.wav",
+      "category": "data",
+      "bytes": 1692554,
+      "sha256": "c8bf4b648b01feab2a4949dfa9dd4b175e8c0dcf9dc750b32fc2a1f79f5c0df1"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/repair-cache/output/work/fde330a1f4c64ed1a110bfcf616aee39/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/execution.json",
+      "category": "data",
+      "bytes": 1829,
+      "sha256": "b2133436ecf8dba1b2fb05e23506891697fe890df16199a9d7292926727ead72"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/input.json",
+      "category": "data",
+      "bytes": 1151,
+      "sha256": "60c3740eb83c3d25f26db7d145d0341e9ee58606b9b060511120d7efaf8a7dd0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 12746,
+      "sha256": "a81781d27aeab3dd03e004aacce8cabad3940e73f19ef82805003f311163e630"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/narration.m4a",
+      "category": "data",
+      "bytes": 711044,
+      "sha256": "ff1a9abc9b0bb402c44eaa44423304cc123eceab4f3e9735318d8d7ec284c7da"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/narration.wav",
+      "category": "data",
+      "bytes": 3557134,
+      "sha256": "142551c2aea6f25f677af3977a2d6753bb8b3dac6eab7fce8002c126712a8ee0"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 3920,
+      "sha256": "82bdadb2c3ffc906a8d8e4adf81e38012dec8f2e4d41855f9c062367c0b714e9"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/voice-plan.json",
+      "category": "data",
+      "bytes": 2161,
+      "sha256": "320fd120a203f1d2929c621289c329c7f606b86594108d3e546c04f605370eff"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/work/9a1028a8645d4dbd957fd718809a9654/1723a41900e7bafdddfb2c253f109ba1d5bd48f53a166e2304719d4bcb315fa6.wav",
+      "category": "data",
+      "bytes": 1861806,
+      "sha256": "8c2f3929e63187e3b1641234fd2a52e0d30e60e7d83117fbbe1200f99aa31851"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/work/9a1028a8645d4dbd957fd718809a9654/76342656648c12aa1877161d037843b5a4bb7cb936bab3570b1017e27de6e645.wav",
+      "category": "data",
+      "bytes": 2051044,
+      "sha256": "a1eff951b4bc1ccc98666076060ac89c9b6d419b6e70804e5be466246fa0a38f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/work/9a1028a8645d4dbd957fd718809a9654/assembled.wav",
+      "category": "data",
+      "bytes": 3557100,
+      "sha256": "fb0d40b4be67cb2d9c7dde920493a715121485ac6109fda9faeb1688405087bb"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/work/9a1028a8645d4dbd957fd718809a9654/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 1692588,
+      "sha256": "0819847628272decef53f46fa89caf9e5dd8a2e678c7d16d71b714bcb1fbaee6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-tests-8702229861/seed-110/output/work/9a1028a8645d4dbd957fd718809a9654/scene-001-speed.wav",
+      "category": "data",
+      "bytes": 1864624,
+      "sha256": "f0a377ac0eb5122f678fac751605fa3481f7430e5b53b3cfda99a9d43a11270f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/input.json",
+      "category": "data",
+      "bytes": 185,
+      "sha256": "816cb03331a7b5a0ffa39ef439851ed85cb46bca7372e846a45fe88cdd25d16b"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/execution-records.jsonl",
+      "category": "data",
+      "bytes": 6729,
+      "sha256": "068299490612afccc42e2e944981b093485044e0e0ba7fd1e5f14c59d0df49ec"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/narration.m4a",
+      "category": "data",
+      "bytes": 77651,
+      "sha256": "656ce9b17e2a10a1365c9f8103539f72c662e656c831406ededa7946eee9a201"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/narration.wav",
+      "category": "data",
+      "bytes": 464950,
+      "sha256": "2cb505b3aa1b42cb7235b4be1d530fe30b44b2aa2a2781b494232630fc1489a3"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/voice-metadata.json",
+      "category": "data",
+      "bytes": 1871,
+      "sha256": "b940e020b9333eb0bd360ac3655d60390b083e89cd83d151f7de623df6f2c4a8"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/voice-plan.json",
+      "category": "data",
+      "bytes": 391,
+      "sha256": "08ff6d14484c41a05c6204fd8989c753943285b7191d8b0009e5dfcdd0212db8"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/7f4dbeb5559c2d6648e51388a45601793cc46ee29d102d03be60f3253fbb4348/generation.log",
+      "category": "data",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/7f4dbeb5559c2d6648e51388a45601793cc46ee29d102d03be60f3253fbb4348/input.json",
+      "category": "data",
+      "bytes": 420,
+      "sha256": "4b2b80426f6d63a782ecaad4cb716fe978b5e937b149d8a1ce6e4628f67a5aa6"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/7f4dbeb5559c2d6648e51388a45601793cc46ee29d102d03be60f3253fbb4348/raw.mp3",
+      "category": "data",
+      "bytes": 30384,
+      "sha256": "5c6e485162e5971db50f2b09cf5f62e031ac9996904323cb24d8cfa0c0bfe721"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/7f4dbeb5559c2d6648e51388a45601793cc46ee29d102d03be60f3253fbb4348/trimmed.wav",
+      "category": "data",
+      "bytes": 415438,
+      "sha256": "e3af18324d40322ac9021f0e2efcca08e5f9cb26244ca303c6184de53c4de61f"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/ab9292020a047ac9d8726d6a27aa02c321dde5ac05f6342f10a7ac6471aefa12.wav",
+      "category": "data",
+      "bytes": 511404,
+      "sha256": "6bbd090d546a597b8c4c1d87c5b25d60239f29ac5b297669b37dff9bfab34d35"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/assembled.wav",
+      "category": "data",
+      "bytes": 464916,
+      "sha256": "ab96aa973d4edb79696bc51d23aae6769041be240bb7546df1e18308d54dbfd8"
+    },
+    {
+      "path": "miyo_AI_news/data/verification/voice-xiaoxiao-new/output/work/7d6a8c8eb42942239cf508a8e8e829b2/scene-000-speed.wav",
+      "category": "data",
+      "bytes": 464950,
+      "sha256": "fe9860f93791d43970c56c68ed787bded7f1f180d3982e48b41ede673581d2f3"
+    },
+    {
+      "path": "voice-library/琪亚娜-稳重轻角色感/kiana_refs_concat_v2_light.wav",
+      "category": "voice-reference",
+      "bytes": 1107674,
+      "sha256": "07d8f5e63013c8420419fec0b15efefde6fcea29695dbd79ce2b201b7a0daffc"
+    },
+    {
+      "path": "voice-library/琪亚娜-稳重轻角色感/reference_audio_v2_light/ref_text.txt",
+      "category": "voice-reference",
+      "bytes": 371,
+      "sha256": "0e2921dd38b9678abaebba9a3c42fe94cab9ef7358c5776a0b97a8d6e0a77486"
+    },
+    {
+      "path": "voice-library/琪亚娜-稳重轻角色感/test/qwen17b-v2-light-versions/variants.json",
+      "category": "voice-reference",
+      "bytes": 1154,
+      "sha256": "dfd0e62a0c915c59e5dc38e71c51782355bdafe888f4b6d647b4129cd327a722"
+    }
+  ]
+}

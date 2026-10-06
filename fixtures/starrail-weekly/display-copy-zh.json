@@ -1,0 +1,79 @@
+{
+  "description": "中文展示文案：将装饰性英文卡片标签改为简短中文，WEEK 40改为第40周；保留已有中文与数字标签。仅保留活动、场馆、平台与资料来源所需的英文专名，不改新闻事实、标题、正文、口播及时间标注。",
+  "scenes": [
+    {
+      "id": "departure",
+      "metric": "第40周",
+      "labels": ["01 / 版本", "02 / 线下", "03 / 社区"]
+    },
+    {
+      "id": "version",
+      "metric": "09.28",
+      "labels": ["开拓任务", "新图探索", "更新补偿"]
+    },
+    {
+      "id": "pearl",
+      "metric": "5★",
+      "labels": ["全队守护", "行动支援", "同期跃迁"]
+    },
+    {
+      "id": "robot",
+      "metric": "11.11",
+      "labels": ["活动故事", "拼装玩法", "进度安排"]
+    },
+    {
+      "id": "pets",
+      "metric": "2 + 2",
+      "labels": ["旅途陪伴", "双人共斗", "试用体验"]
+    },
+    {
+      "id": "rewards",
+      "metric": "10 抽",
+      "labels": ["累计签到", "登录好礼", "活动奖励"]
+    },
+    {
+      "id": "redland",
+      "metric": "10.02—06",
+      "labels": ["活动地点", "登场角色", "行前确认"]
+    },
+    {
+      "id": "hoyoland",
+      "metric": "10.02—05",
+      "labels": ["场馆位置", "活动日期", "当天日程"]
+    },
+    {
+      "id": "pet-debate",
+      "metric": "观点 ≠ 共识",
+      "labels": ["喜欢什么", "顾虑什么", "怎么理解"]
+    },
+    {
+      "id": "story-debate",
+      "metric": "主线观察",
+      "labels": ["正向反馈", "批评意见", "本期判断"]
+    },
+    {
+      "id": "endgame",
+      "metric": "先看队伍",
+      "labels": ["配队问答", "高难挑战", "攻略参考"]
+    },
+    {
+      "id": "creators",
+      "metric": "11.11",
+      "labels": ["创作方向", "探索心得", "投稿须知"]
+    },
+    {
+      "id": "arrival",
+      "metric": "下站再见",
+      "labels": ["01", "02", "03"]
+    }
+  ],
+  "retainedProperNames": [
+    "HoYoLAND",
+    "RED LAND",
+    "KINTEX",
+    "TapTap",
+    "BWIKI",
+    "Bangumi",
+    "Reddit"
+  ]
+}

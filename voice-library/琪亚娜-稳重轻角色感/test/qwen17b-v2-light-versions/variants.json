@@ -1,0 +1,37 @@
+{
+  "reference_variant": "v2-light",
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-Base-4bit",
+  "text": "本周 AI 行业有三个值得关注的变化。第一，生成式 AI 正在从单点能力走向完整工作流。第二，企业开始更重视数据、成本和可靠性。第三，视频内容生产正在进入更快的迭代周期。",
+  "variants": [
+    {
+      "id": "base",
+      "label": "基准",
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 50,
+      "repetition_penalty": 1.1,
+      "speed": 1.0,
+      "output": "test/琪亚娜-稳重轻角色感-v2-轻角色-基准.m4a"
+    },
+    {
+      "id": "steady",
+      "label": "稳一点",
+      "temperature": 0.55,
+      "top_p": 0.85,
+      "top_k": 40,
+      "repetition_penalty": 1.2,
+      "speed": 0.98,
+      "output": "test/琪亚娜-稳重轻角色感-v2-轻角色-稳一点.m4a"
+    },
+    {
+      "id": "lively",
+      "label": "活泼一点",
+      "temperature": 0.75,
+      "top_p": 0.95,
+      "top_k": 60,
+      "repetition_penalty": 1.05,
+      "speed": 1.04,
+      "output": "test/琪亚娜-稳重轻角色感-v2-轻角色-活泼一点.m4a"
+    }
+  ]
+}

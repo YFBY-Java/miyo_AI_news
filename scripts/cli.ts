@@ -1,0 +1,4 @@
+import { ensureInitialized,getProject,listProjects,getJob } from '../src/server/storage';
+import { createJob } from '../src/server/tasks';
+async function main(){await ensureInitialized();const id=process.argv[2];if(!id){console.log('使用：npm run render -- <项目ID> [prepare|render]');for(const p of await listProjects())console.log(p.id,p.title);return;}const kind=process.argv[3]==='prepare'?'prepare':'render';const job=await createJob(await getProject(id),kind);console.log('任务',job.id);let last='';for(;;){const current=await getJob(job.id);const status=`${current.status} ${Math.round(current.progress)}% ${current.message}`;if(status!==last){console.log(status);last=status;}if(['succeeded','failed','cancelled'].includes(current.status)){console.log(JSON.stringify(current,null,2));if(current.status!=='succeeded')process.exitCode=1;break;}await new Promise(r=>setTimeout(r,1000));}}
+main().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,142 @@
+{
+  "checkpoint": "miyo-ai-news-v0.1.0-checkpoint-20261006",
+  "createdAt": "2026-10-06T13:25:38.992865+08:00",
+  "preCheckpointCommit": "a11a118",
+  "projectRoot": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news",
+  "archive": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news/backups/20261006-132529/miyo_AI_news-data.tar.gz",
+  "archiveSha256": "1799429b1fe5dbab2e49cf910666113d37df3f51a0d2a6523f1fe3db24a1ec32",
+  "archiveBytes": 387447948,
+  "fileCount": 469,
+  "sourceBytes": 480871878,
+  "verification": {
+    "stableBeforeAndAfter": true,
+    "allArchivedFileHashesMatch": true,
+    "activeJobs": []
+  },
+  "projects": [
+    {
+      "id": "129973cd-6617-48b9-a88a-1d29eee8fbfe",
+      "title": "验证用 · 运行中取消与恢复 20261006-105259",
+      "revision": 2,
+      "game": "starrail",
+      "scenes": 1,
+      "cards": 3,
+      "images": 0,
+      "customSizes": 0
+    },
+    {
+      "id": "1e31cd71-9275-4fbf-a4cf-97350b789cbb",
+      "title": "星铁大卡预览 · 自定义卡片尺寸",
+      "revision": 7,
+      "game": "starrail",
+      "scenes": 1,
+      "cards": 3,
+      "images": 1,
+      "customSizes": 2
+    },
+    {
+      "id": "b90d372e-4752-406a-ab8e-6fab1c80a2a8",
+      "title": "星铁配图预览 · 三种图文布局",
+      "revision": 8,
+      "game": "starrail",
+      "scenes": 1,
+      "cards": 3,
+      "images": 3,
+      "customSizes": 0
+    },
+    {
+      "id": "d40591ca-a660-4e9a-b1ba-f19397f0ef36",
+      "title": "UI 回归验证 · 星铁副本",
+      "revision": 8,
+      "game": "genshin",
+      "scenes": 14,
+      "cards": 40,
+      "images": 0,
+      "customSizes": 0
+    },
+    {
+      "id": "starrail-demo",
+      "title": "星铁周报 · 原版导入",
+      "revision": 3,
+      "game": "starrail",
+      "scenes": 13,
+      "cards": 39,
+      "images": 1,
+      "customSizes": 0
+    }
+  ],
+  "jobs": [
+    {
+      "id": "imported-baseline",
+      "projectId": "starrail-demo",
+      "revision": 1,
+      "kind": "prepare",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T02:42:20.648Z"
+    },
+    {
+      "id": "f32fb07f-1b73-47e3-9066-0116e4ef6a96",
+      "projectId": "starrail-demo",
+      "revision": 1,
+      "kind": "render",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T02:50:07.708Z"
+    },
+    {
+      "id": "1da8a594-f4c0-4c90-beba-e01890eb70f5",
+      "projectId": "d40591ca-a660-4e9a-b1ba-f19397f0ef36",
+      "revision": 8,
+      "kind": "sample",
+      "status": "cancelled",
+      "updatedAt": "2026-10-06T02:48:10.377Z"
+    },
+    {
+      "id": "f86811c5-2742-42c5-908c-b91079d2d606",
+      "projectId": "129973cd-6617-48b9-a88a-1d29eee8fbfe",
+      "revision": 2,
+      "kind": "render",
+      "status": "cancelled",
+      "updatedAt": "2026-10-06T02:53:02.058Z"
+    },
+    {
+      "id": "e221d651-674a-41f0-ae2b-7f0dbab6f8ff",
+      "projectId": "129973cd-6617-48b9-a88a-1d29eee8fbfe",
+      "revision": 2,
+      "kind": "render",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T02:53:20.287Z"
+    },
+    {
+      "id": "945ea9c3-b633-4a34-928e-52c1cded077a",
+      "projectId": "starrail-demo",
+      "revision": 1,
+      "kind": "prepare",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T03:00:41.926Z"
+    },
+    {
+      "id": "0a60c5c2-2162-4174-bdfd-73307d750e0e",
+      "projectId": "b90d372e-4752-406a-ab8e-6fab1c80a2a8",
+      "revision": 6,
+      "kind": "prepare",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T03:21:15.643Z"
+    },
+    {
+      "id": "aebdd2bc-35f8-4b2e-8699-002e6b8a32d8",
+      "projectId": "b90d372e-4752-406a-ab8e-6fab1c80a2a8",
+      "revision": 8,
+      "kind": "render",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T03:22:32.422Z"
+    },
+    {
+      "id": "ef990ec8-822e-43ab-b966-c9741ffee3b2",
+      "projectId": "1e31cd71-9275-4fbf-a4cf-97350b789cbb",
+      "revision": 7,
+      "kind": "render",
+      "status": "succeeded",
+      "updatedAt": "2026-10-06T04:27:42.200Z"
+    }
+  ]
+}

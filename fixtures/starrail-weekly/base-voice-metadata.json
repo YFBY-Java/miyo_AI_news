@@ -1,0 +1,1579 @@
+{
+  "voice": "琪亚娜-稳重轻角色感-v2-轻角色-基准",
+  "engine": "local Qwen3-TTS 1.7B Base 4bit / MLX-Audio",
+  "model": "/Users/shuidi/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-4bit/snapshots/37e955a1deb861c088ae5f3a67043185f3d1a60c",
+  "reference": "/Users/shuidi/Documents/ChatGPT/AI创作/voice-library/琪亚娜-稳重轻角色感/kiana_refs_concat_v2_light.wav",
+  "referenceSha256": "07d8f5e63013c8420419fec0b15efefde6fcea29695dbd79ce2b201b7a0daffc",
+  "presetFile": "/Users/shuidi/Documents/ChatGPT/AI创作/voice-library/琪亚娜-稳重轻角色感/test/qwen17b-v2-light-versions/variants.json",
+  "preset": {
+    "id": "base",
+    "label": "基准",
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 50,
+    "repetition_penalty": 1.1,
+    "speed": 1.0,
+    "output": "test/琪亚娜-稳重轻角色感-v2-轻角色-基准.m4a"
+  },
+  "parameters": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 50,
+    "repetition_penalty": 1.1,
+    "max_tokens": 1800
+  },
+  "effectiveRepetitionPenalty": 1.5,
+  "tempo": 1.0,
+  "duration": 282.559,
+  "sampleRate": 48000,
+  "channels": 1,
+  "prosodyPlan": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/examples/starrail-weekly-2026-10-02/kiana-base-prosody.json",
+  "captionAlignment": "semantic caption parts; nearby detected pauses preferred, proportional fallback; not ASR forced alignment",
+  "loudnessPass1": {
+    "input_i": "-20.43",
+    "input_tp": "-2.02",
+    "input_lra": "4.70",
+    "input_thresh": "-30.85",
+    "output_i": "-18.23",
+    "output_tp": "-1.80",
+    "output_lra": "4.30",
+    "output_thresh": "-28.62",
+    "normalization_type": "dynamic",
+    "target_offset": "0.23"
+  },
+  "records": [
+    {
+      "text": "开拓者，本周列车周报来了。从九月二十八日到十月二日，星穹铁道迎来四点六版本，国庆线下也开始热闹起来。",
+      "captionParts": [
+        "开拓者，本周列车周报来了。",
+        "从九月二十八日到十月二日，星穹铁道迎来四点六版本，",
+        "国庆线下也开始热闹起来。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "招呼与本周时间、版本导语连续生成，避免招呼成为孤立短句后声线重置。",
+      "speakText": "开拓者，本周列车周报来了。从九月二十八日到十月二日，星穹铁道迎来四点六版本，国庆线下也开始热闹起来。",
+      "scene": 0,
+      "block": 0,
+      "id": "00-departure-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/00-departure-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/00-departure-00/trimmed.wav",
+      "duration": 9.840292,
+      "seed": 20261102,
+      "generatedAt": "2026-10-02T22:12:11.638780+08:00",
+      "generationSeconds": 12.238,
+      "rawSha256": "d246d60e97e2f624497c8bab46c198cebabfc9d8a19085257c9680c5e12b7f5d",
+      "silences": [
+        [
+          0.768854,
+          0.909604
+        ],
+        [
+          2.277354,
+          2.765354
+        ],
+        [
+          4.785938,
+          5.032625
+        ],
+        [
+          7.31,
+          7.730688
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0295,
+        "trailing": 0.06099999999999994
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 0.55,
+      "timelineEnd": 10.390292,
+      "addedSilenceAfter": 0.4096042000000001,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 2.4054,
+          "actual": 2.5214,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 7.4349,
+          "actual": 7.5203,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "这期用几分钟，看看新活动、线下聚会，以及社区正在聊什么。主线部分只谈评价，不展开剧情。",
+      "captionParts": [
+        "这期用几分钟，看看新活动、线下聚会，以及社区正在聊什么。",
+        "主线部分只谈评价，不展开剧情。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "节目范围和不剧透说明属于同一导览语意，连续生成后才进入正文。",
+      "speakText": "这期用几分钟，看看新活动、线下聚会，以及社区正在聊什么。主线部分只谈评价，不展开剧情。",
+      "scene": 0,
+      "block": 1,
+      "id": "00-departure-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/00-departure-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/00-departure-01/trimmed.wav",
+      "duration": 8.143458,
+      "seed": 20261103,
+      "generatedAt": "2026-10-02T22:12:19.459318+08:00",
+      "generationSeconds": 7.582,
+      "rawSha256": "a41656fc82148fddbbfe366543740374b53d4654d4413476105f8377381a4268",
+      "silences": [
+        [
+          1.306646,
+          1.489542
+        ],
+        [
+          3.366396,
+          3.635
+        ],
+        [
+          5.037625,
+          5.679271
+        ],
+        [
+          7.131187,
+          7.311708
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0293958,
+        "trailing": 0.015395000000001602
+      },
+      "longInternalPauses": [],
+      "timelineStart": 10.799896,
+      "timelineEnd": 18.943354,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 5.2822,
+          "actual": 5.3584,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "先看版本。四点六，月升之前，与兽共舞，已在九月二十八日上线。千星城故事继续推进，生研院地图开放。",
+      "captionParts": [
+        "先看版本。四点六，月升之前，与兽共舞，",
+        "已在九月二十八日上线。",
+        "千星城故事继续推进，生研院地图开放。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "开场短句、完整版本名、上线日期与地图更新合为一段，不在版本名内部切换音频。 合成稿只调整标题边界标点和书名号，防止专名被当作零散列举；文字内容不变。",
+      "speakText": "先看版本。四点六《月升之前，与兽共舞》，已在九月二十八日上线。千星城故事继续推进，生研院地图开放。",
+      "scene": 1,
+      "block": 0,
+      "id": "01-version-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/01-version-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/01-version-00/trimmed.wav",
+      "duration": 9.360083,
+      "seed": 20261104,
+      "generatedAt": "2026-10-02T22:12:28.242078+08:00",
+      "generationSeconds": 8.658,
+      "rawSha256": "aa50ca693b5e1d20bb9030440f240860af91c9555f7b241d9694ca7dbb2e28d1",
+      "silences": [
+        [
+          0.829729,
+          1.329646
+        ],
+        [
+          2.686271,
+          2.866
+        ],
+        [
+          3.526833,
+          3.996729
+        ],
+        [
+          5.630646,
+          5.918042
+        ],
+        [
+          6.881771,
+          7.004146
+        ],
+        [
+          7.689792,
+          7.988042
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0187083,
+        "trailing": 0.06287500000000001
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 19.943354000000003,
+      "timelineEnd": 29.303437000000002,
+      "addedSilenceAfter": 0.4195,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 3.4244,
+          "actual": 3.7618,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 5.7074,
+          "actual": 5.7743,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "符合条件的账号，记得查收更新与修复补偿。假期刚回坑的话，可以先跟着主线走，再处理新地图探索，不必第一天就把所有内容清空。",
+      "captionParts": [
+        "符合条件的账号，记得查收更新与修复补偿。",
+        "假期刚回坑的话，可以先跟着主线走，",
+        "再处理新地图探索，不必第一天就把所有内容清空。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "补偿提醒和回坑建议连贯表达，保留建议句中的递进关系。",
+      "speakText": "符合条件的账号，记得查收更新与修复补偿。假期刚回坑的话，可以先跟着主线走，再处理新地图探索，不必第一天就把所有内容清空。",
+      "scene": 1,
+      "block": 1,
+      "id": "01-version-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/01-version-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/01-version-01/trimmed.wav",
+      "duration": 10.585,
+      "seed": 20261105,
+      "generatedAt": "2026-10-02T22:12:37.843116+08:00",
+      "generationSeconds": 9.477,
+      "rawSha256": "bb7f5c6e5f8fb5c04e638b594b892325dbc5707a4b3c8c013476bb5638f1060a",
+      "silences": [
+        [
+          3.270437,
+          3.931833
+        ],
+        [
+          6.478375,
+          6.729271
+        ],
+        [
+          8.086688,
+          8.437896
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.017625,
+        "trailing": 0.04675000000000118
+      },
+      "longInternalPauses": [],
+      "timelineStart": 29.722937,
+      "timelineEnd": 40.307937,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 3.5283,
+          "actual": 3.6011,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 6.4686,
+          "actual": 6.6038,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "新角色是真珠，五星冰属性欢愉角色。官方给出的定位包含全队保护、回复、解控，以及帮助队友行动提前。同期开启的还有绯英复刻。",
+      "captionParts": [
+        "新角色是真珠，五星冰属性欢愉角色。",
+        "官方给出的定位包含全队保护、回复、解控，以及帮助队友行动提前。",
+        "同期开启的还有绯英复刻。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "角色身份、能力定位和同期复刻为信息段，保留完整角色名与能力列举。",
+      "speakText": "新角色是真珠，五星冰属性欢愉角色。官方给出的定位包含全队保护、回复、解控，以及帮助队友行动提前。同期开启的还有绯英复刻。",
+      "scene": 2,
+      "block": 0,
+      "id": "02-pearl-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/02-pearl-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/02-pearl-00/trimmed.wav",
+      "duration": 12.173208,
+      "seed": 20261106,
+      "generatedAt": "2026-10-02T22:12:47.936344+08:00",
+      "generationSeconds": 9.971,
+      "rawSha256": "acbc6cde38355a19a44da5b638f7deab6d49a23d99c3a03dffe54c930fa6f662",
+      "silences": [
+        [
+          1.266771,
+          1.567708
+        ],
+        [
+          2.627646,
+          2.754771
+        ],
+        [
+          3.448271,
+          3.75975
+        ],
+        [
+          3.939833,
+          4.10325
+        ],
+        [
+          5.238354,
+          5.368646
+        ],
+        [
+          6.403979,
+          6.655312
+        ],
+        [
+          7.610458,
+          7.955146
+        ],
+        [
+          9.555271,
+          9.876333
+        ],
+        [
+          10.01775,
+          10.170208
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0285417,
+        "trailing": 0.007354000000001193
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 41.307936999999995,
+      "timelineEnd": 53.481145,
+      "addedSilenceAfter": 0.4631667999999988,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 3.4452,
+          "actual": 3.604,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 9.6467,
+          "actual": 9.7158,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "对于抽不抽，我的建议是先看自己的队伍缺口，再试用角色。角色能做什么，和你的账号需不需要，是两个不同的问题。",
+      "captionParts": [
+        "对于抽不抽，我的建议是先看自己的队伍缺口，再试用角色。",
+        "角色能做什么，和你的账号需不需要，是两个不同的问题。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "抽取建议与解释保持同一口吻，避免把结论句变成突兀的新声音。",
+      "speakText": "对于抽不抽，我的建议是先看自己的队伍缺口，再试用角色。角色能做什么，和你的账号需不需要，是两个不同的问题。",
+      "scene": 2,
+      "block": 1,
+      "id": "02-pearl-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/02-pearl-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/02-pearl-01/trimmed.wav",
+      "duration": 9.422917,
+      "seed": 20261107,
+      "generatedAt": "2026-10-02T22:12:57.296247+08:00",
+      "generationSeconds": 9.039,
+      "rawSha256": "dd92179a1552505457c2c6a63d8469e1336aa553ee7e56dd7c95bccb0700966f",
+      "silences": [
+        [
+          0.971812,
+          1.224583
+        ],
+        [
+          2.076646,
+          2.269188
+        ],
+        [
+          3.622833,
+          4.042875
+        ],
+        [
+          4.984521,
+          5.1505
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0294792,
+        "trailing": 0.07064599999999999
+      },
+      "longInternalPauses": [],
+      "timelineStart": 53.944312,
+      "timelineEnd": 63.367228999999995,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.8117,
+          "actual": 5.0675,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "活动方面，爱，幽灵与机器人已经开启，限时部分持续到十一月十一日凌晨。斯科特的机铠生产线和考核，构成了这次活动的故事背景。",
+      "captionParts": [
+        "活动方面，爱，幽灵与机器人已经开启，",
+        "限时部分持续到十一月十一日凌晨。",
+        "斯科特的机铠生产线和考核，构成了这次活动的故事背景。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "活动名称、截止时间与故事背景合为介绍段，完整保留活动名和十一月十一日。 合成稿只调整标题边界标点和书名号，防止专名被当作零散列举；文字内容不变。",
+      "speakText": "活动方面，《爱，幽灵与机器人》已经开启，限时部分持续到十一月十一日凌晨。斯科特的机铠生产线和考核，构成了这次活动的故事背景。",
+      "scene": 3,
+      "block": 0,
+      "id": "03-robot-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/03-robot-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/03-robot-00/trimmed.wav",
+      "duration": 10.647333,
+      "seed": 20261108,
+      "generatedAt": "2026-10-02T22:13:07.147181+08:00",
+      "generationSeconds": 9.73,
+      "rawSha256": "1cc6663f6628ffcc3a56f8f50f6eb24ff943acc7af6ce5295d051d9eb4367f9a",
+      "silences": [
+        [
+          0.678708,
+          1.066229
+        ],
+        [
+          1.333687,
+          1.676521
+        ],
+        [
+          3.333479,
+          3.638896
+        ],
+        [
+          6.169167,
+          6.551521
+        ],
+        [
+          8.835521,
+          9.0165
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.03025,
+        "trailing": 0.0
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 64.367229,
+      "timelineEnd": 75.014562,
+      "addedSilenceAfter": 0.4708958,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 2.9576,
+          "actual": 3.4862,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 5.9152,
+          "actual": 6.3603,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "本周也已经出现拼装和订单攻略。可以先自己尝试，真的卡住了，再对照对应关卡，保留一点解题的乐趣。",
+      "captionParts": [
+        "本周也已经出现拼装和订单攻略。",
+        "可以先自己尝试，真的卡住了，再对照对应关卡，保留一点解题的乐趣。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "攻略存在与先尝试再参考的建议连续生成，保留条件关系。",
+      "speakText": "本周也已经出现拼装和订单攻略。可以先自己尝试，真的卡住了，再对照对应关卡，保留一点解题的乐趣。",
+      "scene": 3,
+      "block": 1,
+      "id": "03-robot-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/03-robot-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/03-robot-01/trimmed.wav",
+      "duration": 8.595083,
+      "seed": 20261109,
+      "generatedAt": "2026-10-02T22:13:15.065525+08:00",
+      "generationSeconds": 7.741,
+      "rawSha256": "0c1671fdce2a076443391a2358b2bcc194ddf89988cf8fc0b958f045e0442b48",
+      "silences": [
+        [
+          2.480396,
+          2.981146
+        ],
+        [
+          4.221479,
+          4.379604
+        ],
+        [
+          5.162604,
+          5.427625
+        ],
+        [
+          6.947979,
+          7.184354
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0291042,
+        "trailing": 0.0669789999999999
+      },
+      "longInternalPauses": [],
+      "timelineStart": 75.485458,
+      "timelineEnd": 84.080541,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 2.865,
+          "actual": 2.7308,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "新休闲内容是星际幻宠。除了带着小伙伴探索，也可以在小屋和乐园里布设互动。",
+      "captionParts": [
+        "新休闲内容是星际幻宠。",
+        "除了带着小伙伴探索，也可以在小屋和乐园里布设互动。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "短开场与具体陪伴玩法连读，避免十一字开场单独生成。",
+      "speakText": "新休闲内容是星际幻宠。除了带着小伙伴探索，也可以在小屋和乐园里布设互动。",
+      "scene": 4,
+      "block": 0,
+      "id": "04-pets-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/04-pets-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/04-pets-00/trimmed.wav",
+      "duration": 6.000083,
+      "seed": 20261110,
+      "generatedAt": "2026-10-02T22:13:22.047769+08:00",
+      "generationSeconds": 6.752,
+      "rawSha256": "1fc8ce231479e9b5d33407e0cd901f88635443832250f4ad6c277c50fe1a2e79",
+      "silences": [
+        [
+          1.933354,
+          2.429875
+        ],
+        [
+          3.689104,
+          3.950771
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.00654167,
+        "trailing": 0.015249999999999986
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 85.080541,
+      "timelineEnd": 91.080624,
+      "addedSilenceAfter": 0.4572083,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 1.8182,
+          "actual": 2.1816,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "星际碰碰好搭档则采用共斗玩法，你和队友各派两名随宠出战，可以邀请好友，也可以选择是否匹配真人。玩法提供试用随宠，想尝鲜的开拓者可以先去玩几局。",
+      "captionParts": [
+        "星际碰碰好搭档则采用共斗玩法，你和队友各派两名随宠出战，",
+        "可以邀请好友，也可以选择是否匹配真人。",
+        "玩法提供试用随宠，想尝鲜的开拓者可以先去玩几局。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "共斗规则、匹配选项和试用建议连贯讲完，不拆开玩法名或各派两名的规则。",
+      "speakText": "星际碰碰好搭档则采用共斗玩法，你和队友各派两名随宠出战，可以邀请好友，也可以选择是否匹配真人。玩法提供试用随宠，想尝鲜的开拓者可以先去玩几局。",
+      "scene": 4,
+      "block": 1,
+      "id": "04-pets-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/04-pets-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/04-pets-01/trimmed.wav",
+      "duration": 14.266083,
+      "seed": 20261111,
+      "generatedAt": "2026-10-02T22:13:33.803268+08:00",
+      "generationSeconds": 11.634,
+      "rawSha256": "836c895d63a9e571d942f699f3abd791ac769e614eea801ddb8e0914ef730b88",
+      "silences": [
+        [
+          1.4135,
+          1.61175
+        ],
+        [
+          2.929271,
+          3.399812
+        ],
+        [
+          5.58,
+          5.895667
+        ],
+        [
+          6.887292,
+          7.241875
+        ],
+        [
+          9.065312,
+          9.499917
+        ],
+        [
+          11.196292,
+          11.613208
+        ],
+        [
+          12.954646,
+          13.096187
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0275417,
+        "trailing": 0.023144999999999527
+      },
+      "longInternalPauses": [],
+      "timelineStart": 91.537833,
+      "timelineEnd": 105.803916,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 5.7064,
+          "actual": 5.7378,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 9.4376,
+          "actual": 9.2826,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "奖励这里提醒三件事。巡星之礼，累计七日签到能拿十张专票。游园伴手礼有六张潮玩礼券。镇伏贪饕的活动进度，还能解锁十八张礼券和星琼奖励。",
+      "captionParts": [
+        "奖励这里提醒三件事。巡星之礼，累计七日签到能拿十张专票。",
+        "游园伴手礼有六张潮玩礼券。",
+        "镇伏贪饕的活动进度，还能解锁十八张礼券和星琼奖励。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "三项奖励清单一口气形成完整列举语调，数字与奖励名不拆。 合成稿只调整标题边界标点和书名号，防止专名被当作零散列举；文字内容不变。",
+      "speakText": "奖励这里提醒三件事。《巡星之礼》累计七日签到能拿十张专票。《游园伴手礼》有六张潮玩礼券。《镇伏贪饕》的活动进度，还能解锁十八张礼券和星琼奖励。",
+      "scene": 5,
+      "block": 0,
+      "id": "05-rewards-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/05-rewards-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/05-rewards-00/trimmed.wav",
+      "duration": 13.765375,
+      "seed": 20261112,
+      "generatedAt": "2026-10-02T22:13:45.656591+08:00",
+      "generationSeconds": 11.679,
+      "rawSha256": "932c513c5ba7893ec1abecf6cf4038e4c35e03e113dd0ff217efc0cd784295d7",
+      "silences": [
+        [
+          1.582625,
+          2.139521
+        ],
+        [
+          2.975188,
+          3.355458
+        ],
+        [
+          4.507479,
+          4.697625
+        ],
+        [
+          5.79575,
+          6.202583
+        ],
+        [
+          7.173354,
+          7.384604
+        ],
+        [
+          8.828563,
+          9.229
+        ],
+        [
+          10.785458,
+          11.029167
+        ],
+        [
+          12.644958,
+          12.8065
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0294792,
+        "trailing": 0.06643799999999978
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 106.803916,
+      "timelineEnd": 120.569291,
+      "addedSilenceAfter": 0.4056662000000002,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 5.7356,
+          "actual": 5.9992,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 8.4886,
+          "actual": 9.0288,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "所以二十四张是不同途径合计，不是登录就全部到账。先看清任务条件，再安排进度，会更省心。",
+      "captionParts": [
+        "所以二十四张是不同途径合计，不是登录就全部到账。",
+        "先看清任务条件，再安排进度，会更省心。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "合计口径和任务提醒合成解释段，保留所以引导的结论。",
+      "speakText": "所以二十四张是不同途径合计，不是登录就全部到账。先看清任务条件，再安排进度，会更省心。",
+      "scene": 5,
+      "block": 1,
+      "id": "05-rewards-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/05-rewards-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/05-rewards-01/trimmed.wav",
+      "duration": 7.938292,
+      "seed": 20261113,
+      "generatedAt": "2026-10-02T22:13:53.641411+08:00",
+      "generationSeconds": 7.815,
+      "rawSha256": "29ef06a0f9f2cda97e12139bd9cdd3c8e14f50f9425a20d83ad50c2404e7b329",
+      "silences": [
+        [
+          2.277646,
+          2.718417
+        ],
+        [
+          4.241958,
+          4.748604
+        ],
+        [
+          6.020313,
+          6.248542
+        ],
+        [
+          6.99725,
+          7.248562
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0278958,
+        "trailing": 0.06912499999999966
+      },
+      "longInternalPauses": [],
+      "timelineStart": 120.974958,
+      "timelineEnd": 128.91325,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.5959,
+          "actual": 4.4953,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "国内线下，这一站在上海复兴岛。星穹铁道参展国庆期间的 RED LAND，时间是十月二日到六日，官方官宣中提到了砂金与真珠。",
+      "captionParts": [
+        "国内线下，这一站在上海复兴岛。",
+        "星穹铁道参展国庆期间的 RED LAND，时间是十月二日到六日，",
+        "官方官宣中提到了砂金与真珠。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "地点导语与活动、日期、角色连续生成，英文活动名不拆开。",
+      "speakText": "国内线下，这一站在上海复兴岛。星穹铁道参展国庆期间的 RED LAND，时间是十月二日到六日，官方官宣中提到了砂金与真珠。",
+      "scene": 6,
+      "block": 0,
+      "id": "06-redland-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/06-redland-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/06-redland-00/trimmed.wav",
+      "duration": 10.956917,
+      "seed": 20261114,
+      "generatedAt": "2026-10-02T22:14:02.872192+08:00",
+      "generationSeconds": 9.101,
+      "rawSha256": "083fcf9c1cc868e8c532df817f1d2d640c97f814d7bee325da9f6d3ac9786c64",
+      "silences": [
+        [
+          0.868125,
+          1.019833
+        ],
+        [
+          2.500583,
+          3.175625
+        ],
+        [
+          7.798583,
+          8.371083
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.029125,
+        "trailing": 0.03793800000000047
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 129.91325,
+      "timelineEnd": 140.870167,
+      "addedSilenceAfter": 0.43291619999999953,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 2.6378,
+          "actual": 2.8381,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 8.3191,
+          "actual": 8.0848,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "这是本周举办的活动，参展消息早在八月已经公布。准备出发的话，先确认入场资格和当天安排，再决定行程。",
+      "captionParts": [
+        "这是本周举办的活动，参展消息早在八月已经公布。",
+        "准备出发的话，先确认入场资格和当天安排，再决定行程。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "区分举办时间与官宣时间，再接出行建议，形成自然收束。",
+      "speakText": "这是本周举办的活动，参展消息早在八月已经公布。准备出发的话，先确认入场资格和当天安排，再决定行程。",
+      "scene": 6,
+      "block": 1,
+      "id": "06-redland-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/06-redland-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/06-redland-01/trimmed.wav",
+      "duration": 8.551042,
+      "seed": 20261115,
+      "generatedAt": "2026-10-02T22:14:11.380410+08:00",
+      "generationSeconds": 8.379,
+      "rawSha256": "2f024eaa7b57e095769c0af53651bdda317c4f50e1ac3f7a6ae6a7548eafed1b",
+      "silences": [
+        [
+          1.328937,
+          1.658062
+        ],
+        [
+          3.699479,
+          4.007688
+        ],
+        [
+          4.152042,
+          4.395708
+        ],
+        [
+          5.43575,
+          5.601375
+        ],
+        [
+          7.636083,
+          7.814938
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0291458,
+        "trailing": 0.025500000000000966
+      },
+      "longInternalPauses": [],
+      "timelineStart": 141.303083,
+      "timelineEnd": 149.85412499999998,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.0812,
+          "actual": 4.2739,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "海外方面，韩国的米游嘉年华 HoYoLAND，也在十月二日到五日举行。",
+      "captionParts": [
+        "海外方面，韩国的米游嘉年华 HoYoLAND，",
+        "也在十月二日到五日举行。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "海外活动、完整英文名称和举办日期在一个语意块内读完。",
+      "speakText": "海外方面，韩国的米游嘉年华 HoYoLAND，也在十月二日到五日举行。",
+      "scene": 7,
+      "block": 0,
+      "id": "07-hoyoland-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/07-hoyoland-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/07-hoyoland-00/trimmed.wav",
+      "duration": 5.880208,
+      "seed": 20261116,
+      "generatedAt": "2026-10-02T22:14:18.425101+08:00",
+      "generationSeconds": 6.743,
+      "rawSha256": "8f31754bb1e4f66daaa035f5d25f891c10e9b2d221f5b80fd34a29a422096a57",
+      "silences": [
+        [
+          0.755729,
+          1.153021
+        ],
+        [
+          2.602062,
+          2.935521
+        ],
+        [
+          3.607063,
+          3.892271
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.028875,
+        "trailing": 0.03089599999999937
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 150.854125,
+      "timelineEnd": 156.73433300000002,
+      "addedSilenceAfter": 0.43931230000000066,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 3.7937,
+          "actual": 3.7497,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "主办方公布的场地是 KINTEX 第二展馆七号、八号馆，以及后方广场，星铁设有专门的活动信息入口。各天闭馆时间有所不同，计划前往的朋友可以先看官方日程。",
+      "captionParts": [
+        "主办方公布的场地是 KINTEX 第二展馆七号、八号馆，",
+        "以及后方广场，星铁设有专门的活动信息入口。",
+        "各天闭馆时间有所不同，计划前往的朋友可以先看官方日程。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "场馆、信息入口与不同日期安排保持同一上下文，场馆号不拆开。",
+      "speakText": "主办方公布的场地是 KINTEX 第二展馆七号、八号馆，以及后方广场，星铁设有专门的活动信息入口。各天闭馆时间有所不同，计划前往的朋友可以先看官方日程。",
+      "scene": 7,
+      "block": 1,
+      "id": "07-hoyoland-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/07-hoyoland-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/07-hoyoland-01/trimmed.wav",
+      "duration": 13.650167,
+      "seed": 20261117,
+      "generatedAt": "2026-10-02T22:14:29.275215+08:00",
+      "generationSeconds": 10.738,
+      "rawSha256": "2976cdc17172148b81636b3facd393359b6b33b4072cc8a49b9c8ebb6631be71",
+      "silences": [
+        [
+          2.787062,
+          3.298667
+        ],
+        [
+          3.881437,
+          4.164542
+        ],
+        [
+          4.748,
+          5.101583
+        ],
+        [
+          6.122312,
+          6.641583
+        ],
+        [
+          8.704583,
+          9.135583
+        ],
+        [
+          10.823,
+          11.232563
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0297917,
+        "trailing": 0.0263340000000003
+      },
+      "longInternalPauses": [],
+      "timelineStart": 157.173646,
+      "timelineEnd": 170.823813,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.8177,
+          "actual": 4.9248,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 8.6317,
+          "actual": 8.9201,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "再看社区。幻宠带来了很不一样的声音：有人喜欢收集、交换和陪伴，也有人不适应猫猫狸的造型，对盲盒式获取有所顾虑。",
+      "captionParts": [
+        "再看社区。幻宠带来了很不一样的声音：",
+        "有人喜欢收集、交换和陪伴，",
+        "也有人不适应猫猫狸的造型，对盲盒式获取有所顾虑。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "再看社区与两种声音连续生成，喜好与顾虑留在同一对照句中。",
+      "speakText": "再看社区。幻宠带来了很不一样的声音：有人喜欢收集、交换和陪伴，也有人不适应猫猫狸的造型，对盲盒式获取有所顾虑。",
+      "scene": 8,
+      "block": 0,
+      "id": "08-pet-debate-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/08-pet-debate-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/08-pet-debate-00/trimmed.wav",
+      "duration": 10.960083,
+      "seed": 20261118,
+      "generatedAt": "2026-10-02T22:14:38.522336+08:00",
+      "generationSeconds": 9.121,
+      "rawSha256": "a7a4ad8bf02d05eb7da3cbbfbb18f434b208b9f1611af865b68a28d97bfff3c1",
+      "silences": [
+        [
+          0.794562,
+          1.447625
+        ],
+        [
+          3.512542,
+          3.944
+        ],
+        [
+          6.463188,
+          6.804
+        ],
+        [
+          8.838792,
+          9.041187
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0277292,
+        "trailing": 0.0487289999999998
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 171.823813,
+      "timelineEnd": 182.783896,
+      "addedSilenceAfter": 0.4247710000000002,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 3.5788,
+          "actual": 3.7283,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 6.0392,
+          "actual": 6.6336,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "游戏日报本周讨论了这些分歧，另一位攻略作者则建议多用免费机会和好友互换。这里要把现有玩法、审美偏好，以及对未来的猜测分开来看。",
+      "captionParts": [
+        "游戏日报本周讨论了这些分歧，",
+        "另一位攻略作者则建议多用免费机会和好友互换。",
+        "这里要把现有玩法、审美偏好，以及对未来的猜测分开来看。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "来源观察与本期分析相接，避免把审美和未来猜测切成无关联片段。",
+      "speakText": "游戏日报本周讨论了这些分歧，另一位攻略作者则建议多用免费机会和好友互换。这里要把现有玩法、审美偏好，以及对未来的猜测分开来看。",
+      "scene": 8,
+      "block": 1,
+      "id": "08-pet-debate-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/08-pet-debate-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/08-pet-debate-01/trimmed.wav",
+      "duration": 10.646417,
+      "seed": 20261119,
+      "generatedAt": "2026-10-02T22:14:48.392044+08:00",
+      "generationSeconds": 9.74,
+      "rawSha256": "9a4e31ff3438790a4a02ab3d2ec85efe7db1e9845602fed94bfc6d33319e88c4",
+      "silences": [
+        [
+          2.159833,
+          2.532729
+        ],
+        [
+          6.064333,
+          6.327062
+        ],
+        [
+          7.587292,
+          7.805979
+        ],
+        [
+          8.615354,
+          8.843979
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0265,
+        "trailing": 0.0
+      },
+      "longInternalPauses": [],
+      "timelineStart": 183.208667,
+      "timelineEnd": 193.85508399999998,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 2.3863,
+          "actual": 2.3463,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 6.241,
+          "actual": 6.1957,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "主线评价同样有分歧。中文讨论楼里，有人肯定真珠的塑造和伏笔回收；英文社区也有玩家觉得冲突的紧张感不够。",
+      "captionParts": [
+        "主线评价同样有分歧。",
+        "中文讨论楼里，有人肯定真珠的塑造和伏笔回收；",
+        "英文社区也有玩家觉得冲突的紧张感不够。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "短导语与中英文两类反馈合并，保留分号两侧的对照语气。",
+      "speakText": "主线评价同样有分歧。中文讨论楼里，有人肯定真珠的塑造和伏笔回收；英文社区也有玩家觉得冲突的紧张感不够。",
+      "scene": 9,
+      "block": 0,
+      "id": "09-story-debate-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/09-story-debate-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/09-story-debate-00/trimmed.wav",
+      "duration": 9.987625,
+      "seed": 20261120,
+      "generatedAt": "2026-10-02T22:14:58.122991+08:00",
+      "generationSeconds": 9.596,
+      "rawSha256": "15093ca856bb955b5579b9251cda873f6e578ca494b98e94870a864667beb834",
+      "silences": [
+        [
+          1.886042,
+          2.545042
+        ],
+        [
+          3.549062,
+          3.800542
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0293125,
+        "trailing": 0.005250000000000199
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 194.855084,
+      "timelineEnd": 204.842709,
+      "addedSilenceAfter": 0.4662082999999998,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 1.9125,
+          "actual": 2.2155,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 6.1626,
+          "actual": 6.1626,
+          "method": "proportional-fallback"
+        }
+      ]
+    },
+    {
+      "text": "这些只是本周公开讨论中的部分样本，不能直接当作整体口碑。如果你还没玩完，建议先体验故事，再回来看讨论，免得先被结论带着走。",
+      "captionParts": [
+        "这些只是本周公开讨论中的部分样本，不能直接当作整体口碑。",
+        "如果你还没玩完，建议先体验故事，再回来看讨论，免得先被结论带着走。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "样本范围说明和先体验的建议连续生成，使评论限度与建议有承接。",
+      "speakText": "这些只是本周公开讨论中的部分样本，不能直接当作整体口碑。如果你还没玩完，建议先体验故事，再回来看讨论，免得先被结论带着走。",
+      "scene": 9,
+      "block": 1,
+      "id": "09-story-debate-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/09-story-debate-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/09-story-debate-01/trimmed.wav",
+      "duration": 10.989792,
+      "seed": 20261121,
+      "generatedAt": "2026-10-02T22:15:07.286886+08:00",
+      "generationSeconds": 8.917,
+      "rawSha256": "94d7ca90de60c972f754a3d348381619888a032efba0978d11b78975d4716e19",
+      "silences": [
+        [
+          2.586771,
+          2.962229
+        ],
+        [
+          4.50175,
+          5.173729
+        ],
+        [
+          6.229167,
+          6.542542
+        ],
+        [
+          7.745062,
+          8.085
+        ],
+        [
+          9.099375,
+          9.560542
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0285417,
+        "trailing": 0.0677709999999987
+      },
+      "longInternalPauses": [],
+      "timelineStart": 205.308917,
+      "timelineEnd": 216.298709,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 5.1952,
+          "actual": 4.8377,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "战斗话题上，真珠适合什么队，是否替换现有生存位，是本周问答区能看到的问题。异相仲裁的反馈也不一样，有人卡在生存，有人觉得这期更顺。",
+      "captionParts": [
+        "战斗话题上，真珠适合什么队，是否替换现有生存位，",
+        "是本周问答区能看到的问题。",
+        "异相仲裁的反馈也不一样，有人卡在生存，有人觉得这期更顺。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "配队提问和高难体验合为现象段，比较双方观点时不重启声线。",
+      "speakText": "战斗话题上，真珠适合什么队，是否替换现有生存位，是本周问答区能看到的问题。异相仲裁的反馈也不一样，有人卡在生存，有人觉得这期更顺。",
+      "scene": 10,
+      "block": 0,
+      "id": "10-endgame-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/10-endgame-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/10-endgame-00/trimmed.wav",
+      "duration": 13.120083,
+      "seed": 20261122,
+      "generatedAt": "2026-10-02T22:15:17.724626+08:00",
+      "generationSeconds": 10.282,
+      "rawSha256": "3d06e108a365c44d3deaa7ef18db40795f7fd562f4c4e5c67c8b25ad55c560b3",
+      "silences": [
+        [
+          1.104021,
+          1.26275
+        ],
+        [
+          2.583063,
+          2.819375
+        ],
+        [
+          4.656667,
+          5.093708
+        ],
+        [
+          7.116083,
+          7.6325
+        ],
+        [
+          9.664458,
+          9.921021
+        ],
+        [
+          11.274479,
+          11.625833
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0125,
+        "trailing": 0.0349579999999996
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 217.29870900000003,
+      "timelineEnd": 230.41879200000002,
+      "addedSilenceAfter": 0.4355628000000004,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.7504,
+          "actual": 4.8752,
+          "method": "nearby-silence"
+        },
+        {
+          "expected": 7.4649,
+          "actual": 7.3743,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "看攻略或强度评价时，把队伍、练度和机制处理一起看，比只记一句必须抽谁，更能帮你解决眼前的问题。",
+      "captionParts": [
+        "看攻略或强度评价时，把队伍、练度和机制处理一起看，",
+        "比只记一句必须抽谁，更能帮你解决眼前的问题。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "整段建议完整生成，保留一起看、比、更能之间的逻辑递进。",
+      "speakText": "看攻略或强度评价时，把队伍、练度和机制处理一起看，比只记一句必须抽谁，更能帮你解决眼前的问题。",
+      "scene": 10,
+      "block": 1,
+      "id": "10-endgame-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/10-endgame-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/10-endgame-01/trimmed.wav",
+      "duration": 9.522375,
+      "seed": 20261123,
+      "generatedAt": "2026-10-02T22:15:26.508289+08:00",
+      "generationSeconds": 8.626,
+      "rawSha256": "c986025ca3d0eeb94bbf4841a901fc7787d4a434d05075b0d31a539acd279bb4",
+      "silences": [
+        [
+          2.003708,
+          2.483
+        ],
+        [
+          3.134812,
+          3.309208
+        ],
+        [
+          5.222104,
+          5.703354
+        ],
+        [
+          7.512979,
+          7.792833
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0294792,
+        "trailing": 0.020312999999999803
+      },
+      "longInternalPauses": [],
+      "timelineStart": 230.85435500000003,
+      "timelineEnd": 240.37673000000004,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.9879,
+          "actual": 5.4627,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "最后补一条社区创作消息。四点六版本的攻略征集已经开始，TapTap 活动帖给出的投稿截止是十一月十一日。",
+      "captionParts": [
+        "最后补一条社区创作消息。四点六版本的攻略征集已经开始，",
+        "TapTap 活动帖给出的投稿截止是十一月十一日。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "创作导语与征集、投稿截止相接，平台名和日期连续读出。",
+      "speakText": "最后补一条社区创作消息。四点六版本的攻略征集已经开始，TapTap 活动帖给出的投稿截止是十一月十一日。",
+      "scene": 11,
+      "block": 0,
+      "id": "11-creators-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/11-creators-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/11-creators-00/trimmed.wav",
+      "duration": 9.0255,
+      "seed": 20261124,
+      "generatedAt": "2026-10-02T22:15:38.336536+08:00",
+      "generationSeconds": 11.342,
+      "rawSha256": "abf48952cd85f5f8cb637d636effda811000314f10bebd4474c3a144dcb7bc85",
+      "silences": [
+        [
+          1.861854,
+          2.356021
+        ],
+        [
+          4.572354,
+          4.985875
+        ],
+        [
+          5.703292,
+          6.038146
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0279375,
+        "trailing": 0.07591699999999868
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 241.37673000000004,
+      "timelineEnd": 250.40223000000003,
+      "addedSilenceAfter": 0.39479130000000134,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.7008,
+          "actual": 4.7791,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "角色、配队、活动和探索心得，都可以按规则整理投稿。除了结论，写清账号条件和操作步骤，往往更能帮助其他开拓者少走弯路。",
+      "captionParts": [
+        "角色、配队、活动和探索心得，都可以按规则整理投稿。",
+        "除了结论，写清账号条件和操作步骤，往往更能帮助其他开拓者少走弯路。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "投稿主题与写作建议相连，保留除了结论引导的补充关系。",
+      "speakText": "角色、配队、活动和探索心得，都可以按规则整理投稿。除了结论，写清账号条件和操作步骤，往往更能帮助其他开拓者少走弯路。",
+      "scene": 11,
+      "block": 1,
+      "id": "11-creators-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/11-creators-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/11-creators-01/trimmed.wav",
+      "duration": 11.354167,
+      "seed": 20261125,
+      "generatedAt": "2026-10-02T22:15:49.235621+08:00",
+      "generationSeconds": 10.567,
+      "rawSha256": "4216ba00dce925f93bb895f33a8621bb4e48acdcbb8b2510887d580fd83f4e73",
+      "silences": [
+        [
+          0.538729,
+          0.780625
+        ],
+        [
+          1.301583,
+          1.432021
+        ],
+        [
+          1.946937,
+          2.081979
+        ],
+        [
+          3.047521,
+          3.304479
+        ],
+        [
+          4.892583,
+          5.492
+        ],
+        [
+          6.184104,
+          6.421271
+        ],
+        [
+          8.351667,
+          8.773854
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0292917,
+        "trailing": 0.022875000000000867
+      },
+      "longInternalPauses": [],
+      "timelineStart": 250.79702200000003,
+      "timelineEnd": 262.15118900000004,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 4.6752,
+          "actual": 5.1923,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "这周可以先记住三件事：签到和奖励别漏，线下出发前核对安排，主线和新玩法按自己的节奏体验。",
+      "captionParts": [
+        "这周可以先记住三件事：签到和奖励别漏，",
+        "线下出发前核对安排，主线和新玩法按自己的节奏体验。"
+      ],
+      "pauseAfterSec": 0.5,
+      "rationale": "三件事作为完整清单生成，避免每一项像新场景重新起音。",
+      "speakText": "这周可以先记住三件事：签到和奖励别漏，线下出发前核对安排，主线和新玩法按自己的节奏体验。",
+      "scene": 12,
+      "block": 0,
+      "id": "12-arrival-00",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/12-arrival-00/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/12-arrival-00/trimmed.wav",
+      "duration": 7.9945,
+      "seed": 20261126,
+      "generatedAt": "2026-10-02T22:15:57.485331+08:00",
+      "generationSeconds": 8.069,
+      "rawSha256": "9079b76f5672bfc63a740d1e9f5cb84b0ed109f065f1764b82f54eb2a2312951",
+      "silences": [
+        [
+          1.844042,
+          1.988479
+        ],
+        [
+          3.347562,
+          3.53175
+        ],
+        [
+          5.368292,
+          5.713604
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0296458,
+        "trailing": 0.0
+      },
+      "longInternalPauses": [],
+      "measuredBlockPause": 0.5,
+      "timelineStart": 263.15118900000004,
+      "timelineEnd": 271.14568900000006,
+      "addedSilenceAfter": 0.4834792,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 3.3977,
+          "actual": 3.4397,
+          "method": "nearby-silence"
+        }
+      ]
+    },
+    {
+      "text": "本期资料截至十月二日，本周还没有结束，后续变化仍以官方公告为准。愿这趟假期列车，带你遇见一点新的乐趣。我们下一站见。",
+      "captionParts": [
+        "本期资料截至十月二日，本周还没有结束，后续变化仍以官方公告为准。",
+        "愿这趟假期列车，带你遇见一点新的乐趣。我们下一站见。"
+      ],
+      "pauseAfterSec": 0.7,
+      "rationale": "截至时间、祝福与告别相接，避免七字告别独立生成造成角色声线突变。",
+      "speakText": "本期资料截至十月二日，本周还没有结束，后续变化仍以官方公告为准。愿这趟假期列车，带你遇见一点新的乐趣。我们下一站见。",
+      "scene": 12,
+      "block": 1,
+      "id": "12-arrival-01",
+      "raw": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/12-arrival-01/voice_000.wav",
+      "cleaned": "/Users/shuidi/Documents/ChatGPT/AI创作/miyo-news-card/output/starrail-weekly-2026-10-02-kiana-base/work/12-arrival-01/trimmed.wav",
+      "duration": 10.480083,
+      "seed": 20261127,
+      "generatedAt": "2026-10-02T22:16:07.783356+08:00",
+      "generationSeconds": 10.064,
+      "rawSha256": "60e8d01d14e6ce9f275b3d42447e9da0ae12681c23f4d6718d2b153836851eda",
+      "silences": [
+        [
+          1.696812,
+          2.198667
+        ],
+        [
+          3.35,
+          3.746875
+        ],
+        [
+          5.905729,
+          6.312542
+        ],
+        [
+          7.474417,
+          7.780146
+        ],
+        [
+          9.253625,
+          9.668521
+        ]
+      ],
+      "edgeSilences": {
+        "leading": 0.0165208,
+        "trailing": 0.033478999999999814
+      },
+      "longInternalPauses": [],
+      "timelineStart": 271.62916800000005,
+      "timelineEnd": 282.10925100000003,
+      "addedSilenceAfter": 0.45,
+      "captionBoundaryAlignment": [
+        {
+          "expected": 5.8447,
+          "actual": 6.1091,
+          "method": "nearby-silence"
+        }
+      ]
+    }
+  ]
+}
