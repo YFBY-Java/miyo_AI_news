@@ -6,6 +6,7 @@ import os from 'node:os';
 import sharp from 'sharp';
 import { audioKey, blankProject, compileEpisode, estimatePlan, projectKey, validateProject } from '../src/core/project';
 import type { CardImage, ImageAsset, Project } from '../src/core/types';
+import { createDirectoryLink, createFileLinkOrSkip } from './helpers/filesystem-links';
 
 let temporary:string;
 let images:typeof import('../src/server/images');
@@ -129,12 +130,24 @@ test('image identity paths and SHA prevent escape and same-length content replac
   const asset=await images.storeImage(uploadFile(png));const imagePath=diskImage(asset);
   const changed=Buffer.from(png);changed[changed.length-1]^=1;await fs.writeFile(imagePath,changed);
   await assert.rejects(images.resolveImageSources(imageProject(asset.id)),/内容已变化/);
+});
+
+test('a file symlink cannot redirect image bytes outside DATA',async(context)=>{
   const linked=await images.storeImage(uploadFile(png,'linked.png'));const linkedPath=diskImage(linked);
-  const outside=path.join(temporary,'outside.png');await fs.writeFile(outside,png);await fs.unlink(linkedPath);await fs.symlink(outside,linkedPath);
-  await assert.rejects(images.resolveImageSources(imageProject(linked.id)),(error:any)=>error.status===403);
+  const outside=path.join(temporary,'outside.png');await fs.writeFile(outside,png);await fs.unlink(linkedPath);
+  try{
+    if(!await createFileLinkOrSkip(context,outside,linkedPath))return;
+    await assert.rejects(images.resolveImageSources(imageProject(linked.id)),(error:any)=>error.status===403);
+  }finally{await fs.rm(linkedPath,{force:true});await fs.writeFile(linkedPath,png);}
+});
+
+test('a file symlink cannot redirect image metadata outside DATA',async(context)=>{
   const metadata=await images.storeImage(uploadFile(png,'metadata.png'));const metadataPath=path.join(path.dirname(diskImage(metadata)),'metadata.json');
-  const outsideMetadata=path.join(temporary,'outside-metadata.json');await fs.copyFile(metadataPath,outsideMetadata);await fs.unlink(metadataPath);await fs.symlink(outsideMetadata,metadataPath);
-  await assert.rejects(images.getImage(metadata.id),(error:any)=>error.status===403);
+  const outsideMetadata=path.join(temporary,'outside-metadata.json');await fs.copyFile(metadataPath,outsideMetadata);await fs.unlink(metadataPath);
+  try{
+    if(!await createFileLinkOrSkip(context,outsideMetadata,metadataPath))return;
+    await assert.rejects(images.getImage(metadata.id),(error:any)=>error.status===403);
+  }finally{await fs.rm(metadataPath,{force:true});await fs.copyFile(outsideMetadata,metadataPath);}
 });
 
 test('the entire asset directory cannot be redirected outside DATA for reads or writes',async()=>{
@@ -142,12 +155,13 @@ test('the entire asset directory cannot be redirected outside DATA for reads or 
   const library=path.join(storage.DATA,'assets'),backup=path.join(storage.DATA,'assets-backup');
   const outside=path.join(temporary,'outside-assets');await fs.mkdir(outside);
   await fs.cp(path.join(library,asset.id),path.join(outside,asset.id),{recursive:true});
-  await fs.rename(library,backup);await fs.symlink(outside,library);
+  await fs.rename(library,backup);
   try{
+    await createDirectoryLink(outside,library);
     await assert.rejects(images.getImage(asset.id),(error:any)=>error.status===403);
     await assert.rejects(images.storeImage(uploadFile(png,'outside-write.png')),(error:any)=>error.status===403);
     assert.deepEqual(await fs.readdir(outside),[asset.id]);
-  }finally{await fs.unlink(library);await fs.rename(backup,library);}
+  }finally{await fs.unlink(library).catch((error:NodeJS.ErrnoException)=>{if(error.code!=='ENOENT')throw error;});await fs.rename(backup,library);}
 });
 
 test('image settings survive validation and compilation while only visual project key changes',()=>{

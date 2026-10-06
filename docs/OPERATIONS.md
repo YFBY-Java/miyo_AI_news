@@ -1,13 +1,17 @@
 # 本机运行、迁移与维护
 
-本文依据 2026-10-06 的项目源码编写，当前项目已整理为 Windows 上的单个工程目录。日常功能操作见 [使用指南](USER_GUIDE.md)；配音实现和输入格式见 [VOICE.md](VOICE.md)，模块关系见 [ARCHITECTURE.md](ARCHITECTURE.md)。后文保留的 `/Users/shuidi/` 路径、Mac 工具版本和 Shell 示例是原机器环境记录，不能作为当前 Windows 环境已就绪的证据。原机提交与备份结果见 [版本状态](VERSION_STATE.md)。
+本文依据 2026-10-06 的跨平台项目源码编写，适用于 macOS 终端与 Windows PowerShell。日常功能操作见 [使用指南](USER_GUIDE.md)；配音实现和输入格式见 [VOICE.md](VOICE.md)，模块关系见 [ARCHITECTURE.md](ARCHITECTURE.md)。原 Mac 交付环境的验收与备份作为历史证据保留在 [验收记录](VERIFICATION.md) 和 [版本状态](VERSION_STATE.md)。
 
 ## 1. 工程与运行边界
 
-当前工程目录：
+项目使用单个无版本号目录，可以放在任意工作位置：
 
 ```text
-D:\codex_work\AI创作\miyo_AI_news
+miyo_AI_news/
+├── app/、src/、scripts/、tests/
+├── public/、fixtures/、voice-library/
+├── .env.example、package.json、package-lock.json
+└── data/
 ```
 
 源码、文档、字体、历史示例及 `voice-library/` 都属于这个项目根目录，Git 仓库也以此为根。默认声线目录为 `<项目根>/voice-library/琪亚娜-稳重轻角色感`，不依赖父目录资源。声线参考素材随源码提交，运行数据 `data/`、依赖、构建目录和真实 `.env` 配置继续忽略。
@@ -18,69 +22,52 @@ D:\codex_work\AI创作\miyo_AI_news
 
 项目已更名为 `miyo_AI_news`，代码中的环境变量仍沿用 `MOYO_*`。不要自行替换成 `MIYO_*`，当前源码不读取后者。
 
-## 2. 已有依赖与检查
+## 2. 依赖与平台范围
 
-以下是原 Mac 机器已核验的位置或版本，保留用于定位历史执行记录；它们不是当前 Windows 环境检查结果，也不是全部写入 Git 的可移植依赖。
+按功能准备依赖，已有工具可通过 PATH 或项目配置复用。
 
-| 组件 | 本机情况 | 用途 |
+| 组件 | 要求 | 用途 |
 |---|---|---|
-| Node.js / npm | `v24.16.0` / `11.13.0`；位于 `~/.local/share/mise/installs/node/24.16.0/bin/` | 网页、worker、TypeScript 脚本 |
-| Python 控制器 | `python3` 为 3.13.15，命令位于 `~/.local/bin/python3` | 配音编排、缓存和 FFmpeg 处理 |
-| Next.js / React | 当前安装 15.5.12 / 19.2.3 | 工作台界面及 API |
-| TypeScript / tsx | 当前安装 5.8.3 / 4.21.0 | 类型检查和运行 worker 源码 |
-| Playwright | 当前项目安装 1.57.0 | 逐帧渲染 |
-| sharp | 当前项目安装 0.34.5 | 配图格式、尺寸和解码校验 |
-| FFmpeg / FFprobe | `~/.homebrew/bin/ffmpeg`、`~/.homebrew/bin/ffprobe` | 音频处理、视频编码与校验 |
-| edge-tts | `~/.local/bin/edge-tts` | 晓晓在线语音合成 |
-| MLX Python | 见下方声线配置表 | 琪亚娜本地合成；与普通 `python3` 分开 |
+| Node.js / npm | Node 20 以上；CI 使用 Node 20 | 网页、worker、TypeScript 脚本 |
+| Python 控制器 | Python 3.10 以上；CI 使用 3.11，控制器只依赖标准库 | 配音编排、缓存和 FFmpeg 处理 |
+| 项目 JavaScript 依赖 | `npm ci` 按 `package-lock.json` 安装 | Next、React、tsx、Playwright、sharp 等 |
+| Playwright Chromium | `npx playwright install chromium` | 真实浏览器测试与逐帧渲染 |
+| FFmpeg / FFprobe | 同一发行包的两个可执行文件 | 音频处理、视频编码与校验 |
+| edge-tts | 可执行工具，合成时需要网络 | 新晓晓口播 |
+| MLX Python / Qwen3-TTS 模型 | Apple Silicon Mac 上单独准备 `.venv-mlx/` 与完整模型 | 新琪亚娜口播 |
 
 项目声明 Node.js 至少为 20。迁移时以 `package-lock.json` 恢复相应依赖，不要仅复制 `.next-build/`：后台仍会运行 `scripts/*.ts`，需要 `tsx`、源码、字体和 fixtures。直接省略所有开发依赖会漏掉当前 worker 使用的 `tsx`。
 
-在项目根目录执行以下只读检查：
+Windows、Intel Mac 和 Apple Silicon Mac 都可以编辑项目、复用匹配的历史琪亚娜音轨、使用晓晓及导出视频。**新琪亚娜口播仅走 Apple Silicon Mac 的 MLX 路径**；在其他平台明确报错，程序不会自动换声线。历史素材复用无需安装 MLX，但需要 Python 与 FFmpeg/FFprobe。
+
+在项目根目录安装项目依赖与浏览器：
 
 ```bash
-cd '/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news'
-node --version
-npm --version
-python3 --version
-command -v node npm python3 ffmpeg ffprobe edge-tts
+npm ci
+npx playwright install chromium
 ```
 
-本机有可用的 Playwright 无头浏览器：
+已有 FFmpeg 可在 `.env.local` 指定路径。若目标机器尚未准备工具，macOS 使用已有 Homebrew 安装：
 
-```text
-/Users/shuidi/Library/Caches/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-mac-arm64/chrome-headless-shell
+```sh
+brew install ffmpeg
 ```
 
-`chromium.executablePath()` 返回的是完整 Chromium 默认位置，本机该完整浏览器路径目前不存在；这不代表 `chromium.launch({headless:true})` 所需的 headless shell 缺失。需要验证实际渲染能力时，可运行下面的小型启动检查。它只启动并关闭无头浏览器，不访问网站，也不是 Codex 内置浏览器：
+Windows 可使用已有 Chocolatey 安装同一发行包，然后在新终端中检查：
 
-```bash
-node --input-type=module <<'JS'
-import { chromium } from 'playwright';
-const browser = await chromium.launch({ headless: true });
-try {
-  console.log('无头浏览器可用：', browser.version());
-} finally {
-  await browser.close();
-}
-JS
+```powershell
+choco install ffmpeg --yes --no-progress
+ffmpeg -version
+ffprobe -version
 ```
 
-本机已有依赖时直接使用。遇到缺失先确认 PATH、目录和已有运行环境，勿为了排查重复安装整套依赖。本工程没有 Docker 前置条件。
+这些安装命令需要相应包管理器已安装；也可准备工具原生可执行文件后配置 `MOYO_FFMPEG`、`MOYO_FFPROBE`。Windows 覆盖值应指向 `.exe`，不使用 `.cmd`/`.bat` 包装器。工具状态只是初步探测，真实准备、浏览器绘制和编码使用 `npm run check:runtime` 检查。本工程没有 Docker 前置条件。
 
 ## 3. 开发模式启动
 
-当前 Windows 目录在 PowerShell 中启动：
+进入项目根目录后，两系统使用相同命令：
 
-```powershell
-Set-Location 'D:\codex_work\AI创作\miyo_AI_news'
-npm run dev
-```
-
-原 Mac 机器的启动示例：
-
-```bash
-cd '/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news'
+```sh
 npm run dev
 ```
 
@@ -94,8 +81,8 @@ http://127.0.0.1:3002
 
 另开终端可检查服务：
 
-```bash
-curl -fsS http://127.0.0.1:3002/api/health
+```sh
+node -e "fetch('http://127.0.0.1:3002/api/health').then(r => r.json()).then(console.log)"
 ```
 
 首次访问会初始化默认数据目录并导入星铁历史样例，材料日期为 **2026-10-02**。这一步会创建项目、归档配音和时间轴，不会自动采集最新资讯，也不会立即生成新 TTS。网页“本地工具状态”是路径/命令层面的初步检查，不代替真实试听、浏览器启动和导出验证。
@@ -110,20 +97,30 @@ curl -fsS http://127.0.0.1:3002/api/health
 
 ## 4. 生产构建与启动
 
-默认 `npm run build` 和 `npm run start` 都使用 `.next/`。若同时保留开发目录和生产构建，可按当前配置使用独立的 `.next-build/`：
+默认 `npm run build` 和 `npm run start` 都使用 `.next/`。从项目根运行：
 
-```bash
-cd '/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news'
-MOYO_NEXT_DIST_DIR=.next-build npm run build
+```sh
+npm run build
+npm start
 ```
 
-构建成功后，先结束占用 3002 端口的开发服务，再使用同一个目录名启动：
+若需要独立 `.next-build/` 目录，macOS 可在同一终端设置：
 
-```bash
-MOYO_NEXT_DIST_DIR=.next-build npm run start
+```sh
+export MOYO_NEXT_DIST_DIR=.next-build
+npm run build
+npm start
 ```
 
-生产启动确实支持此环境变量：`next.config.ts` 用它设置 `distDir`，当前安装的 Next.js 在生产启动时仍会加载该配置。只在 build 时设置、start 时省略，会让启动端到默认 `.next/` 查找产物，导致使用错误构建或提示没有生产构建。
+Windows PowerShell 对应为：
+
+```powershell
+$env:MOYO_NEXT_DIST_DIR = '.next-build'
+npm run build
+npm start
+```
+
+也可把 `MOYO_NEXT_DIST_DIR=.next-build` 写入项目 `.env.local`。构建成功后先结束占用 3002 的开发服务，再启动生产服务。`next.config.ts` 用该变量设置 `distDir`；build 和 start 必须一致，否则会到另一个目录查找产物。
 
 生产网页仍监听 `127.0.0.1:3002`，不会自动开放公网。`.next/`、`.next-build/` 均属于可重新生成的构建结果，不是项目内容备份。
 
@@ -186,34 +183,38 @@ npm run worker
 
 ## 6. 路径与环境变量
 
-建议按一次启动或当前终端设置变量，不需要改全局 Shell 配置。涉及目录时使用绝对路径，避免网页、worker 和 CLI 对相对路径产生不同理解。
+本机配置放在项目 `.env.local`；提交空配置结构 `.env.example`，不要提交真实环境文件。网页、CLI、worker 和 Python 从项目根依次加载 `.env.local`、`.env`，已经存在的外部环境变量优先，其次为 `.env.local`，最后为 `.env`。修改后重新启动服务并等待旧 worker 退出。
+
+资源路径相对于同一项目根解析，可写 `./data`、`./tools/ffmpeg/bin/ffmpeg.exe` 等，网页和后台使用一致路径。`~/` 可指向当前用户主目录；配置使用字面值，不写 Shell 命令或 `$HOME` 等展开表达式。日常从项目根执行 npm 命令即可，无须设置 `MOYO_ROOT`。
 
 | 变量 | 当前默认和作用 |
 |---|---|
 | `MOYO_ROOT` | 默认 `process.cwd()`；Node 服务端和 worker 的工程根目录，负责定位 scripts、fixtures、字体。通常先 `cd` 到工程即可，无须额外设置 |
 | `MOYO_DATA_DIR` | 默认 `<MOYO_ROOT>/data`；项目、任务、图片、音轨缓存和输出的根目录 |
 | `MOYO_NEXT_DIST_DIR` | 默认 `.next`；开发/生产 Next 构建目录，可用 `.next-build` |
-| `MOYO_PYTHON` | worker 启动配音控制器时使用，默认 `python3`；控制器自身仅依赖标准库 |
-| `MOYO_MLX_PYTHON` | `/Users/shuidi/Documents/Codex/2026-09-25/ruh/work/jev-video/.venv_mlx_audio/bin/python`；新琪亚娜口播使用的独立 MLX 解释器 |
+| `MOYO_PYTHON` | Python 3.10 以上；未覆盖时先找项目 `.venv`，Windows 再尝试 `py -3`，然后 `python3` / `python`；每个候选实际启动验证 |
+| `MOYO_MLX_PYTHON` | macOS 为 `<项目根>/.venv-mlx/bin/python`；Windows 路径结构为 `.venv-mlx/Scripts/python.exe`，但不启用新 MLX 推理 |
 | `MOYO_KIANA_VOICE_DIR` | 默认 `<MOYO_ROOT>/voice-library/琪亚娜-稳重轻角色感`，随项目提交 |
-| `MOYO_KIANA_MODEL` | `~/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-4bit/snapshots/37e955a1deb861c088ae5f3a67043185f3d1a60c` |
+| `MOYO_KIANA_MODEL` | `<项目根>/models/Qwen3-TTS-12Hz-1.7B-Base-4bit`；完整离线模型，需自行准备 |
 | `MOYO_KIANA_REFERENCE` | 声线目录下 `kiana_refs_concat_v2_light.wav` |
 | `MOYO_KIANA_REFERENCE_TEXT` | 声线目录下 `reference_audio_v2_light/ref_text.txt` |
 | `MOYO_KIANA_PRESETS` | 声线目录下 `test/qwen17b-v2-light-versions/variants.json`，读取 `base` 预设 |
-| `MOYO_FFMPEG`、`MOYO_FFPROBE` | 仅 Python 配音流水线的工具路径覆盖 |
-| `MOYO_EDGE_TTS` | 仅 Python 配音流水线的 edge-tts 路径覆盖 |
+| `MOYO_FFMPEG`、`MOYO_FFPROBE` | 配音、渲染、媒体检查与工具状态共用的可执行文件覆盖 |
+| `MOYO_EDGE_TTS` | 晓晓工具覆盖；未覆盖时找项目 `.venv`、PATH 和 macOS 常见工具目录 |
+| `MOYO_CHROMIUM` | 可选的实际浏览器可执行文件路径；默认使用当前项目 Playwright 安装的 Chromium |
 
-### FFmpeg 路径覆盖的实际边界
+### 工具探测与覆盖
 
-`scripts/render-video.ts` 直接执行 PATH 上的 `ffmpeg`、`ffprobe`。网页能力检测也直接执行 PATH 上的工具。因此，设置 `MOYO_FFMPEG` 不能单独修复视频阶段的 `ffmpeg ENOENT`。
+FFmpeg、FFprobe、edge-tts 先读取各自 `MOYO_*` 覆盖，再查项目 `.venv/Scripts`（Windows）或 `.venv/bin`（macOS）、PATH；macOS 最后检查 `/opt/homebrew/bin`、`/usr/local/bin`、用户 `.homebrew/bin`、`.local/bin`。覆盖无效时明确报错，不静默切换到另一份工具。FFprobe 没有单独覆盖时，优先寻找当前 FFmpeg 同目录的 FFprobe，再按上述目录查找。
 
-本机若从一个缺少用户 PATH 的终端启动，可为该次启动补上已有工具目录：
+例如 Windows 将工具放入项目 `tools/ffmpeg/bin/` 后，在 `.env.local` 写：
 
-```bash
-PATH="$HOME/.homebrew/bin:$HOME/.local/bin:$PATH" npm run dev
+```dotenv
+MOYO_FFMPEG=./tools/ffmpeg/bin/ffmpeg.exe
+MOYO_FFPROBE=./tools/ffmpeg/bin/ffprobe.exe
 ```
 
-这不修改全局配置。新 worker 继承发起进程的环境；已在运行的 worker 不会因此改变。
+macOS 指向实际无 `.exe` 后缀的文件即可。工具和虚拟环境不是源码资源，需在目标机器重新准备，不复制另一系统的可执行文件。`MOYO_CHROMIUM` 覆盖也必须指向真实浏览器文件；浏览器测试仍使用项目安装的 Chromium。
 
 ### 声线覆盖与历史素材
 
@@ -221,9 +222,9 @@ PATH="$HOME/.homebrew/bin:$HOME/.local/bin:$PATH" npm run dev
 
 整期复用还会核对声线环境身份和 WAV 哈希。变更图片、布局和卡片尺寸通常复用已有配音；变更口播、分镜 ID/顺序、语速或声线会重新准备实际时间轴。
 
-琪亚娜生成使用本地模型，设置离线模式，不会自动下载缺少的模型。晓晓通过 edge-tts 在线合成，需要网络。当前项目不会在失败时自动切到 `say` 或另一条声线。
+新琪亚娜生成要求 Apple Silicon Mac，使用本地模型和离线模式，不会自动下载缺少的模型。Windows 与 Intel Mac 可以复用匹配的归档琪亚娜音轨，或手动选择晓晓在线合成。当前项目不会在失败时自动切到 `say` 或另一条声线。
 
-`.env`、`.env.*` 不进入 Git。Next.js 有自己的环境文件加载机制，但独立 CLI/worker/Python 没有统一显式加载 `.env` 的入口；需要跨入口一致时，使用启动进程实际继承的 Shell 环境，不要仅因文件存在就认为 CLI 已应用。
+Windows 的 Python 控制器和任务子进程使用 UTF-8 并隐藏额外窗口；取消/恢复按 PID、进程创建时间和任务目录核对身份后通过 `taskkill /T` 清理任务树。macOS 使用任务进程组信号。
 
 ## 7. 首次迁移与运行前核对
 
@@ -233,10 +234,10 @@ PATH="$HOME/.homebrew/bin:$HOME/.local/bin:$PATH" npm run dev
 2. **保留源码与锁定依赖。** 网页构建结果不包括 worker 所需的全部 TypeScript 文件；保留 `tsx`，不要把生产运行简化为仅保留 Next 构建目录。
 3. **核对附带资源。** 检查字体、`fixtures/starrail-weekly/base-narration.wav`、`final-narration.wav` 及其 JSON 元数据，并保留项目内 `voice-library/` 的参考音频、参考文本和参数 3 个文件，避免只复制文字文件。
 4. **选择正确的数据恢复方式。** 有备份时应在首次启动前放好恢复数据或指定 `MOYO_DATA_DIR`；空数据目录会新建示例，不会自动找到别处的旧项目。
-5. **核对模型与推理环境。** 声线参考目录已在应用 Git 内，默认无须覆盖路径；模型快照和 MLX Python 仍需在目标机器准备，不能把旧解释器的绝对路径当作已恢复的 Python 环境。
-6. **核对浏览器与编码工具。** 图片预览正常不代表 Playwright headless shell 和视频阶段的 FFmpeg 已就绪。
+5. **选择平台可用的声线。** 历史原稿可复用归档音轨；新晓晓需 edge-tts 与网络；新琪亚娜仅 Apple Silicon Mac，需 `.venv-mlx` 与完整模型。声线目录已随 Git 恢复，无须仅为迁移设置覆盖。
+6. **核对浏览器与编码工具。** 安装项目对应的 Chromium，确认 Python 3.10 以上、FFmpeg/FFprobe 可执行；视频阶段和配音阶段使用相同工具配置。
 7. **确认旧任务静止。** 移动或改名工程前先完成/取消任务，等待 worker 退出；运行中的进程已经持有旧路径，不会随文件夹改名自动迁移。
-8. **先做小规模验证。** 使用历史样例副本保留一个分镜，先试听，再导出一段；验证通过后再制作整期。不要覆盖原始示例来做环境探测。
+8. **先做小规模验证。** 运行 `npm run check:runtime` 在隔离工程中实际准备配音、短片渲染、取消与复用；确认成功后再复制用户项目做试听和制作。
 
 项目代码里仍可能保留历史生成记录的绝对路径，这些记录用于追溯，不代表迁移后所有旧路径都可直接访问。项目和任务的 ID、图片 UUID 目录应保持原样。
 
@@ -260,19 +261,8 @@ PATH="$HOME/.homebrew/bin:$HOME/.local/bin:$PATH" npm run dev
 
 下列命令只检查任务 JSON 是否仍有活动状态。若使用自定义 `MOYO_DATA_DIR`，在同样的环境下执行：
 
-```bash
-python3 - <<'PY'
-import json, os
-from pathlib import Path
-miyo_data = Path(os.environ.get('MOYO_DATA_DIR', 'data')).expanduser().resolve()
-miyo_active = []
-for file in (miyo_data / 'jobs').glob('*.json'):
-    job = json.loads(file.read_text())
-    if job.get('status') in ('queued', 'running'):
-        miyo_active.append({'id': job['id'], 'status': job['status'], 'stage': job.get('stage')})
-print(json.dumps({'data': str(miyo_data), 'activeJobs': miyo_active}, ensure_ascii=False, indent=2))
-raise SystemExit(1 if miyo_active else 0)
-PY
+```sh
+node --import tsx --input-type=module -e "import { DATA, listJobs } from './src/server/storage.ts'; const active = (await listJobs()).filter(j => ['queued', 'running'].includes(j.status)); console.log(JSON.stringify({data: DATA, activeJobs: active.map(j => ({id:j.id,status:j.status,stage:j.stage}))}, null, 2)); process.exitCode = active.length ? 1 : 0;"
 ```
 
 此检查不能独立证明操作系统没有遗留进程。仍需确认 `data/worker.lock` 对应进程已结束；有异常中断时先按后文定位，不要边渲染边打包，也不要直接删活跃锁。
@@ -281,17 +271,29 @@ PY
 
 下面示例适用于默认 `data/`，在已确认静止后执行。每次创建独立目录，避免覆盖旧备份：
 
-```bash
-cd '/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news'
+macOS 终端：
+
+```sh
 mkdir -p backups
 miyo_backup_dir="backups/$(date +%Y%m%d-%H%M%S)"
 mkdir "$miyo_backup_dir"
 tar -czf "$miyo_backup_dir/data.tar.gz" -C "$PWD" data
 shasum -a 256 "$miyo_backup_dir/data.tar.gz" > "$miyo_backup_dir/data.tar.gz.sha256"
-DEVELOPER_DIR=/Library/Developer/CommandLineTools git rev-parse HEAD > "$miyo_backup_dir/code-commit.txt"
+git rev-parse HEAD > "$miyo_backup_dir/code-commit.txt"
 ```
 
-`backups/` 已被 Git 忽略。最后一条命令仅为本次 Git 调用指定本机已有 Command Line Tools，避开当前默认 Xcode 的许可提示，不修改系统设置；其他机器使用其正常可用的 Git 即可。
+Windows PowerShell：
+
+```powershell
+$miyoBackupDir = Join-Path 'backups' (Get-Date -Format 'yyyyMMdd-HHmmss')
+New-Item -ItemType Directory -Path $miyoBackupDir | Out-Null
+tar -czf "$miyoBackupDir/data.tar.gz" data
+if ($LASTEXITCODE -ne 0) { throw '数据归档失败' }
+Get-FileHash "$miyoBackupDir/data.tar.gz" -Algorithm SHA256 | Format-List | Out-File "$miyoBackupDir/data.tar.gz.sha256" -Encoding utf8
+git rev-parse HEAD | Out-File "$miyoBackupDir/code-commit.txt" -Encoding utf8
+```
+
+`backups/` 已被 Git 忽略。归档结束后核对文件大小和校验值，保留对应代码提交。
 
 自定义数据目录时，要备份那个真实目录，而不是默认的空 `data/`。记录该备份使用的代码提交、数据路径、声线环境变量名称及非敏感路径；不要把密钥或整份进程环境无差别写进清单。
 
@@ -302,16 +304,16 @@ DEVELOPER_DIR=/Library/Developer/CommandLineTools git rev-parse HEAD > "$miyo_ba
 1. 停止当前项目任务和服务，先备份当前数据。
 2. 将备份解压到一个**新的恢复目录**，保留原数据作为回退。
 3. 校验归档 SHA-256，核对项目、图片和 runs 目录齐全。
-4. 以绝对路径将 `MOYO_DATA_DIR` 指向恢复出的 `data`，并使用匹配的代码版本与声线环境启动。
+4. 在 `.env.local` 将 `MOYO_DATA_DIR` 指向恢复出的 `data`，使用匹配的代码与声线环境启动；项目内恢复目录可用相对路径。
 5. 打开原有项目，核对卡片、配图和旧成片；再复制一个项目做短导出验证。
 
-例如，假设已将归档解压到同级 `miyo_AI_news-restored/`：
+例如已将归档解压到项目 `backups/restored/`，在 `.env.local` 写：
 
-```bash
-MOYO_DATA_DIR='/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news-restored/data' npm run dev
+```dotenv
+MOYO_DATA_DIR=./backups/restored/data
 ```
 
-使用恢复目录运行 CLI 时也要传同样的变量。不要一边网页用恢复目录，一边 CLI 仍写默认目录。
+随后运行 `npm run dev`。CLI 和 worker 会读取同一配置，避免网页和 CLI 写入不同数据目录。
 
 当前没有面向跨版本数据的自动迁移/回退命令。较旧代码可能不认识后续新增字段；不要让旧代码直接保存唯一一份新数据。代码版本回退、数据恢复和视频产物选择应分别处理。
 
@@ -329,8 +331,9 @@ MOYO_DATA_DIR='/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news-restored/da
 | 页面显示声线可用但新口播失败 | 配音详细日志 | 路径存在不保证依赖齐全或新参考有效，先试听单段 |
 | 晓晓生成失败 | `generation.log`、网络 | 该声线是在线路径；不会自动换声线 |
 | 旧配音没有复用 | `audio-provenance.json`、`voice-metadata.json`、任务 voiceIdentity | 核对是否改了语速/口播/分镜顺序或设置了显式声线覆盖 |
-| 渲染报 `ffmpeg` / `ffprobe` 不存在 | `render.log`、启动进程 PATH | 视频阶段使用 PATH，不读取 Python 的工具覆盖变量 |
-| 浏览器可执行文件缺失 | `render.log`、Playwright headless shell | 区分完整 Chromium 和实际 headless shell；缺失时单独处理环境，不盲目重复安装 |
+| 渲染报 `ffmpeg` / `ffprobe` 不存在 | `render.log`、`.env.local`、工具探测结果 | 核对 `MOYO_FFMPEG`/`MOYO_FFPROBE`；相对路径按项目根解析，Windows 使用原生 `.exe` |
+| 浏览器可执行文件缺失 | `render.log`、项目 Chromium 安装、`MOYO_CHROMIUM` | 运行 `npx playwright install chromium`，或修正真实浏览器路径 |
+| Windows / Intel Mac 新琪亚娜失败 | 当前平台与任务 `voice.log` | 该 MLX 路径仅 Apple Silicon Mac；复用归档原稿或手动选择晓晓 |
 | 配图缺失或哈希不符 | `assets/<UUID>/metadata.json`、原图文件、项目引用 | 恢复配套原图，或重新上传产生新资产后重新关联；不要手改旧图伪装成同一个资产 |
 | 卡片正文溢出 | `render.log`、当前卡片尺寸/配图布局、预览 | 增大卡片、换用合适的配图布局或拆分文案后重试 |
 | 视频失败但配音已完成 | `audio-ready.json`、`voice-plan.json` | 按当前内容重试，已验证配音可复用，视频会重新逐帧渲染 |
@@ -340,7 +343,7 @@ MOYO_DATA_DIR='/Users/shuidi/Documents/ChatGPT/AI创作/miyo_AI_news-restored/da
 
 完整导出成功通常有以下证据组合：任务 `status=succeeded`、`outputs.video`、`runs/<ID>/video.mp4` 和 `render-report.json`。报告包含画面错误/溢出检查、编码参数及完整解码结果；它不代表资讯事实或配音逐字正确，内容和听感仍要检查。
 
-直接查看任务日志的例子：
+macOS 直接查看任务日志：
 
 ```bash
 cat 'data/jobs/实际任务ID.json'
@@ -349,7 +352,9 @@ tail -n 80 'data/runs/实际任务ID/render.log'
 tail -n 80 'data/logs/worker.log'
 ```
 
-发生中断时，不使用 `pkill node`、`pkill python` 或删除全部锁的方式恢复。worker 已记录任务所属进程组，并对 Chromium 加了独立任务路径标记；下一次恢复会核对身份后清理属于该任务的遗留进程。手工操作前也应先确认 PID、命令行和任务目录相符。
+Windows PowerShell 对应使用 `Get-Content -Encoding utf8 'data/jobs/实际任务ID.json'` 和 `Get-Content -Encoding utf8 'data/runs/实际任务ID/render.log' -Tail 80`。
+
+发生中断时，worker 按记录的 PID、创建时间、任务目录及 Chromium 任务标记清理该任务遗留进程；Windows 使用任务树，macOS 使用进程组。不要结束所有 Node/Python 进程或直接删除活跃锁。手工操作前确认 PID、命令行和任务目录相符。
 
 ## 10. 维护时的验证范围
 
@@ -364,10 +369,19 @@ npm test
 
 需要验证配音缓存和语速编排时：
 
-```bash
-python3 tests/voice_pipeline_test.py
+```sh
+npm run test:python
 ```
 
-Python 回归使用归档配音和负例，不进行新 MLX 推理或在线 TTS；它会在 `data/verification/voice-tests-*` 留下新的执行记录。Node 的存储/图片专项测试使用独立临时数据，具体以各测试文件为准。
+Python 回归通过统一 Python 探测执行 unittest discover，使用归档配音和负例，不进行新 MLX 推理或在线 TTS；它会在 `data/verification/voice-tests-*` 留下新的执行记录。Node 的存储/图片专项测试使用独立临时数据。Windows 仅文件 symlink 的权限不足场景逐项 `SKIP`，目录 containment 使用 junction 实测；浏览器依赖缺失不能当作通过。
+
+完整运行链检查与构建：
+
+```sh
+npm run check:runtime
+npm run build
+```
+
+`check:runtime` 需要已安装 Python、FFmpeg/FFprobe 和 Chromium，复制隔离工程并使用归档音轨，执行真实 prepare、短片渲染、取消及配音复用，不调用新模型或在线 TTS。GitHub Actions 在 `macos-latest` 与 `windows-latest` 使用 Node 20/Python 3.11 安装真实工具后跑完整检查，结果按具体运行记录填写 [VERIFICATION.md](VERIFICATION.md)。
 
 生产构建检查与实际短片导出验证是不同环节：构建通过只能说明网页代码可构建，实际导出还依赖声线、浏览器、FFmpeg、配图和内容布局。应根据本次改动选择对应检查，避免每次文档修改都重新生成整期配音和视频。

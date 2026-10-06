@@ -10,7 +10,10 @@ export async function kickWorker(){
   const lock=await readJson<{pid:number}>(path.join(DATA,'worker.lock')).catch(()=>undefined);
   if(lock&&alive(lock.pid))return;
   const log=await fs.open(path.join(DATA,'logs','worker.log'),'a');
-  try{const child=spawn(process.execPath,['--import','tsx',path.join(ROOT,'scripts/worker.ts')],{cwd:ROOT,detached:true,stdio:['ignore',log.fd,log.fd],env:{...process.env,MOYO_ROOT:ROOT,MOYO_DATA_DIR:DATA}});child.unref();}finally{await log.close();}
+  try{
+    const child=spawn(process.execPath,['--import','tsx',path.join(ROOT,'scripts/worker.ts')],{cwd:ROOT,detached:true,windowsHide:true,stdio:['ignore',log.fd,log.fd],env:{...process.env,MOYO_ROOT:ROOT,MOYO_DATA_DIR:DATA}});
+    await new Promise<void>((resolve,reject)=>{child.once('spawn',resolve);child.once('error',reject);});child.unref();
+  }finally{await log.close();}
 }
 export async function createJob(project:Project,kind:JobKind,sceneId?:string){
   if(!['prepare','render','sample'].includes(kind))throw new InputError('生成任务类型无效');

@@ -9,6 +9,7 @@ import json
 import math
 import os
 from pathlib import Path
+import platform
 import re
 import shutil
 import signal
@@ -22,13 +23,54 @@ ROOT = Path(__file__).resolve().parents[1]
 SAMPLE_RATE = 48000
 PIPELINE_VERSION = 1
 KIANA_NAME = '琪亚娜-稳重轻角色感-v2-轻角色-基准'
-DEFAULT_MLX_PYTHON = Path.home() / 'Documents/Codex/2026-09-25/ruh/work/jev-video/.venv_mlx_audio/bin/python'
-DEFAULT_MODEL = Path.home() / '.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-4bit/snapshots/37e955a1deb861c088ae5f3a67043185f3d1a60c'
+DEFAULT_MLX_PYTHON = ROOT / '.venv-mlx' / ('Scripts/python.exe' if sys.platform == 'win32' else 'bin/python')
+DEFAULT_MODEL = ROOT / 'models/Qwen3-TTS-12Hz-1.7B-Base-4bit'
 DEFAULT_VOICE = ROOT / 'voice-library/琪亚娜-稳重轻角色感'
 KIANA_IDENTITY_OVERRIDES = (
     'MOYO_MLX_PYTHON', 'MOYO_KIANA_MODEL', 'MOYO_KIANA_VOICE_DIR',
     'MOYO_KIANA_REFERENCE', 'MOYO_KIANA_REFERENCE_TEXT', 'MOYO_KIANA_PRESETS',
 )
+
+
+def configure_stdio():
+    # Job progress is read by Node as UTF-8, including on Windows consoles.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, 'reconfigure'):
+            stream.reconfigure(encoding='utf-8', errors='replace')
+
+
+def load_project_environment():
+    # Match the server entry point: external variables win; local overrides
+    # the shared file. Keep the controller independent of third-party packages.
+    for name in ('.env.local', '.env'):
+        path = ROOT / name
+        if not path.is_file():
+            continue
+        for line in path.read_text(encoding='utf-8-sig').splitlines():
+            match = re.match(r'^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$', line)
+            if not match:
+                continue
+            key, value = match.groups()
+            if value.startswith(('"', "'")):
+                quote = value[0]
+                end = value.rfind(quote)
+                value = value[1:end] if end > 0 else value
+                if quote == '"':
+                    value = value.replace('\\n', '\n').replace('\\r', '\r')
+            else:
+                value = value.split(' #', 1)[0].strip()
+            os.environ.setdefault(key, value)
+
+
+def project_path(value):
+    path = Path(value).expanduser()
+    return (path if path.is_absolute() else ROOT / path).resolve()
+
+
+def require_mlx_platform():
+    if sys.platform != 'darwin' or platform.machine().lower() not in ('arm64', 'aarch64'):
+        raise RuntimeError('新生成琪亚娜配音需要 Apple Silicon Mac 的 MLX 环境；'
+                           '当前平台可复用历史琪亚娜音轨，或选择晓晓（edge-tts）在线配音。')
 
 
 def now():
@@ -64,27 +106,70 @@ def read_json(path):
 
 
 def binary(name):
-    value = os.environ.get('MOYO_' + name.upper().replace('-', '_'))
-    found = value or shutil.which(name)
-    if not found:
-        candidate = Path.home() / ('.homebrew/bin' if name.startswith('ff') else '.local/bin') / name
-        found = str(candidate) if candidate.is_file() else None
-    if not found or not Path(found).is_file():
-        raise RuntimeError(f'缺少 {name}；请配置已有工具路径，不会自动安装。')
-    return str(found)
+    def found_tool(path):
+        path = Path(path)
+        if sys.platform == 'win32' and path.suffix.lower() != '.exe':
+            raise RuntimeError(f'Windows 的 {name} 工具必须为 .exe 程序：{path}；不支持 shell 脚本。')
+        return str(path.resolve())
+
+    variable = 'MOYO_' + name.upper().replace('-', '_')
+    value = os.environ.get(variable)
+    if value:
+        candidate = project_path(value)
+        found = candidate if candidate.is_file() else None
+        if not found and not any(separator in value for separator in ('/', '\\')):
+            command = value + '.exe' if sys.platform == 'win32' and not Path(value).suffix else value
+            located = shutil.which(command)
+            found = Path(located).resolve() if located else None
+        if not found:
+            raise RuntimeError(f'{variable} 指定的 {name} 不存在：{value}；路径相对项目根目录。')
+        return found_tool(found)
+    suffix = '.exe' if sys.platform == 'win32' else ''
+    executable = name + suffix
+    if name == 'ffprobe':
+        try:
+            sibling = Path(binary('ffmpeg')).with_name(executable)
+            if sibling.is_file():
+                return found_tool(sibling)
+        except RuntimeError:
+            pass
+    candidate = ROOT / '.venv' / ('Scripts' if sys.platform == 'win32' else 'bin') / executable
+    if candidate.is_file():
+        return found_tool(candidate)
+    located = shutil.which(executable)
+    if located and Path(located).is_file():
+        return found_tool(located)
+    if sys.platform != 'win32':
+        directories = [Path('/opt/homebrew/bin'), Path('/usr/local/bin')]
+        try:
+            directories.extend([Path.home() / '.homebrew/bin', Path.home() / '.local/bin'])
+        except RuntimeError:
+            pass
+        for directory in directories:
+            candidate = directory / executable
+            if candidate.is_file():
+                return found_tool(candidate)
+    raise RuntimeError(f'缺少 {name}；请安装已有工具或配置 {variable}，不会自动安装。')
+
+
+def invoke(arguments, *, env=None, **options):
+    child_environment = dict(os.environ if env is None else env)
+    child_environment['PYTHONIOENCODING'] = 'utf-8'
+    child_environment['PYTHONUTF8'] = '1'
+    windows = {'creationflags': getattr(subprocess, 'CREATE_NO_WINDOW', 0x08000000)} if sys.platform == 'win32' else {}
+    return subprocess.run(arguments, text=True, encoding='utf-8', errors='replace',
+                          env=child_environment, **windows, **options)
 
 
 def run(arguments, *, timeout=1200, log=None, env=None):
-    # All child processes inherit this process group, so the job worker can cancel
-    # FFmpeg and MLX along with this controller using one killpg call.
+    # Children stay in the controller's process tree for worker cancellation.
     if log:
         with Path(log).open('w', encoding='utf-8') as handle:
-            result = subprocess.run(arguments, stdout=handle, stderr=subprocess.STDOUT,
-                                    text=True, timeout=timeout, env=env)
+            result = invoke(arguments, stdout=handle, stderr=subprocess.STDOUT, timeout=timeout, env=env)
         if result.returncode:
             raise RuntimeError(f'子进程失败（{result.returncode}），完整输出：{log}')
         return ''
-    result = subprocess.run(arguments, capture_output=True, text=True, timeout=timeout, env=env)
+    result = invoke(arguments, capture_output=True, timeout=timeout, env=env)
     if result.returncode:
         raise RuntimeError(f'{Path(arguments[0]).name} 失败：{result.stderr[-2500:]}')
     return result.stdout
@@ -189,9 +274,9 @@ def caption_parts(text, maximum=34):
 
 
 def silence_ranges(path):
-    result = subprocess.run([binary('ffmpeg'), '-hide_banner', '-nostats', '-i', str(path),
+    result = invoke([binary('ffmpeg'), '-hide_banner', '-nostats', '-i', str(path),
                              '-af', 'silencedetect=noise=-40dB:d=0.12', '-f', 'null', '-'],
-                            capture_output=True, text=True, check=True)
+                    capture_output=True, check=True)
     ranges, start = [], None
     for line in result.stderr.splitlines():
         if 'silence_start:' in line:
@@ -272,12 +357,13 @@ def voice_configuration(preset):
         return {'engine': 'edge-tts', 'voice': 'zh-CN-XiaoxiaoNeural', 'executable': executable,
                 'runtimeVersion': run([executable, '--version'], timeout=20).strip(),
                 'parameters': {'rate': '-5%', 'pitch': '+0Hz', 'volume': '+0%'}}
-    voice = Path(os.environ.get('MOYO_KIANA_VOICE_DIR', DEFAULT_VOICE)).expanduser()
-    python = Path(os.environ.get('MOYO_MLX_PYTHON', DEFAULT_MLX_PYTHON)).expanduser()
-    model = Path(os.environ.get('MOYO_KIANA_MODEL', DEFAULT_MODEL)).expanduser()
-    reference = Path(os.environ.get('MOYO_KIANA_REFERENCE', voice / 'kiana_refs_concat_v2_light.wav')).expanduser()
-    ref_text_file = Path(os.environ.get('MOYO_KIANA_REFERENCE_TEXT', voice / 'reference_audio_v2_light/ref_text.txt')).expanduser()
-    preset_file = Path(os.environ.get('MOYO_KIANA_PRESETS', voice / 'test/qwen17b-v2-light-versions/variants.json')).expanduser()
+    require_mlx_platform()
+    voice = project_path(os.environ.get('MOYO_KIANA_VOICE_DIR', DEFAULT_VOICE))
+    python = project_path(os.environ.get('MOYO_MLX_PYTHON', DEFAULT_MLX_PYTHON))
+    model = project_path(os.environ.get('MOYO_KIANA_MODEL', DEFAULT_MODEL))
+    reference = project_path(os.environ.get('MOYO_KIANA_REFERENCE', voice / 'kiana_refs_concat_v2_light.wav'))
+    ref_text_file = project_path(os.environ.get('MOYO_KIANA_REFERENCE_TEXT', voice / 'reference_audio_v2_light/ref_text.txt'))
+    preset_file = project_path(os.environ.get('MOYO_KIANA_PRESETS', voice / 'test/qwen17b-v2-light-versions/variants.json'))
     for label, path in [('MLX Python', python), ('琪亚娜模型目录', model), ('参考音频', reference),
                         ('参考文本', ref_text_file), ('声线参数', preset_file)]:
         if not path.exists():
@@ -311,7 +397,7 @@ def load_seed(seed, preset):
     # fingerprint check the actual model, reference audio/text and parameters.
     if any(key in os.environ for key in KIANA_IDENTITY_OVERRIDES):
         return None
-    audio, episode_path, editorial_path = (Path(seed[key]).expanduser().resolve() for key in ('baseAudio', 'baseEpisode', 'editorial'))
+    audio, episode_path, editorial_path = (project_path(seed[key]) for key in ('baseAudio', 'baseEpisode', 'editorial'))
     for path in (audio, episode_path, editorial_path):
         if not path.is_file():
             raise RuntimeError(f'历史音轨素材缺失：{path}')
@@ -451,9 +537,9 @@ def generated_scene(scene, config, cache, work, records):
 
 
 def normalize(source, output, frames):
-    first = subprocess.run([binary('ffmpeg'), '-hide_banner', '-nostats', '-i', str(source),
+    first = invoke([binary('ffmpeg'), '-hide_banner', '-nostats', '-i', str(source),
                             '-af', 'loudnorm=I=-18:TP=-1.8:LRA=7:print_format=json', '-f', 'null', '-'],
-                           capture_output=True, text=True, check=True)
+                   capture_output=True, check=True)
     try:
         measurement = json.JSONDecoder().raw_decode(first.stderr[first.stderr.rfind('{'):])[0]
         if not all(math.isfinite(float(measurement[key])) for key in ('input_i', 'input_tp', 'input_lra', 'input_thresh', 'target_offset')):
@@ -558,6 +644,7 @@ def build(data, output, cache, records):
 
 
 def internal_synthesize(input_path, output):
+    require_mlx_platform()
     os.environ['HF_HUB_OFFLINE'] = '1'
     os.environ['TRANSFORMERS_OFFLINE'] = '1'
     import mlx.core as mx
@@ -579,6 +666,8 @@ def interrupted(signum, _frame):
 
 
 def main():
+    configure_stdio()
+    load_project_environment()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', type=Path)
     parser.add_argument('--output', type=Path, required=True)
@@ -587,13 +676,13 @@ def main():
     args = parser.parse_args()
     signal.signal(signal.SIGTERM, interrupted)
     if args.internal_synthesize:
-        internal_synthesize(args.internal_synthesize, args.output)
+        internal_synthesize(project_path(args.internal_synthesize), project_path(args.output))
         return
     if not args.input or not args.cache:
         parser.error('--input 和 --cache 为必填参数。')
-    output, cache = args.output.resolve(), args.cache.resolve()
+    output, cache = project_path(args.output), project_path(args.cache)
     output.mkdir(parents=True, exist_ok=True)
-    request = read_json(args.input)
+    request = read_json(project_path(args.input))
     records = Records(output, request)
     records.append('voice-pipeline', 'started', request)
     # Never leave a previous success marker after an unsuccessful rerun.

@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { spawn,execFileSync } from 'node:child_process';
+import { spawn } from 'node:child_process';
 import { compileEpisode, toSrt, validateProject } from '../src/core/project';
 import type { Project, VoicePlan } from '../src/core/types';
 import { createVideoHtml } from '../src/engine/renderer';
@@ -8,12 +8,28 @@ import { fontData } from '../src/server/preview';
 import { DATA,ROOT,FIXTURES,atomicJson,readJson,exists,jobPath,runPath,listJobs,findPrepared,mediaUrl,fileHash,voiceIdentity,type StoredJob } from '../src/server/storage';
 import { alive,kickWorker } from '../src/server/tasks';
 import { resolveImageSources } from '../src/server/images';
+import { captureTaskProcess, recoverTaskProcesses, terminateTaskProcess, type TaskProcessIdentity } from '../src/server/process-tree';
+import { pythonCommand, runtimeEnvironment } from '../src/server/runtime';
 
 const lockPath=path.join(DATA,'worker.lock');
-let activeChild:ReturnType<typeof spawn>|undefined;
+interface ActiveCommand {
+  child:ReturnType<typeof spawn>; runDirectory:string; identity?:TaskProcessIdentity;
+  identityReady:Promise<TaskProcessIdentity|undefined>; closed:Promise<void>; hasClosed:boolean; termination?:Promise<void>;
+}
+let activeChild:ActiveCommand|undefined;
 let stopping=false;
-function killChild(){if(activeChild?.pid){try{process.kill(-activeChild.pid,'SIGTERM');}catch{}const pid=activeChild.pid;setTimeout(()=>{try{process.kill(-pid,'SIGKILL');}catch{}},2500).unref();}}
-process.on('SIGTERM',()=>{stopping=true;killChild();});process.on('SIGINT',()=>{stopping=true;killChild();});
+function stopChild(active:ActiveCommand){
+  if(active.termination)return active.termination;
+  active.termination=(async()=>{
+    const identity=await active.identityReady.catch(()=>undefined);
+    if(identity)await terminateTaskProcess(identity);
+    else await recoverTaskProcesses(active.runDirectory,undefined,active.child.pid);
+    await active.closed;
+  })();return active.termination;
+}
+function killChild(){return activeChild?stopChild(activeChild):Promise.resolve();}
+function stop(){stopping=true;void killChild().catch(error=>console.error('无法确认子进程退出：',error));}
+process.on('SIGTERM',stop);process.on('SIGINT',stop);
 async function claim(){
   await fs.mkdir(DATA,{recursive:true});
   for(let attempt=0;attempt<3;attempt++){
@@ -27,21 +43,40 @@ async function claim(){
   }return false;
 }
 async function perform(job:StoredJob){
-  const dir=runPath(job.id);const cancel=path.join(dir,'cancel.json');let writes=Promise.resolve();let cancelled=false;
+  const dir=runPath(job.id);const cancel=path.join(dir,'cancel.json');let writes=Promise.resolve();let cancelled=false;let cancellation:Promise<void>|undefined;
   function update(patch:Partial<StoredJob>){writes=writes.then(async()=>{Object.assign(job,patch,{updatedAt:new Date().toISOString()});await atomicJson(jobPath(job.id),job);});return writes;}
-  const poll=setInterval(()=>{void exists(cancel).then(value=>{if(value){cancelled=true;killChild();}});},400);
+  const poll=setInterval(()=>{void exists(cancel).then(value=>{if(value){cancelled=true;if(activeChild){cancellation=killChild();void cancellation.catch(()=>{});}}});},400);
   async function checkCancelled(){if(cancelled||stopping||await exists(cancel)){cancelled=true;throw new Error('任务已取消');}}
   async function command(executable:string,args:string[],label:string,start:number,span:number){
     await checkCancelled();
     await update({stage:label,message:label,progress:start});
     const log=await fs.open(path.join(dir,label+'.log'),'a');
-    try{await new Promise<void>((resolve,reject)=>{
-      const child=spawn(executable,args,{cwd:ROOT,detached:true,env:{...process.env,MOYO_ROOT:ROOT,PYTHONUNBUFFERED:'1'},stdio:['ignore','pipe','pipe']});activeChild=child;void update({childPgid:child.pid});
-      let buffer='';let tail='';
-      child.stdout.on('data',data=>{void log.write(data);buffer+=String(data);const lines=buffer.split('\n');buffer=lines.pop()||'';for(const line of lines){try{const item=JSON.parse(line);if(typeof item.progress==='number')void update({progress:Math.min(99,start+span*item.progress),message:String(item.message||label)});}catch{}}});
-      child.stderr.on('data',data=>{void log.write(data);tail=(tail+data).slice(-2500);});
-      child.on('error',reject);child.on('close',code=>{activeChild=undefined;void update({childPgid:undefined});if(cancelled||stopping)reject(new Error('任务已取消'));else if(code!==0)reject(new Error(`${label}失败：${tail||'请查看任务日志'}（${code}）`));else resolve();});
-    });}finally{await log.close();}
+    let active:ActiveCommand|undefined;let logWrites=Promise.resolve();
+    try{
+      await checkCancelled();
+      const child=spawn(executable,args,{cwd:ROOT,detached:true,windowsHide:true,env:{...runtimeEnvironment(),MOYO_ROOT:ROOT,MOYO_DATA_DIR:DATA},stdio:['ignore','pipe','pipe']});
+      let close!:()=>void;const closed=new Promise<void>(resolve=>{close=resolve;});
+      active={child,runDirectory:dir,closed,hasClosed:false,identityReady:Promise.resolve(undefined)};activeChild=active;
+      const current=active;let buffer='';let tail='';
+      function logData(data:Buffer){logWrites=logWrites.then(async()=>{await log.write(data);});void logWrites.catch(()=>{});}
+      child.stdout.on('data',data=>{logData(data);buffer+=String(data);const lines=buffer.split('\n');buffer=lines.pop()||'';for(const line of lines){try{const item=JSON.parse(line);if(typeof item.progress==='number')void update({progress:Math.min(99,start+span*item.progress),message:String(item.message||label)});}catch{}}});
+      child.stderr.on('data',data=>{logData(data);tail=(tail+data).slice(-2500);});
+      const completed=new Promise<void>((resolve,reject)=>{
+        child.once('error',reject);
+        child.once('close',code=>{current.hasClosed=true;close();if(cancelled||stopping)reject(new Error('任务已取消'));else if(code!==0)reject(new Error(`${label}失败：${tail||'请查看任务日志'}（${code}）`));else resolve();});
+      });
+      current.identityReady=new Promise<TaskProcessIdentity|undefined>((resolve,reject)=>{
+        child.once('error',()=>resolve(undefined));
+        child.once('spawn',()=>{void captureTaskProcess(child.pid!,dir).then(async identity=>{current.identity=identity;if(!current.hasClosed)await update({childPgid:child.pid,childProcess:identity});resolve(identity);}).catch(reject);});
+      });
+      await Promise.all([completed,current.identityReady]);
+    }catch(error){if(active)await stopChild(active);throw error;}
+    finally{
+      try{
+        if(active){await active.closed;if(activeChild===active)activeChild=undefined;await update({childPgid:undefined,childProcess:undefined});}
+        await logWrites;
+      }finally{await log.close();}
+    }
   }
   try{
     await update({status:'running',pid:process.pid,stage:'starting',progress:1,message:'读取本次生成快照'});
@@ -59,7 +94,8 @@ async function perform(job:StoredJob){
     }else{
       const input={preset:project.voice.preset,speed:project.voice.speed,scenes:project.scenes.map(s=>({id:s.id,narration:s.narration})),seed:{baseAudio:path.join(FIXTURES,'base-narration.wav'),baseEpisode:path.join(FIXTURES,'base-episode.json'),editorial:path.join(FIXTURES,'editorial.json')}};
       await atomicJson(path.join(dir,'voice-input.json'),input);
-      await command(process.env.MOYO_PYTHON||'python3',[path.join(ROOT,'scripts/build_voice.py'),'--input',path.join(dir,'voice-input.json'),'--output',dir,'--cache',path.join(DATA,'cache/voice')],'voice',4,31);
+      const python=pythonCommand();
+      await command(python.executable,[...python.args,path.join(ROOT,'scripts/build_voice.py'),'--input',path.join(dir,'voice-input.json'),'--output',dir,'--cache',path.join(DATA,'cache/voice')],'voice',4,31);
     }
     const plan=await readJson<VoicePlan>(path.join(dir,'voice-plan.json'));
     const episode=compileEpisode(project,plan);
@@ -76,26 +112,16 @@ async function perform(job:StoredJob){
     }
     await checkCancelled();
     await update({status:'succeeded',stage:'complete',progress:100,message:job.kind==='render'?'视频已导出并通过媒体检查':job.kind==='sample'?'分镜试听已生成':'同步预览已生成'});
-  }catch(error){await update({status:cancelled||stopping?'cancelled':'failed',stage:cancelled||stopping?'cancelled':'failed',message:cancelled||stopping?'已取消，已完成的配音缓存可复用':'生成失败，可查看原因后重试',error:String((error as Error).message)});}
-  finally{clearInterval(poll);await writes;activeChild=undefined;}
+  }catch(error){await killChild();if(cancellation)await cancellation;await update({status:cancelled||stopping?'cancelled':'failed',stage:cancelled||stopping?'cancelled':'failed',message:cancelled||stopping?'已取消，已完成的配音缓存可复用':'生成失败，可查看原因后重试',error:String((error as Error).message)});}
+  finally{clearInterval(poll);await writes;}
 }
 async function recoverOrphan(job:StoredJob){
-  // Verify ownership against both the saved group and this task's unique path.
-  const rows=execFileSync('/bin/ps',['-axo','pid=,pgid=,command='],{encoding:'utf8'}).split('\n');
-  const groups=new Set<number>();
-  for(const row of rows){const m=/^\s*(\d+)\s+(\d+)\s+(.*)$/.exec(row);if(!m)continue;const group=Number(m[2]),command=m[3];
-    if(group===job.childPgid&&command.includes(ROOT)&&command.includes(job.id))groups.add(group);
-    // Playwright starts Chromium in its own group; our launch marker binds it to this run.
-    if(command.includes(`--moyo-task=${runPath(job.id)}`))groups.add(group);
-  }
-  for(const group of groups){try{process.kill(-group,'SIGTERM');}catch{}}
-  if(groups.size)await new Promise(r=>setTimeout(r,1500));
-  for(const group of groups){try{process.kill(-group,'SIGKILL');}catch{}}
+  await recoverTaskProcesses(runPath(job.id),job.childProcess,job.childPgid);
 }
 async function main(){
   if(!await claim())return;
   try{
-    for(const job of await listJobs())if(job.status==='running'&&(!job.pid||!alive(job.pid))){await recoverOrphan(job);await atomicJson(jobPath(job.id),{...job,childPgid:undefined,status:'failed',stage:'interrupted',message:'上次生成进程已退出，可重试并复用已完成配音',error:'生成进程中断',updatedAt:new Date().toISOString()});}
+    for(const job of await listJobs())if(job.status==='running'&&(!job.pid||!alive(job.pid))){await recoverOrphan(job);await atomicJson(jobPath(job.id),{...job,childPgid:undefined,childProcess:undefined,status:'failed',stage:'interrupted',message:'上次生成进程已退出，可重试并复用已完成配音',error:'生成进程中断',updatedAt:new Date().toISOString()});}
     let idle=0;
     while(!stopping){
       const next=(await listJobs()).filter(j=>j.status==='queued').reverse()[0];

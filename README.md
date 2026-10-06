@@ -15,6 +15,19 @@
 | [配音流水线](docs/VOICE.md) | 声线、断句、缓存与音频处理细节 |
 | [验收记录](docs/VERIFICATION.md) | 查找实际测试证据与导出结果 |
 
+## macOS 与 Windows 支持
+
+网页、项目编辑、归档配音复用、预览和视频导出使用同一套源码与配置。macOS 和 Windows 均需 Node.js 20 以上；配音控制器需 Python 3.10 以上，推荐使用 CI 对应的 Python 3.11。
+
+| 能力 | Windows / Intel Mac | Apple Silicon Mac |
+| --- | --- | --- |
+| 编辑、配图、预览与 MP4 导出 | 支持，导出需 Chromium、FFmpeg/FFprobe | 支持，工具要求相同 |
+| 复用匹配的历史琪亚娜口播 | 支持，需 Python 与 FFmpeg/FFprobe | 支持 |
+| 新晓晓口播 | 支持，需 `edge-tts` 和网络 | 支持，要求相同 |
+| 新琪亚娜口播 | 当前 MLX 路径不可用，会明确报错 | 需独立 MLX 环境、完整模型及项目参考素材 |
+
+选择琪亚娜不会在失败时自动替换为晓晓；Windows 或 Intel Mac 制作新口播时，可手动选择晓晓。跨平台回归通过仓库的 macOS/Windows CI 执行，具体实测结果见 [验收记录](docs/VERIFICATION.md)。
+
 ## 打开工作台
 
 使用一个无版本号的项目根目录 `miyo_AI_news/`，工程和声线参考素材都在其中：
@@ -29,7 +42,7 @@ miyo_AI_news/
 └── data/                       本地制作数据，独立备份
 ```
 
-需要 Node.js 20 或以上。从 GitHub 克隆并安装锁定版本的依赖：
+在 macOS 终端或 Windows PowerShell 中，从 GitHub 克隆并安装锁定版本的依赖：
 
 ```sh
 git clone https://github.com/YFBY-Java/miyo_AI_news.git
@@ -38,7 +51,9 @@ npm ci
 npm run dev
 ```
 
-浏览器访问 [http://127.0.0.1:3002](http://127.0.0.1:3002)。只监听本机地址。导出视频还需准备匹配项目版本的 Playwright Chromium、FFmpeg/FFprobe；可运行 `npx playwright install chromium` 安装浏览器。声线参考素材随仓库恢复，模型和推理环境按 [运行与维护](docs/OPERATIONS.md) 准备。
+浏览器访问 [http://127.0.0.1:3002](http://127.0.0.1:3002)。只监听本机地址。导出视频还需 FFmpeg/FFprobe，并执行 `npx playwright install chromium` 安装匹配项目版本的浏览器。声线参考素材随仓库恢复，模型和推理环境按 [运行与维护](docs/OPERATIONS.md) 准备。
+
+从 `.env.example` 复制一份 `.env.local` 保存本机配置；macOS 可用 `cp .env.example .env.local`，PowerShell 可用 `Copy-Item .env.example .env.local`。网页、CLI、worker 和 Python 统一读取项目 `.env.local`、`.env`，外部环境变量优先。`MOYO_*` 的资源相对路径按项目根解析，例如 `MOYO_DATA_DIR=./data`；配置可随整个目录移动。仅在确实使用自定义声线资源时填写对应覆盖项，否则会禁用历史声线 seed 复用。
 
 首次打开会导入一份星铁历史样片，日期为 **2026-09-28 至 2026-10-02**。其约 4 分 17 秒配音与精确时间轴已保存在本工程中；这是历史示例，不是实时新闻。
 
@@ -137,11 +152,11 @@ npm run build
 npm start
 ```
 
-开发服务运行期间，可用 `MOYO_NEXT_DIST_DIR=.next-build npm run build` 在独立构建目录校验，避免覆盖开发服务的 `.next`。
+开发服务运行期间，可在 `.env.local` 配置 `MOYO_NEXT_DIST_DIR=.next-build`，然后运行 `npm run build` 在独立构建目录校验。生产启动也需使用相同配置；详情见 [运行与维护](docs/OPERATIONS.md)。
 
 ## 配音与本机工具
 
-完整参数、环境覆盖、缓存和执行记录见 [VOICE.md](docs/VOICE.md)。琪亚娜使用现成 MLX-Audio / Qwen3-TTS 模型；晓晓使用已有 `edge-tts` 并需要网络。缺少声线资源时明确报错，不会自动换声线或下载模型。
+完整参数、环境覆盖、缓存和执行记录见 [VOICE.md](docs/VOICE.md)。新琪亚娜口播使用 Apple Silicon Mac 上的 MLX-Audio / Qwen3-TTS 模型；晓晓使用 `edge-tts` 并需要网络。默认模型目录为项目 `models/Qwen3-TTS-12Hz-1.7B-Base-4bit/`，MLX 环境为 `.venv-mlx/`。缺少声线资源时明确报错，不会自动换声线或下载模型。
 
 字幕采用语义短句与附近静音估算；历史配音复用保存的时码。尚未接入 ASR 强制对齐。UI 可以调整卡片聚焦点，字幕本身暂没有逐条手工时码编辑器。
 
@@ -150,12 +165,14 @@ npm start
 ```sh
 npm run typecheck
 npm test
-python3 tests/voice_pipeline_test.py
+npm run test:python
+npm run check:runtime
+npm run build
 ```
 
-测试覆盖项目校验、稳定卡片 ID、配音失效规则、时间轴编译、媒体 Range 与路径边界、四风格渲染/消息桥、TTS 缓存与真实音频处理。集成验收与具体输出见 [验收记录](docs/VERIFICATION.md)。
+测试覆盖项目校验、稳定卡片 ID、配音失效规则、时间轴编译、媒体 Range 与路径边界、四风格渲染/消息桥、TTS 缓存与真实音频处理。`check:runtime` 使用隔离工程和归档音轨执行实际配音准备、短片导出、取消与复用，需要 Python、FFmpeg/FFprobe、Chromium；不调用在线 TTS 或新 MLX 推理。集成验收与具体输出见 [验收记录](docs/VERIFICATION.md)。
 
-Windows 配音测试可运行 `$env:PYTHONUTF8 = '1'; py -3.11 tests/voice_pipeline_test.py`。浏览器测试需要匹配的 Playwright Chromium，路径边界测试需要创建符号链接的权限。当前 Windows 整理验证中 JavaScript 测试为 32 项通过、15 项因这两项环境条件未通过；原 Mac 验收结果见同一记录中的历史部分。
+Windows 文件符号链接测试在缺少 Developer Mode 或相应权限时，会逐项报告明确的 `SKIP`；目录逃逸继续用 junction 实际验证，其他测试照常执行。浏览器缺失或渲染失败会令测试失败。CI 在 macOS 与 Windows 安装真实 Chromium 后执行完整检查，原 Mac 交付验收单独保留为历史证据。
 
 ## 当前适用范围
 

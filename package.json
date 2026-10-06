@@ -13,6 +13,8 @@
     "start": "next start --hostname 127.0.0.1 --port 3002",
     "typecheck": "tsc --noEmit",
     "test": "node scripts/run-tests.mjs",
+    "test:python": "tsx scripts/test-python.ts",
+    "check:runtime": "tsx scripts/check-runtime.ts",
     "worker": "tsx scripts/worker.ts",
     "render": "tsx scripts/cli.ts"
   },

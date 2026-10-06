@@ -2,7 +2,6 @@ import fs from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
 import path from 'node:path';
 import { Readable } from 'node:stream';
-import { spawnSync } from 'node:child_process';
 import { InputError,blankProject,newScene,uid,validateProject } from '../core/project';
 import { GAMES,type Capability,type Game,type Project } from '../core/types';
 import { ROOT,DATA,atomicJson,ensureInitialized,exists,getProject,getJob,importFixture,jobPath,listJobs,listProjects,projectPath,saveProject } from './storage';
@@ -10,19 +9,19 @@ import { htmlForProject,projectResponse } from './preview';
 import { cancelJob,createJob,kickWorker } from './tasks';
 import { importSource } from './sources';
 import { assertProjectImages, listImages, readImageUpload, storeImage } from './images';
+import { kianaPaths, pythonCommand, toolAvailable, browserExecutable } from './runtime';
 
 const json=(value:unknown,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'no-store'}});
 async function body(request:Request){const text=await request.text();if(Buffer.byteLength(text)>2_000_000)throw new InputError('提交内容超过 2MB',413);try{return JSON.parse(text);}catch{throw new InputError('无法解析提交内容');}}
 let capabilityCache:{at:number;value:Capability[]}|undefined;
 async function capabilities(){
   if(capabilityCache&&Date.now()-capabilityCache.at<30_000)return capabilityCache.value;
-  const python=process.env.MOYO_MLX_PYTHON||'/Users/shuidi/Documents/Codex/2026-09-25/ruh/work/jev-video/.venv_mlx_audio/bin/python';
-  const voice=process.env.MOYO_KIANA_VOICE_DIR||path.resolve(ROOT,'voice-library/琪亚娜-稳重轻角色感');
-  const model=process.env.MOYO_KIANA_MODEL||path.join(process.env.HOME||'', '.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-4bit/snapshots/37e955a1deb861c088ae5f3a67043185f3d1a60c');
-  const kiana=await exists(python)&&await exists(path.join(voice,'kiana_refs_concat_v2_light.wav'))&&await exists(model);
-  const ffmpeg=spawnSync('ffmpeg',['-version'],{timeout:3000,stdio:'ignore'}).status===0;
-  const edge=spawnSync('edge-tts',['--version'],{timeout:3000,stdio:'ignore'}).status===0;
-  const value=[{id:'kiana-base',label:'琪亚娜 · 稳重轻角色感 · 基准',available:kiana,detail:kiana?'本地声线资源已就绪':'本地声线或模型未找到；原版示例仍可复用已保存配音'},{id:'xiaoxiao',label:'晓晓 · 普通话',available:edge,detail:'在线合成，需要网络'},{id:'video',label:'视频导出',available:ffmpeg,detail:ffmpeg?'1080p · 24fps · MP4':'未找到 FFmpeg，请检查本机工具路径'}];
+  const paths=kianaPaths();
+  const kiana=process.platform==='darwin'&&process.arch==='arm64'&&await exists(paths.python)&&await exists(paths.reference)&&await exists(paths.referenceText)&&await exists(paths.presets)&&await exists(path.join(paths.model,'config.json'));
+  let python=false,browser=false;try{pythonCommand();python=true;}catch{}try{browserExecutable();browser=true;}catch{}
+  const media=toolAvailable('ffmpeg')&&toolAvailable('ffprobe');
+  const edge=toolAvailable('edge-tts');
+  const value=[{id:'python',label:'Python 配音控制器',available:python,detail:python?'Python 3.10 或以上已就绪':'请安装 Python 3.10 或以上，或配置 MOYO_PYTHON'},{id:'kiana-base',label:'琪亚娜 · 稳重轻角色感 · 基准',available:python&&media&&kiana,detail:kiana?'本地声线资源已就绪，配音还需 Python、FFmpeg 和 FFprobe':'新语音推理需要 Apple Silicon macOS 和 MLX 模型；历史原稿可复用归档配音，Windows 可选择晓晓'},{id:'xiaoxiao',label:'晓晓 · 普通话',available:python&&edge&&media,detail:'在线合成，需要 Python、edge-tts、FFmpeg、FFprobe 和网络'},{id:'video',label:'视频导出',available:media&&browser,detail:media&&browser?'1080p · 24fps · MP4':'需要 FFmpeg、FFprobe 和 Playwright Chromium，请检查本机工具配置'}];
   capabilityCache={at:Date.now(),value};return value;
 }
 async function asset(request:Request,parts:string[]){

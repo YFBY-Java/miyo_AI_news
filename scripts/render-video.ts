@@ -4,6 +4,7 @@ import { spawn,execFileSync } from 'node:child_process';
 import { once } from 'node:events';
 import { chromium } from 'playwright';
 import type { Episode } from '../src/engine/legacy/weekly-episode';
+import { browserExecutable, runtimeEnvironment, toolCommand } from '../src/server/runtime';
 
 const index=process.argv.indexOf('--run');if(index<0||!process.argv[index+1])throw new Error('缺少 --run 输出目录');
 const dir=path.resolve(process.argv[index+1]);const fps=24;
@@ -12,7 +13,7 @@ async function main(){
   const episode=JSON.parse(await fs.readFile(path.join(dir,'episode.json'),'utf8')) as Episode;
   const html=await fs.readFile(path.join(dir,'episode.html'),'utf8');
   if(!Number.isFinite(episode.duration)||episode.duration<=0||episode.duration>1800)throw new Error('时长需要在 0–1800 秒内');
-  const browser=await chromium.launch({headless:true,args:[`--moyo-task=${dir}`]});let encoder:ReturnType<typeof spawn>|undefined;
+  const browser=await chromium.launch({headless:true,executablePath:browserExecutable(),args:[`--moyo-task=${dir}`]});let encoder:ReturnType<typeof spawn>|undefined;
   let aborted=false;
   const abort=()=>{aborted=true;encoder?.kill('SIGTERM');void browser.close();};process.once('SIGTERM',abort);process.once('SIGINT',abort);
   try{
@@ -46,7 +47,7 @@ async function main(){
     if(errors.length||overflows.length)throw new Error('画面检查未通过：'+JSON.stringify({errors,overflows}));
     await fs.copyFile(path.join(dir,'frames','01.png'),path.join(dir,'poster.png'));
     const temporary=path.join(dir,'video.partial.mp4');
-    encoder=spawn('ffmpeg',['-y','-hide_banner','-loglevel','warning','-f','image2pipe','-framerate',String(fps),'-vcodec','mjpeg','-i','pipe:0','-i',path.join(dir,'narration.wav'),'-map','0:v:0','-map','1:a:0','-c:v','libx264','-preset','veryfast','-crf','19','-threads','4','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-ar','48000','-t',episode.duration.toFixed(6),'-movflags','+faststart',temporary],{stdio:['pipe','ignore','pipe']});
+    encoder=spawn(toolCommand('ffmpeg'),['-y','-hide_banner','-loglevel','warning','-f','image2pipe','-framerate',String(fps),'-vcodec','mjpeg','-i','pipe:0','-i',path.join(dir,'narration.wav'),'-map','0:v:0','-map','1:a:0','-c:v','libx264','-preset','veryfast','-crf','19','-threads','4','-pix_fmt','yuv420p','-c:a','aac','-b:a','160k','-ar','48000','-t',episode.duration.toFixed(6),'-movflags','+faststart',temporary],{stdio:['pipe','ignore','pipe'],windowsHide:true,env:runtimeEnvironment()});
     let err='';encoder.stderr!.on('data',b=>err=(err+b).slice(-4000));
     let encodeFailure:Error|undefined;
     const completion=new Promise<void>((resolve,reject)=>{encoder!.once('error',reject);encoder!.once('close',c=>c===0?resolve():reject(new Error('视频编码失败：'+err)));});
@@ -59,10 +60,10 @@ async function main(){
       if(frame%120===0)progress(frame/count*.92,`渲染 ${Math.floor(frame/fps)} / ${Math.ceil(episode.duration)} 秒`);
     }
     encoder.stdin!.end();await completion;progress(.94,'检查音画时长与文件完整性');
-    const probe=JSON.parse(execFileSync('ffprobe',['-v','error','-show_format','-show_streams','-of','json',temporary],{encoding:'utf8'}));
+    const probe=JSON.parse(execFileSync(toolCommand('ffprobe'),['-v','error','-show_format','-show_streams','-of','json',temporary],{encoding:'utf8',windowsHide:true,env:runtimeEnvironment()}));
     const video=probe.streams.find((s:any)=>s.codec_type==='video'),audio=probe.streams.find((s:any)=>s.codec_type==='audio');
     if(!video||!audio||video.width!==1920||video.height!==1080||Math.abs(Number(probe.format.duration)-episode.duration)>.15)throw new Error('导出视频音画参数不一致');
-    execFileSync('ffmpeg',['-v','error','-i',temporary,'-f','null','-'],{stdio:['ignore','pipe','pipe'],maxBuffer:10_000_000});
+    execFileSync(toolCommand('ffmpeg'),['-v','error','-i',temporary,'-f','null','-'],{stdio:['ignore','pipe','pipe'],maxBuffer:10_000_000,windowsHide:true,env:runtimeEnvironment()});
     if(errors.length)throw new Error('画面运行错误：'+errors.join(';'));
     await fs.writeFile(path.join(dir,'render-report.json'),JSON.stringify({result:'passed',duration:episode.duration,width:1920,height:1080,fps,frames:count,scenes:episode.scenes.length,pageErrors:errors,overflows,imageChecks,fullDecode:'passed',checkedAt:new Date().toISOString(),streams:probe.streams.map((s:any)=>({type:s.codec_type,codec:s.codec_name,width:s.width,height:s.height,sampleRate:s.sample_rate,channels:s.channels}))},null,2));
     await fs.rename(temporary,path.join(dir,'video.mp4'));progress(1,'完整视频已生成');

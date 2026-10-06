@@ -1,6 +1,29 @@
-# 首版验收记录
+# 验收记录
 
-## 当前 Windows 单仓库整理验证（2026-10-06）
+## 本轮 macOS / Windows 兼容验证（2026-10-06）
+
+本轮改动统一项目配置、相对资源路径、Python/工具/浏览器探测，以及两个系统的任务树取消与恢复。新琪亚娜推理限定 Apple Silicon Mac；归档配音、晓晓、编辑与导出按当前平台的依赖运行。
+
+| 检查 | 方法 | 本轮结果与证据 |
+| --- | --- | --- |
+| 类型 | `npm run typecheck` | Windows 通过 |
+| 完整 Node 回归 | `npm test`，已安装真实 Chromium | Windows：63 项，60 通过、0 失败、3 项文件 symlink 权限场景明确跳过 |
+| Python 回归 | `npm run test:python` | Windows：19 项全部通过；使用归档音频，不运行新 TTS |
+| 完整任务链 | `npm run check:runtime` | Windows 通过，报告 `data/verification/platform-runtime-1791268944079/report.json`；详情见下文 |
+| 生产构建 | `npm run build` | Windows 独立 `.next-build` 目录构建通过，含类型检查、静态页生成和依赖追踪 |
+| macOS / Windows CI | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | 待填写本轮推送对应的两个矩阵任务结果 |
+
+CI 在 `macos-latest` 与 `windows-latest` 使用 Node 20、Python 3.11，安装 FFmpeg/FFprobe 和项目对应的 Playwright Chromium 后执行全部检查。浏览器渲染失败不会跳过；本表中的“待填写”不表示通过。纯文档变更不重复执行矩阵检查。
+
+本机完整任务链使用含中文与空格的隔离目录，从归档音轨生成单分镜配音。prepare `6a8faf09-6ca1-4f4d-9b4b-2974391e4942` 成功，实际开始编码的 render `c4c98776-6e13-4982-89b5-e0df3f29555e` 取消后确认没有残留任务进程；重试 `8dfab7b2-5e97-4ff4-a770-5afe86209517` 导出 9.696667 秒、1920×1080、24 fps、233 帧 H.264/AAC MP4，完整解码通过，无页面错误或正文溢出。`audio-provenance.json` 指向取消任务已准备好的音轨，与最初 prepare 的 WAV SHA-256 一致；网页与 worker 的缓存识别一致。成功后隔离目录与其 worker 自动清理，报告保留。
+
+构建中发现并修复了 Next 文件追踪把目标机主目录当依赖扫描的问题；保留完整依赖追踪与真实工具文件检查。Mac 任务进程查询分别固定英文日期和 UTF-8 命令行，真实进程测试与完整任务链均使用中文及空格目录。最后针对运行时和真实进程的 13 项回归再次通过。
+
+符号链接专项已在当前 Windows 复现并验证：原 19 项中 9 项因 `EPERM` 失败，其中一个 before 钩子令 7 项无关测试无法执行。修复后 `node --import tsx --test tests/assets.test.ts tests/server-audit.test.ts` 为 22 项，19 通过、0 失败、3 项文件 symlink 权限场景明确报告 `SKIP`。目录逃逸改用 junction 并实际检查 403、写入拒绝；路径和 SHA 检查照常运行。此专项结果不代替最终全套回归。
+
+`check:runtime` 复制隔离工程并使用归档音轨，验证实际 prepare、短片视频导出、运行中取消及音轨复用；需要已安装 Python、FFmpeg/FFprobe 和 Chromium，不调用在线 TTS 或新 MLX 推理。它不能证明新声线音质、长片视觉质量或断电后的系统恢复。
+
+## 历史：Windows 单仓库导入整理（2026-10-06）
 
 项目根目录为 `miyo_AI_news/`，声线参考素材已移入项目内的 `voice-library/`，Node 和 Python 的默认路径已同步更新。
 
@@ -12,7 +35,7 @@
 
 以下各节保留原 Mac 交付环境的历史验收记录，其完整视频导出、模型及浏览器成功结果不代表当前 Windows 已具备相同环境。
 
-## 大卡片与手动尺寸增量验收（2026-10-06）
+## 历史：原 Mac 大卡片与手动尺寸增量验收（2026-10-06）
 
 已移除画面中的来源行、分镜副标题、底部资料日期及时间文字，保留项目原始字段。中间卡片舞台扩大，四风格共用卡片级最终宽高配置，粒子和转场同步适配舞台。
 
@@ -24,7 +47,7 @@
 
 成片位于 `data/runs/ef990ec8-822e-43ab-b966-c9741ffee3b2/video.mp4`。浏览器实际输入输出及截图在 `data/verification/card-size/records.json` 和 `studio-card-size-final.png`；导出请求响应、媒体报告、原始配音请求与实际结果见同目录 `export-records.jsonl`、`export-result.json`，成片取帧为 `export-frame.png`。其他主题的真实项目静帧和全期正文溢出统计在 `data/verification/card-layout-20261006/`；本轮没有重新导出完整4分钟视频。
 
-## 手动配图增量验收（2026-10-06）
+## 历史：原 Mac 手动配图增量验收（2026-10-06）
 
 已新增卡片级手动配图、素材复用、三种图文布局、裁切和位置控制。原文案、原图字节、已有导出文件均保留。
 
@@ -44,7 +67,7 @@
 
 验证日期：2026-10-06（Asia/Shanghai）。环境为原 Mac 交付机器，工作台地址 `http://127.0.0.1:3002`。本次验收使用历史素材和明确标注的测试副本，不修改原工程 `miyo-news-card @ a11a118`，不代表重新核实历史新闻。
 
-## 完整导出
+## 历史：原 Mac 完整导出
 
 通过工作台同源 HTTP API 提交 `starrail-demo` 的 `render` 任务，走实际后台队列、配音、时间轴、浏览器绘制、FFmpeg 编码与检查。
 
@@ -69,7 +92,7 @@
 
 `data/verification/full-render-request.json` 保存首次提交原文；`full-render-result.json` 保存终态与独立 FFprobe 读回。`starrail-final-frame.png` 为成片 156.25 秒截图，已目视确认保留金色斜向车票横扫；该帧处于转场，两个分镜叠化属于动画过程。
 
-## 代码和构建
+## 历史：原 Mac 代码和构建
 
 | 执行 | 结果与范围 |
 | --- | --- |
@@ -80,7 +103,7 @@
 
 四游戏渲染测试覆盖每场 1–6 张卡片、确定性 seek、文字转义、关闭粒子、字幕参数与 iframe 消息桥。四种风格有不同画面、粒子、卡片动作和章节幕切。本次完整约 4 分钟 MP4 验证使用星穹铁道风格；其他三种完成渲染测试与画面检查，没有分别导出同长度成片。
 
-## 网页真实操作
+## 历史：原 Mac 网页真实操作
 
 使用独立 `agent-browser` 会话测试，未使用 Codex 内置浏览器或导入浏览器登录态。原项目 `starrail-demo` 未被编辑，测试项目 `d40591ca-a660-4e9a-b1ba-f19397f0ef36` 明确标为「UI 回归验证 · 星铁副本」。
 
@@ -96,7 +119,7 @@
 
 公开网页导入 `https://example.com` 返回 200，保存提取文本并标为待核对；同版本渲染重复提交返回正在运行的原任务 ID。请求、响应和耗时见 `data/verification/http-integration.json`。私网地址、媒体目录越界和保存冲突由自动化测试覆盖。
 
-## 运行中取消与重试
+## 历史：原 Mac 运行中取消与重试
 
 另创建仅含首个分镜的验证项目 `129973cd-6617-48b9-a88a-1d29eee8fbfe`，通过真实 HTTP 接口执行以下流程，耗时 20.479 秒：
 
@@ -107,7 +130,7 @@
 
 原始请求响应、进程快照与判定见 `data/verification/running-cancel/20261006-105259-summary.json` 及同目录 JSONL。此项验证正常取消机制，不等同于强杀或断电恢复验证。
 
-## 新文本配音
+## 历史：原 Mac 新文本配音
 
 | 声线 | 实际输入 | 实际输出 |
 | --- | --- | --- |
@@ -116,7 +139,7 @@
 
 每次执行均保存输入、输出音轨、实际模型和参数、耗时、终态与证据位置；复测单独追加，不覆盖历史。自动化配音测试位于 `data/verification/voice-tests-*`。有效解码、时长和响度检查不替代主观音质与逐字识别，当前未做 ASR 强制对齐或完整主观听评。
 
-## 验证边界
+## 历史验收边界
 
 - 资讯支持链接或粘贴导入，分镜草稿按段落规则整理；没有自动搜索、自动事实核验或 LLM 改写。
 - 本机已有声线和模型可用；没有在另一台电脑安装或验证。

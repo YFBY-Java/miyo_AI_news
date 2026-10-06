@@ -1,4 +1,8 @@
 node_modules/
+.venv/
+.venv-mlx/
+models/
+.cache/
 .next/
 .next-build/
 data/

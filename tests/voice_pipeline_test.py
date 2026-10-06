@@ -4,6 +4,7 @@ import json
 import math
 import os
 from pathlib import Path
+import platform
 import subprocess
 import sys
 import unittest
@@ -24,7 +25,7 @@ class VoicePipelineTest(unittest.TestCase):
         cls.fixture = ROOT / 'fixtures/starrail-weekly'
         cls.editorial = voice.read_json(cls.fixture / 'editorial.json')
         cls.episode = voice.read_json(cls.fixture / 'base-episode.json')
-        cls.seed = {key: str(cls.fixture / name) for key, name in (
+        cls.seed = {key: str((cls.fixture / name).relative_to(ROOT)) for key, name in (
             ('baseAudio', 'base-narration.wav'), ('baseEpisode', 'base-episode.json'), ('editorial', 'editorial.json'))}
 
     def execute(self, name, scenes, speed=1.1, success=True, environment=None):
@@ -34,7 +35,8 @@ class VoicePipelineTest(unittest.TestCase):
         voice.write_json(folder / 'input.json', request)
         process = subprocess.run([sys.executable, str(ROOT/'scripts/build_voice.py'), '--input', str(folder/'input.json'),
                                   '--output', str(folder/'output'), '--cache', str(self.evidence/'cache')],
-                                 capture_output=True, text=True, env=os.environ | (environment or {}))
+                                 capture_output=True, text=True, encoding='utf-8', errors='replace',
+                                 cwd=self.evidence, env=os.environ | (environment or {}))
         voice.write_json(folder/'execution.json', {'caseId': name, 'input': request, 'exitCode': process.returncode,
                          'stdout': process.stdout, 'stderr': process.stderr, 'expectedSuccess': success,
                          'passed': (process.returncode == 0) == success, 'executedAt': voice.now()})
@@ -82,7 +84,7 @@ class VoicePipelineTest(unittest.TestCase):
         scene = {'id': 'repeated', 'narration': self.editorial['scenes'][0]['narration']}
         output = self.execute('reject-duplicates', [scene, scene], success=False)
         self.assertFalse((output/'voice-plan.json').exists())
-        records = [json.loads(line) for line in (output/'execution-records.jsonl').read_text().splitlines()]
+        records = [json.loads(line) for line in (output/'execution-records.jsonl').read_text(encoding='utf-8').splitlines()]
         self.assertEqual(records[-1]['status'], 'failed')
         self.assertEqual(records[-1]['input']['scenes'], [scene, scene])
 
@@ -110,9 +112,10 @@ class VoicePipelineTest(unittest.TestCase):
                                   'MOYO_KIANA_REFERENCE': str(self.evidence/'missing-reference.wav'),
                               })
         self.assertFalse((output/'voice-plan.json').exists())
-        records = [json.loads(line) for line in (output/'execution-records.jsonl').read_text().splitlines()]
+        records = [json.loads(line) for line in (output/'execution-records.jsonl').read_text(encoding='utf-8').splitlines()]
         self.assertEqual(records[-1]['status'], 'failed')
-        self.assertIn('参考音频', records[-1]['error'])
+        supported_mlx = sys.platform == 'darwin' and platform.machine().lower() in ('arm64', 'aarch64')
+        self.assertIn('参考音频' if supported_mlx else 'Apple Silicon', records[-1]['error'])
         self.assertFalse(any(r['status'] == 'reused-seed' for r in records))
 
     def test_semantic_blocks_preserve_text_and_do_not_split_at_caption_width(self):

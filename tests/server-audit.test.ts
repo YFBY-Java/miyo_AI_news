@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { audioKey, blankProject, compileEpisode, validateProject } from '../src/core/project';
+import { createDirectoryLink, createFileLinkOrSkip } from './helpers/filesystem-links';
 
 let temporary:string;
 let handleApi:(request:Request)=>Promise<Response>;
@@ -16,7 +17,6 @@ before(async()=>{
   await fs.writeFile(path.join(process.env.MOYO_DATA_DIR,'audio.wav'),'0123456789');
   await fs.writeFile(path.join(process.env.MOYO_DATA_DIR,'empty.log'),'');
   await fs.writeFile(path.join(temporary,'outside.txt'),'outside');
-  await fs.symlink(path.join(temporary,'outside.txt'),path.join(process.env.MOYO_DATA_DIR,'escape.txt'));
   ({handleApi}=await import('../src/server/http'));
 });
 after(async()=>{
@@ -34,8 +34,14 @@ test('media ranges return exact content and reject invalid ranges',async()=>{
 test('media missing file returns JSON 404 instead of a rejected promise',async()=>{
   const response=await asset('missing.wav');assert.equal(response.status,404);assert.equal((await response.json()).error,'文件不存在');
 });
-test('media realpath containment rejects a symlink outside data',async()=>{
+test('media realpath containment rejects a file symlink outside data',async(context)=>{
+  if(!await createFileLinkOrSkip(context,path.join(temporary,'outside.txt'),path.join(temporary,'data','escape.txt')))return;
   const response=await asset('escape.txt');assert.equal(response.status,403);assert.equal((await response.json()).error,'不可访问此文件');
+});
+test('media realpath containment rejects a directory link outside data',async()=>{
+  const outside=path.join(temporary,'outside-directory');await fs.mkdir(outside);await fs.writeFile(path.join(outside,'audio.wav'),'outside');
+  await createDirectoryLink(outside,path.join(temporary,'data','escape-directory'));
+  const response=await asset('escape-directory/audio.wav');assert.equal(response.status,403);assert.equal((await response.json()).error,'不可访问此文件');
 });
 test('empty media logs can be read without a negative stream range',async()=>{
   const response=await asset('empty.log');assert.equal(response.status,200);assert.equal(await response.text(),'');assert.equal(response.headers.get('content-length'),'0');

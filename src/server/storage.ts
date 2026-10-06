@@ -3,9 +3,10 @@ import path from 'node:path';
 import { randomUUID,createHash } from 'node:crypto';
 import { audioKey, blankProject, safeId, validateProject, InputError } from '../core/project';
 import type { Project, Job, VoicePlan } from '../core/types';
+import { ROOT, resolveProjectPath, kianaPaths, runtimeEnvironment } from './runtime';
 
-export const ROOT=process.env.MOYO_ROOT || process.cwd();
-export const DATA=process.env.MOYO_DATA_DIR || path.join(ROOT,'data');
+export { ROOT };
+export const DATA=resolveProjectPath(process.env.MOYO_DATA_DIR || 'data');
 export const FIXTURES=path.join(ROOT,'fixtures/starrail-weekly');
 export const projectPath=(id:string)=>path.join(DATA,'projects',safeId(id)+'.json');
 export const jobPath=(id:string)=>path.join(DATA,'jobs',safeId(id)+'.json');
@@ -13,15 +14,14 @@ export const runPath=(id:string)=>path.join(DATA,'runs',safeId(id));
 export async function readJson<T>(file:string):Promise<T>{return JSON.parse(await fs.readFile(file,'utf8'));}
 export async function atomicJson(file:string,data:unknown){await fs.mkdir(path.dirname(file),{recursive:true});const tmp=file+'.'+randomUUID()+'.tmp';await fs.writeFile(tmp,JSON.stringify(data,null,2)+'\n');await fs.rename(tmp,file);}
 export async function exists(file:string){try{await fs.access(file);return true;}catch{return false;}}
-export interface StoredJob extends Job { audioKey:string; projectKey:string; voiceIdentity?:string; pid?:number; childPgid?:number; cancelRequested?:boolean }
+export interface StoredJob extends Job { audioKey:string; projectKey:string; voiceIdentity?:string; pid?:number; childPgid?:number; childProcess?:{pid:number;startedAt:string;runDirectory:string}; cancelRequested?:boolean }
 export async function fileHash(file:string){return createHash('sha256').update(await fs.readFile(file)).digest('hex');}
 export async function voiceIdentity(preset:string){
-  const voice=process.env.MOYO_KIANA_VOICE_DIR||path.resolve(ROOT,'voice-library/琪亚娜-稳重轻角色感');
-  const model=process.env.MOYO_KIANA_MODEL||path.join(process.env.HOME||'', '.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-4bit/snapshots/37e955a1deb861c088ae5f3a67043185f3d1a60c');
+  const {model,reference,referenceText,presets}=kianaPaths();
   const files=[path.join(ROOT,'scripts/build_voice.py')];
-  if(preset==='kiana-base')files.push(process.env.MOYO_KIANA_REFERENCE||path.join(voice,'kiana_refs_concat_v2_light.wav'),process.env.MOYO_KIANA_REFERENCE_TEXT||path.join(voice,'reference_audio_v2_light/ref_text.txt'),process.env.MOYO_KIANA_PRESETS||path.join(voice,'test/qwen17b-v2-light-versions/variants.json'),path.join(model,'config.json'));
+  if(preset==='kiana-base')files.push(reference,referenceText,presets,path.join(model,'config.json'));
   const identities=await Promise.all(files.map(async file=>({file,sha256:await fileHash(file).catch(()=>null)})));
-  const config=Object.fromEntries(Object.entries(process.env).filter(([key])=>/^MOYO_(KIANA|MLX|FFMPEG|FFPROBE|EDGE_TTS)/.test(key)).sort());
+  const config=Object.fromEntries(Object.entries(runtimeEnvironment()).filter(([key])=>/^MOYO_(KIANA|MLX|FFMPEG|FFPROBE|EDGE_TTS)/.test(key)).sort());
   return createHash('sha256').update(JSON.stringify({preset,model,identities,config})).digest('hex');
 }
 export async function listProjects():Promise<Project[]>{

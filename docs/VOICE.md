@@ -2,18 +2,36 @@
 
 本地工作台通过 `scripts/build_voice.py` 生成整期或单场旁白。控制器只使用 Python 标准库；需要新琪亚娜语音时，才调用已有 MLX 虚拟环境。所有中间文件、缓存和执行记录都写在新工程的 `data/` 中。不会修改原工程、安装模型、修改全局配置或无声回退到另一种声线。
 
-声线参考素材位于项目内 `voice-library/琪亚娜-稳重轻角色感/`，参考音频、参考文本和参数 3 个文件随同一个 Git 仓库提交。默认路径从项目根定位，移动或克隆整个项目时一同恢复。本文的 Mac 解释器路径与最后的真实生成记录保留原机器证据；它们不代表当前 Windows 机器已完成新口播合成环境迁移。
+声线参考素材位于项目内 `voice-library/琪亚娜-稳重轻角色感/`，参考音频、参考文本和参数 3 个文件随同一个 Git 仓库提交。默认模型为项目 `models/Qwen3-TTS-12Hz-1.7B-Base-4bit/`，MLX 环境为 `.venv-mlx/`，不使用原机器绝对路径。模型和解释器需在目标机器准备，不能仅靠克隆源码恢复。
+
+| 路径 | 平台与依赖 |
+|---|---|
+| 匹配历史口播的琪亚娜音轨复用 | macOS / Windows；Python 3.10 以上、FFmpeg/FFprobe，无需 MLX |
+| 新琪亚娜口播 | 仅 Apple Silicon Mac；MLX-Audio、完整 Qwen3-TTS 模型和参考素材 |
+| 新晓晓口播 | macOS / Windows；edge-tts 和网络 |
+
+在 Windows 或 Intel Mac 请求新琪亚娜推理会明确失败，用户可手动选择晓晓。程序不会静默换声线。最后的新语音生成记录属于原 Mac 交付环境，不能代替当前机器或跨平台验收。
 
 ## 调用和输出
 
-```bash
+macOS 直接调用（Python 3.10 以上）：
+
+```sh
 python3 scripts/build_voice.py \
   --input data/voice-request.json \
   --output data/outputs/example \
   --cache data/cache/voice
 ```
 
-请求中的 `scenes` 顺序就是最终播放顺序。场景 id 必须唯一且非空；`speed` 支持 0.5–2.0。`seed` 可省略。
+Windows PowerShell 直接调用：
+
+```powershell
+py -3 scripts/build_voice.py --input data/voice-request.json --output data/outputs/example --cache data/cache/voice
+```
+
+应用通常通过 `npm run render -- <项目ID> prepare` 调用控制器。它先查项目 `.venv`，Windows 再尝试 `py -3`，然后 `python3` / `python`，并实际启动验证版本；可用 `MOYO_PYTHON` 覆盖。
+
+请求中的 `scenes` 顺序就是最终播放顺序。场景 id 必须唯一且非空；`speed` 支持 0.5–2.0。`seed` 可省略。请求/输出/缓存命令行路径和 seed 的相对路径均按项目根解析。
 
 ```json
 {
@@ -21,9 +39,9 @@ python3 scripts/build_voice.py \
   "speed": 1.1,
   "scenes": [{"id": "intro", "narration": "开拓者，欢迎收看本期资讯。"}],
   "seed": {
-    "baseAudio": "/绝对路径/fixtures/starrail-weekly/base-narration.wav",
-    "baseEpisode": "/绝对路径/fixtures/starrail-weekly/base-episode.json",
-    "editorial": "/绝对路径/fixtures/starrail-weekly/editorial.json"
+    "baseAudio": "fixtures/starrail-weekly/base-narration.wav",
+    "baseEpisode": "fixtures/starrail-weekly/base-episode.json",
+    "editorial": "fixtures/starrail-weekly/editorial.json"
   }
 }
 ```
@@ -68,27 +86,35 @@ stdout 仅输出每行一个 JSON 进度事件，格式为 `{ "stage": "voice", 
 
 ## 本机依赖与覆盖变量
 
+项目 `.env.local`、`.env` 按此顺序加载，外部变量优先；相对资源路径按项目根解析。配置规则与所有入口一致，完整说明见 [运行与维护](OPERATIONS.md#6-路径与环境变量)。
+
 | 环境变量 | 当前默认 |
 |---|---|
-| `MOYO_MLX_PYTHON` | `/Users/shuidi/Documents/Codex/2026-09-25/ruh/work/jev-video/.venv_mlx_audio/bin/python` |
-| `MOYO_KIANA_MODEL` | `~/.cache/huggingface/hub/models--mlx-community--Qwen3-TTS-12Hz-1.7B-Base-4bit/snapshots/37e955a1deb861c088ae5f3a67043185f3d1a60c` |
+| `MOYO_PYTHON` | 应用自动验证 Python 3.10 以上，优先项目 `.venv`；直接调用 Python 脚本时使用当前解释器 |
+| `MOYO_MLX_PYTHON` | `<项目根>/.venv-mlx/bin/python`；Windows 路径为 `.venv-mlx/Scripts/python.exe`，该平台不启用新 MLX 推理 |
+| `MOYO_KIANA_MODEL` | `<项目根>/models/Qwen3-TTS-12Hz-1.7B-Base-4bit` |
 | `MOYO_KIANA_VOICE_DIR` | `<项目根>/voice-library/琪亚娜-稳重轻角色感`，随项目提交 |
 | `MOYO_KIANA_REFERENCE` | 声线目录的 `kiana_refs_concat_v2_light.wav` |
 | `MOYO_KIANA_REFERENCE_TEXT` | 声线目录的 `reference_audio_v2_light/ref_text.txt` |
 | `MOYO_KIANA_PRESETS` | 声线目录的 `test/qwen17b-v2-light-versions/variants.json` |
-| `MOYO_FFMPEG` / `MOYO_FFPROBE` | PATH 或 `~/.homebrew/bin/` 中已有命令 |
-| `MOYO_EDGE_TTS` | PATH 或 `~/.local/bin/edge-tts` |
+| `MOYO_FFMPEG` / `MOYO_FFPROBE` | 覆盖值优先；项目 `.venv`、PATH、macOS 常见工具目录；FFprobe 也可随覆盖的 FFmpeg 位于同目录 |
+| `MOYO_EDGE_TTS` | 覆盖值优先；项目 `.venv`、PATH、macOS 常见工具目录 |
 
-缺少本地模型、参考素材或环境时明确报错。MLX 推理设置 `HF_HUB_OFFLINE=1` 和 `TRANSFORMERS_OFFLINE=1`，避免隐式下载。控制器和它启动的 FFmpeg/MLX 子进程都不创建独立进程组；后台 worker 应将整个任务放入自己的进程组，并对该组发送取消信号，确保子进程一起停止。
+缺少本地模型、参考素材或环境时明确报错。MLX 推理设置 `HF_HUB_OFFLINE=1` 和 `TRANSFORMERS_OFFLINE=1`，避免隐式下载。配音、渲染和工具状态读取同一份 FFmpeg/FFprobe 配置；Windows 使用实际 `.exe`，不通过 Shell 包装器拼接参数。
 
-## 已执行验证
+Windows 控制器及子进程使用 UTF-8 并隐藏额外窗口。任务取消和恢复由 worker 核对 PID、创建时间与任务目录后，Windows 用 `taskkill /T` 清理进程树，macOS 向任务进程组发送信号；控制器不另建分离任务组。
 
-```bash
-python3 tests/voice_pipeline_test.py
+## 回归方法与历史验证
+
+```sh
+npm run test:python
+npm run check:runtime
 ```
 
-该测试仅使用归档音频，覆盖：1.1 倍时长/局部字幕、1.2 倍及场景重排、复制 id 后匹配原稿、缓存损坏重建、重复 id/非法速度拒绝、语义分块与字幕切分独立，以及显式声线覆盖禁用 seed、缺失新参考素材不得冒充成功。测试输入、stdout/stderr 及流水线记录存入 `data/verification/voice-tests-*`。
+Python 配音回归仅使用归档音频，覆盖：1.1 倍时长/局部字幕、1.2 倍及场景重排、复制 id 后匹配原稿、缓存损坏重建、重复 id/非法速度拒绝、语义分块与字幕切分独立，以及显式声线覆盖禁用 seed、缺失新参考素材不得冒充成功。测试输入、stdout/stderr 及流水线记录存入 `data/verification/voice-tests-*`。
 
-另已实际生成一段新琪亚娜口播，原文为“开拓者，欢迎收看本期资讯。让我们一起看看新的活动安排。”，成品和逐条输入输出记录位于 `data/verification/voice-kiana-new/output`。此验证证明本机新口播路径能够输出有效音轨；未进行 ASR 逐字校验。
+`check:runtime` 在隔离工程中验证实际 prepare、短片渲染、取消与配音复用，需 Python、FFmpeg/FFprobe 和 Chromium。两个命令都不运行新 MLX 推理或在线 TTS，不能将其结果当作新声线质量证据。当前 Windows 和 macOS CI 结果见 [验收记录](VERIFICATION.md)。
 
-晓晓线上 TTS 也完成短句真实调用：“欢迎收看本期资讯。我们一起看看新的活动。”，结果位于 `data/verification/voice-xiaoxiao-new/output`。两段均使用 1.1 倍速，琪亚娜成品 5.417083 秒，晓晓成品 4.842417 秒。琪亚娜新推理环境实际报告 MLX 0.32.2、MLX-Audio 0.5.6；这些是当前本机检查结果，不是可移植项目的安装要求。
+原 Mac 交付机器已实际生成一段新琪亚娜口播，原文为“开拓者，欢迎收看本期资讯。让我们一起看看新的活动安排。”，成品和逐条输入输出记录位于 `data/verification/voice-kiana-new/output`。此历史验证证明当时该机器能输出有效音轨；未进行 ASR 逐字校验。
+
+原 Mac 交付机器的晓晓线上 TTS 也完成短句真实调用：“欢迎收看本期资讯。我们一起看看新的活动。”，结果位于 `data/verification/voice-xiaoxiao-new/output`。两段均使用 1.1 倍速，琪亚娜成品 5.417083 秒，晓晓成品 4.842417 秒。原机器推理环境报告 MLX 0.32.2、MLX-Audio 0.5.6；这些是历史检查结果，不是跨平台安装要求或本轮新推理验收。
